@@ -207,7 +207,7 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
         </div>
 
         {/* Tabby */}
-        {/* <div className="payment-method-item">
+        <div className="payment-method-item">
           <input 
             type="radio" 
             id="tabby" 
@@ -251,7 +251,7 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
               </div>
             </div>
           </label>
-        </div> */}
+        </div>
 
         {/* Tamara */}
         {/* <div className="payment-method-item">
