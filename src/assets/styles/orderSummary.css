@@ -1,0 +1,355 @@
+.os-container {
+    background: #fff;
+    border-radius: 14px;
+    padding: 10px 14px;
+    max-width: 420px;
+    width: 100%;
+    font-family: 'Montserrat',  sans-serif;
+    color: #333;
+    box-sizing: border-box;
+    min-height: 50vh;
+  }
+  
+  .os-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 28px;
+    color: #222;
+    letter-spacing: 0.02em;
+  }
+  
+  .os-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    margin-bottom: 18px;
+    font-weight: 600;
+    color: #444;
+  }
+  
+  .os-strike {
+    text-decoration: line-through;
+    color: #999;
+  }
+  
+  .os-discount,
+  .os-small-discount {
+    color: #d25613;
+    font-weight: 700;
+  }
+  
+  .os-coupon-section {
+    margin-bottom: 28px;
+  }
+  
+  .os-coupon-label {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 12px;
+    display: block;
+    color: #222;
+  }
+  
+  .os-coupon-input-wrapper {
+    display: flex;
+    gap: 14px;
+  }
+  
+  .os-coupon-input {
+    flex: 1;
+    padding: 14px 18px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 1.5px solid #ddd;
+    font-weight: 500;
+    box-sizing: border-box;
+    min-width: 0;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .os-coupon-input:focus {
+    outline: none;
+    border-color: #d25613;
+    box-shadow: 0 0 8px rgba(255, 76, 0, 0.35);
+  }
+  
+  .os-apply-btn {
+    background-color: #0b6324;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    white-space: nowrap;
+    box-shadow: 0 6px 14px rgba(255, 76, 0, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .os-apply-btn:hover {
+    background-color: #e03e00;
+    box-shadow: 0 8px 20px rgba(224, 62, 0, 0.4);
+  }
+
+  .os-info-block h4 img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 8px;
+    object-fit: contain;
+    display: inline-block;
+  }
+  
+  
+  .os-coupon-success,
+  .os-coupon-error {
+    font-size: 14px;
+    margin-top: 12px;
+    font-weight: 600;
+  }
+  
+  .os-coupon-success {
+    color: #28a745; /* Changed to a brighter green */
+}
+.os-info-block .os-desc,
+.os-info-block ul {
+  color: #707070; /* Slightly lighter green for body text */
+}
+.os-info-block ul li{
+    color: #707070;
+}
+
+  
+  .os-coupon-error {
+    color: #e9410a;
+  }
+  
+  .os-separator {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 18px 0 24px;
+  }
+  
+  .os-total-row {
+    font-size: 20px;
+    font-weight: 800;
+    color: #111;
+    margin-top: 8px;
+  }
+  
+  .os-note {
+    font-size: 13px;
+    color: #777;
+    margin-top: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  
+  .os-installment {
+    font-size: 14px;
+    color: #555;
+    margin: 28px 0 24px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  
+  .os-pill {
+    background-color: #ff4c00;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 18px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-left: 10px;
+    line-height: 1;
+    display: inline-block;
+    position: relative;
+    cursor: default;
+  }
+  
+  .os-checkout-btn {
+    width: 100%;
+    background-color: #0c601c;
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+    padding: 20px 0;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    /* box-shadow: 0 10px 24px rgba(255, 76, 0, 0.4); */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .os-checkout-btn:hover:not(:disabled) {
+    background-color: #0c601c;
+    box-shadow: 0 12px 28px rgba(12, 68, 7, 0.2);
+  }
+  
+  .os-checkout-btn.disabled,
+  .os-checkout-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: none;
+    background-color: #ddd;
+    color: #999;
+  }
+  
+  .os-almost-sold {
+    font-size: 14px;
+    color: #e9410a;
+    text-align: center;
+    margin-top: 16px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .os-installment-logo {
+  width: 24px;  /* adjust size */
+  height: auto;
+  vertical-align: middle;
+  margin: 0 4px;
+  display: inline-block;
+}
+.os-installment-logo {
+    width: 50px;  /* adjust size */
+    height: auto;
+    vertical-align: middle;
+    margin: 0px;
+    display: inline-block;
+  }
+  
+  
+  .os-paypal-btn {
+    width: 100%;
+    background-color: #fff;
+    color: #003087;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 18px 0;
+    border: 2px solid #003087;
+    border-radius: 14px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .os-paypal-btn:hover {
+    background-color: #003087;
+    color: white;
+  }
+  
+  .os-footnote {
+    font-size: 12px;
+    color: #999;
+    margin-top: 8px;
+    text-align: center;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  
+  .os-info-block {
+    margin-top: 18px;
+    padding-top: 6px;
+    border-top: none;
+  }
+  
+  .os-info-block h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #2a7a2a; /* Changed heading color to dark green */
+}
+  
+  .os-desc {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 18px;
+    line-height: 1.6;
+    font-weight: 500;
+  }
+  
+  .os-info-block ul {
+    list-style: none;
+    padding: 0;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.7;
+    font-weight: 500;
+  }
+  
+  .os-info-block ul li {
+    margin-bottom: 12px;
+  }
+  
+  .os-logos-row {
+    display: flex;
+    gap: 5px;
+    margin-top: 16px;
+  }
+  
+  .os-logos-row img {
+    height: 28px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 0.5px rgba(0,0,0,0.1));
+    transition: filter 0.3s ease;
+  }
+  
+  .os-logos-row img:hover {
+    filter: drop-shadow(0 0 3px rgba(255, 76, 0, 0.7));
+  }
+  
+  /* Tooltip styles */
+  .os-tooltip-container {
+    position: relative;
+    display: inline-block;
+    margin-left: 0px;
+  }
+  
+  .os-tooltip-question {
+    background-color: #e7e7e7;
+    color: rgb(135, 135, 135);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+  }
+  
+  .os-tooltip-container:focus .os-tooltip-text,
+  .os-tooltip-container:hover .os-tooltip-text {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .os-tooltip-text {
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background-color: rgba(0,0,0,0.85);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 10px;
+    width: 250px;
+    font-size: 13px;
+    line-height: 1.4;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 10;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  
+  .os-tooltip-line {
+    margin: 6px 0;
+  }
+  

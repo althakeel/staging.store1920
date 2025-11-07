@@ -1,0 +1,119 @@
+.cart-summary {
+  max-width: 620px;
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+}
+
+.cart-summary h3 {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 6px;
+  user-select: none;
+}
+
+
+.cart-grid-item.out-of-stock {
+  filter: grayscale(70%);
+  opacity: 0.6;
+  pointer-events: none; /* disable clicks */
+  position: relative;
+}
+
+.out-of-stock-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #cc3333;
+  color: white;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  pointer-events: none;
+  user-select: none;
+  z-index: 10;
+}
+
+.cart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 14px;
+}
+
+.cart-grid-item {
+  position: relative;   /* needed for absolute remove button */
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.cart-grid-item:hover,
+.cart-grid-item:focus-visible {
+  border-color: #60a5fa; /* Tailwind blue-400 */
+  outline: none;
+}
+
+.cart-item-image {
+  width: 80px;         /* reduced width */
+  height: 60px;        /* reduced height */
+  object-fit: contain;
+  user-select: none;
+  margin-bottom: 8px;
+  border-radius: 0;
+  background: #fafafa;
+}
+
+
+.cart-item-placeholder {
+  width: 80px;         /* reduced width */
+  height: 60px;        /* reduced height */
+  background: #eee;
+  color: #999;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  margin-bottom: 8px;
+}
+.cart-item-price {
+  font-weight: 600;
+  font-size: 12px;
+  color: #333;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* Remove button style */
+.cart-item-remove-btn {
+  position: absolute;
+  top: -7px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  background: transparent;   /* no background */
+  border: none;
+  cursor: pointer;
+  color: #ec0101;            /* red-500 */
+  font-size: 32px !important;           /* bigger X */
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  padding: 0;
+  user-select: none;
+  z-index: 10;
+  transition: color 0.25s ease;
+}
+
+.cart-item-remove-btn:hover {
+  color: #000000;            /* red-700 on hover */
+}

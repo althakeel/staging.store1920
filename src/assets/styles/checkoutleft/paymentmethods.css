@@ -1,0 +1,527 @@
+/* Import Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+.pm-wrapper {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pm-wrapper h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+/* Simple payment methods list */
+.payment-methods-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.payment-method-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.payment-method-item:hover {
+  background-color: #f9fafb;
+}
+
+.payment-method-item:last-child {
+  border-bottom: none;
+}
+
+.payment-method-item input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin: 0 16px 0 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-top: 3px;
+  accent-color: #10b981;
+}
+
+.payment-method-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  cursor: pointer;
+  flex: 1;
+  font-size: 14px;
+  color: #111827;
+  width: 100%;
+}
+
+.payment-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 6px;
+}
+
+/* Card icons group */
+.card-icons-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.card-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+  min-width: 40px;
+}
+
+.card-icon {
+  width: 28px;
+  height: 20px;
+  object-fit: contain;
+  border-radius: 3px;
+  border: 1px solid #e5e7eb;
+  padding: 2px;
+  background: white;
+}
+
+/* Payment details for Tabby/Tamara */
+.payment-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  min-height: 60px;
+}
+
+.payment-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+.info-icon {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* Inline payment schedule */
+.payment-schedule-inline {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 12px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.schedule-row-inline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding: 8px 4px;
+  position: relative;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  min-height: 60px;
+  justify-content: center;
+}
+
+.schedule-row-inline .amount {
+  font-weight: 700;
+  color: #111827;
+  font-size: 13px;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.schedule-row-inline .period {
+  font-size: 10px;
+  color: #6b7280;
+  margin-bottom: 6px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.progress-bar-inline {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  margin-top: auto;
+}
+
+.progress-bar-inline.green {
+  background: linear-gradient(to right, #10b981, #34d399);
+}
+
+.progress-bar-inline.light-green {
+  background: #d1fae5;
+}
+
+.progress-bar-inline.orange {
+  background: linear-gradient(to right, #f97316, #fb923c);
+}
+
+.progress-bar-inline.light-orange {
+  background: #fed7aa;
+}
+
+/* COD Info Popup Styles */
+.cod-info-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.cod-info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background-color: #6b7280;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cod-info-icon:hover {
+  background-color: #374151;
+}
+
+/* COD text container */
+.cod-text-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* Card payment header styling */
+.card-payment-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.card-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  min-width: 40px;
+}
+
+.card-icons-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.card-icon {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+/* Payment method content wrapper */
+.payment-method-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Payment header row for Tabby/Tamara */
+.payment-header-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+}
+
+.payment-method-logo {
+  width: 50px;
+  height: 30px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.payment-text-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.payment-title-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Payment header styling */
+.payment-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.payment-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.payment-description {
+  font-size: 13px;
+  color: #f97316;
+  font-weight: 500;
+}
+
+/* Payment schedule container - EXACT match to image */
+.payment-schedule-container {
+  display: flex;
+  gap: 0;
+  margin-top: 4px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+}
+
+.schedule-item {
+  flex: 1;
+  padding: 12px 8px;
+  text-align: center;
+  border-right: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.schedule-item:last-child {
+  border-right: none;
+}
+
+.schedule-item .amount {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.schedule-item .period {
+  font-size: 11px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.progress-bar.active {
+  background: #10b981;
+}
+
+.progress-bar.active.tamara {
+  background: linear-gradient(90deg, #f97316 0%, #fb923c 100%);
+}
+
+/* COD payment method specific styling */
+.payment-method-item .payment-method-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.payment-method-item .payment-method-label span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.cod-popup {
+  position: absolute;
+  top: -8px;
+  left: 25px;
+  z-index: 1000;
+  width: 350px;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  animation: popupFadeIn 0.3s ease-out;
+}
+
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cod-popup-content {
+  padding: 20px;
+}
+
+.cod-popup h4 {
+  margin: 0 0 16px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+  text-align: left;
+}
+
+.cod-popup ol {
+  margin: 0;
+  padding-left: 20px;
+  list-style: none;
+  counter-reset: step-counter;
+}
+
+.cod-popup li {
+  margin-bottom: 16px;
+  font-size: 13px;
+  line-height: 1.5;
+  counter-increment: step-counter;
+  position: relative;
+}
+
+.cod-popup li::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: -20px;
+  top: 0;
+  background: #059669;
+  color: white;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.cod-popup li:last-child {
+  margin-bottom: 0;
+}
+
+.cod-popup li strong {
+  color: #1f2937;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.cod-popup li p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .cod-popup {
+    width: 320px;
+    left: -50px;
+    top: -5px;
+  }
+  
+  .payment-method-item {
+    padding: 16px 12px;
+  }
+
+  .payment-method-label {
+    gap: 10px;
+  }
+
+  .payment-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .payment-schedule-inline {
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .schedule-row-inline {
+    padding: 6px 2px;
+    min-height: 50px;
+  }
+
+  .schedule-row-inline .amount {
+    font-size: 11px;
+  }
+
+  .schedule-row-inline .period {
+    font-size: 9px;
+  }
+
+  .card-icons-group {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .card-icon {
+    width: 24px;
+    height: 16px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    min-width: 35px;
+  }
+
+  .payment-details {
+    gap: 8px;
+  }
+
+  .payment-info {
+    font-size: 12px;
+  }
+}

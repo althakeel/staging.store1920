@@ -1,0 +1,71 @@
+/* Full-width container */
+.shipping-container-full {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.shipping-title-full {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+/* Full-width card */
+.shipping-full-card {
+  display: block;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #fff;
+}
+
+.shipping-full-card:hover {
+  border-color: #aaa;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.shipping-full-selected {
+  border-color: #4caf50;
+  background-color: #e6f4ea;
+}
+
+/* Hide radio visually but still accessible */
+.shipping-full-radio {
+  display: none;
+}
+
+.shipping-full-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shipping-full-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.shipping-full-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.shipping-full-desc {
+  font-size: 13px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.shipping-full-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+}

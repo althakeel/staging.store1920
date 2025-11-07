@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
+
+/* =========================
+   Global Wrapper
+========================= */
+.catepage-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 15px 50px 15px;
+  font-family: 'Montserrat', sans-serif;
+  color: #222;
+  box-sizing: border-box;
+  min-height: 40vh;
+}
+
+/* =========================
+   Titles
+========================= */
+.catepage-main-title {
+    font-size: 18px;
+    font-weight: 400;
+    color: #000000;
+    letter-spacing: 0.5px;
+    margin: 0; /* remove bottom margin since wrapper has spacing */
+    text-align: left; /* align left inside flex */
+  }
+
+.catepage-filter-wrapper {
+    display: flex;
+    justify-content: space-between; /* title left, filter right */
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* allows wrapping on smaller screens */
+  }
+/* =========================
+   Product Grid
+========================= */
+.catepage-prod-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 15px;
+}
+
+/* =========================
+   Product Card
+========================= */
+.catepage-prod-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 0.5px solid #eeeeee50;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.catepage-prod-card:hover {
+  box-shadow: 0 8px 16px rgb(0 0 0 / 12%);
+}
+
+/* =========================
+   Product Image
+========================= */
+.catepage-prod-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.catepage-prod-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  padding: 10px;
+}
+
+.catepage-no-products {
+  grid-column: 1 / -1; /* span full width of grid */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #555;
+  text-align: center;
+}
+
+
+/* =========================
+   Product Badges
+========================= */
+.catepage-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 14px;
+  text-transform: uppercase;
+  background: #fff3cd;
+  color: #856404;
+  white-space: nowrap;
+  margin-right: 4px;
+}
+
+/* =========================
+   Product Info
+========================= */
+.catepage-prod-info {
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Product Title */
+.catepage-prod-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: #111;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-top: 0px;
+}
+
+/* Product Reviews */
+.catepage-stars {
+  color: #f4b400;
+  font-size: 14px;
+}
+
+.catepage-star {
+  margin-right: 1.5px;
+  color: #ddd;
+}
+
+.catepage-star.filled {
+  color: #f4b400;
+}
+
+/* =========================
+   Price & Cart
+========================= */
+.catepage-prod-price-cart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.catepage-prod-sale-price {
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.catepage-prod-regular-price {
+  font-size: 12px;
+  color: #888;
+  text-decoration: line-through;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Add to Cart Button */
+.catepage-add-cart-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.catepage-add-cart-btn:hover {
+  background: #eee;
+}
+
+.catepage-add-cart-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+/* =========================
+   Load More Button
+========================= */
+.catepage-loadmore-btn {
+  padding: 12px 20px;
+  border-radius: 25px;
+  background-color: #fb7701;
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* =========================
+   Skeleton Loader
+========================= */
+.catepage-skeleton {
+  animation: pulse 1.4s infinite ease-in-out;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.catepage-skeleton-img {
+  width: 100%;
+  height: 220px;
+  background-color: #ddd;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.catepage-skeleton-info {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 768px) {
+  .catepage-prod-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+  .catepage-prod-img-wrapper {
+    height: 150px;
+  }
+  .catepage-filter-wrapper {
+    flex-direction: column;
+    align-items: flex-start; /* keep title left on mobile */
+    gap: 10px;
+  }
+  .catepage-main-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .catepage-prod-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .catepage-prod-img-wrapper {
+    height: 130px;
+  }
+
+  .catepage-add-cart-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .catepage-prod-sale-price {
+    font-size: 14px;
+  }
+
+  .catepage-prod-regular-price {
+    font-size: 11px;
+  }
+}

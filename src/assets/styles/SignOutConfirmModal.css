@@ -1,0 +1,105 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(20, 20, 20, 0.4);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  z-index: 10000;
+}
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 20px;
+  padding: 30px 24px;
+  width: 100%;
+  max-width: 420px;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: zoomIn 0.25s ease-out;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+
+.modal-message {
+  font-size: 1.05rem;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.modal-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (min-width: 500px) {
+  .modal-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.btn {
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+  width: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+@media (min-width: 500px) {
+  .btn {
+    width: auto;
+    min-width: 140px;
+  }
+}
+
+.btn-confirm {
+  background: linear-gradient(135deg, #ff6b00, #ff8a00);
+  color: #fff;
+}
+
+.btn-confirm:hover {
+  background: linear-gradient(135deg, #ff7a1a, #ff9900);
+}
+
+.btn-cancel {
+  background: #f4f4f4;
+  color: #444;
+}
+
+.btn-cancel:hover {
+  background: #e2e2e2;
+}

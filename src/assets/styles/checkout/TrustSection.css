@@ -1,0 +1,81 @@
+.trust-section {
+  background: #fff;
+  /* padding: 24px; */
+  border-radius: 12px;
+  /* box-shadow: 0 4px 12px rgba(0,0,0,0.05); */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+font-family: "Montserrat", sans-serif;
+
+  margin-top: 10px;
+}
+
+.trust-box {
+  /* border-left: 4px solid #28a745; */
+  /* padding-left: 16px; */
+}
+
+.trust-box h3 {
+  font-size: 18px;
+  color: #1a7f37;
+  margin-bottom: 8px;
+}
+
+.trust-box p {
+  font-size: 14px;
+  color: grey;
+  margin-bottom: 8px;
+}
+
+.trust-box ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 8px 0;
+
+}
+
+.trust-box ul li {
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: rgb(70, 70, 70);
+}
+
+.card-logos img {
+  height: 24px;
+  margin-right: 8px;
+}
+
+.trust-box button {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.trust-box button:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .trust-section {
+    padding: 16px 0px;
+  }
+
+  .card-logos img {
+    height: 20px;
+  }
+  .trust-box h3{
+    margin-top: 0px;
+  }
+
+  
+.trust-box p {
+  font-size: 12px;
+  color: grey;
+  margin-bottom: 8px;
+}
+}

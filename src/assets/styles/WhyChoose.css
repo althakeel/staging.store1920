@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+/* Root Font */
+body,
+.whychoose-wrapper,
+.whychoose-container {
+  font-family: 'Montserrat', sans-serif !important;
+  margin: 10px auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Layout */
+.whychoose-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.whychoose-container {
+  width: 100%;
+  max-width: 1400px;
+  border: 1px solid #0b8800;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Green Bar */
+.whychoose-bar {
+  width: 100%;
+  background-color: #0b8800;
+  color: white;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between; /* Left and right sides */
+  align-items: center;
+  cursor: pointer;
+  font-size: 13px;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.whychoose-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  flex-shrink: 0;
+  min-width: 200px; /* Reserve space for left side */
+}
+
+.whychoose-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.whychoose-right {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  gap: 8px;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  font-size: 13px;
+  flex-shrink: 0;
+  width: 400px; /* Fixed width container for right side */
+  box-sizing: border-box;
+}
+
+.whychoose-right a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: white;
+  white-space: nowrap;
+}
+
+.whychoose-link-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+.divider {
+  color: white;
+  user-select: none;
+  font-weight: 600;
+  padding: 0 4px;
+}
+
+/* Reminder Bar */
+.whychoose-reminder {
+  background-color: #fff;
+  color: #333;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  border-top: 1px solid #ddd;
+  flex-wrap: wrap;
+}
+
+.reminder-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.reminder-text {
+  flex: 1;
+  margin: 0;
+}
+
+.reminder-view {
+  background: none;
+  border: none;
+  color: #0b8800;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+}
+
+/* Modal */
+.whychoose-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.whychoose-modal {
+  background: white;
+  max-width: 500px;
+  width: 90%;
+  border-radius: 10px;
+  padding: 24px;
+  position: relative;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-image {
+  width: 80px;
+  /* margin-bottom: 20px; */
+}
+
+.whychoose-modal h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #e63010;
+  margin-top: 8px;
+}
+
+.whychoose-modal p {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.report-text {
+  font-size: 13px;
+  color: #666;
+}
+
+.modal-ok {
+  margin-top: 10px;
+  background-color: #ff7a00;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 10px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-ok:hover {
+  background-color: #e06800;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #999;
+  cursor: pointer;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .whychoose-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 12px;
+  }
+
+  .whychoose-left {
+    font-size: 12px;
+    min-width: auto;
+  }
+
+  .whychoose-right {
+    flex-wrap: wrap;
+    white-space: normal;
+    justify-content: flex-start;
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .whychoose-right a {
+    width: auto;
+  }
+
+  .whychoose-reminder {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 13px;
+     font-family: 'Montserrat', sans-serif;
+  }
+
+  .reminder-view {
+    margin-top: 6px;
+    font-size: 13px;
+  }
+
+  .whychoose-modal {
+    width: 90%;
+  }
+  .whychoose-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+}

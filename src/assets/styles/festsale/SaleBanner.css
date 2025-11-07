@@ -1,0 +1,49 @@
+/* Container for the entire sale banner */
+.sale-banner-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 0;
+  background: transparent; /* fallback if needed */
+}
+
+/* Inner container to limit max width */
+.sale-banner-image-container {
+  width: 100%;
+  max-width: 1400px;
+}
+
+/* Common styles for both desktop and mobile images */
+.sale-banner-desktop,
+.sale-banner-mobile {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  margin: 0 auto;
+  border-radius: 0; /* optional, remove if not needed */
+}
+
+/* Desktop image specific max height */
+.sale-banner-desktop {
+  max-height: 350px;
+}
+
+/* Mobile image hidden by default */
+.sale-banner-mobile {
+  display: none;
+  max-height: 200px;
+}
+
+/* Responsive styles: show mobile image on smaller screens */
+@media (max-width: 768px) {
+  .sale-banner-desktop {
+    display: none;
+  }
+
+  .sale-banner-mobile {
+    display: block;
+  }
+}

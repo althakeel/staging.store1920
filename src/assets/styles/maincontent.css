@@ -1,0 +1,33 @@
+.account-main {
+  flex-grow: 1;
+  padding: 30px;
+}
+
+.order-search input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.order-empty {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.find-order-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #0071f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.explore-link a {
+  margin-top: 20px;
+  display: inline-block;
+  color: #0071f3;
+}

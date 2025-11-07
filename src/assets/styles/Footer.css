@@ -1,0 +1,285 @@
+.main-footer {
+  background-color: #0d0d0d; /* full width background */
+  color: #ccc;
+  padding: 40px 20px 20px;
+  width: 100%; /* full viewport width */
+  box-sizing: border-box;
+}
+
+.footer-container {
+  max-width: 1400px; /* limit content width */
+  margin: 0 auto;    /* center content */
+  padding: 0 15px;   /* some horizontal padding */
+  box-sizing: border-box;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #333;
+}
+
+.footer-section {
+  flex: 1 1 80px;
+  min-width: 100px;
+}
+
+.footer-section h4 {
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #eee;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #bbb;
+}
+
+.footer-section ul li a:hover {
+  color: #fff;
+}
+
+.app-links li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  margin: 6px 0;
+}
+
+.app-alerts li {
+  font-size: 13px;
+  margin: 4px 0;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  font-size: 18px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.social-icons a {
+  color: #bbb;
+  transition: color 0.2s;
+}
+
+.social-icons a:hover {
+  color: #fff;
+}
+
+/* Middle footer section */
+.footer-middle {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 30px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+
+.security,
+.payments {
+  flex: 1 1 300px;
+}
+
+.security h5,
+.payments h5 {
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #eee;
+}
+
+.certs,
+.methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.certs img,
+.methods img {
+  height: 30px;
+  object-fit: contain;
+}
+
+/* Bottom footer */
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  font-size: 13px;
+  color: #999;
+  gap: 10px;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.legal-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.legal-links li a {
+  text-decoration: none;
+  color: #bbb;
+}
+
+.legal-links li a:hover {
+  color: #fff;
+}
+
+.scroll-top-btn {
+  background-color: #333;
+  color: #ccc;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.scroll-top-btn:hover {
+  background-color: #444;
+}
+
+/* ---------- Responsive ---------- */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .footer-top {
+    gap: 20px;
+  }
+
+  .footer-section {
+    flex: 1 1 45%;
+  }
+
+  .footer-middle {
+    gap: 15px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .legal-links {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+}
+
+/* Mobile (≤768px) → Always 2 columns */
+@media (max-width: 768px) {
+  .footer-container {
+    padding: 0 10px;
+  }
+
+  .footer-top {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-section {
+    flex: 1 1 calc(50% - 12px); /* 2 columns */
+    min-width: 120px;
+  }
+
+  .footer-middle {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer-section h4,
+  .security h5,
+  .payments h5 {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .footer-section ul li {
+    font-size: 13px;
+    margin: 4px 0;
+  }
+
+  .app-links li {
+    font-size: 13px;
+    gap: 6px;
+    margin: 4px 0;
+  }
+
+  .app-alerts li {
+    font-size: 12px;
+    margin: 3px 0;
+  }
+
+  .social-icons {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding-top: 15px;
+  }
+
+  .legal-links {
+    justify-content: center;
+    gap: 12px;
+    margin: 0;
+  }
+
+  .scroll-top-btn {
+    margin-top: 5px;
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+
+  .certs,
+  .methods {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .certs img,
+  .methods img {
+    height: 28px;
+  }
+
+  .security,
+  .payments {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}

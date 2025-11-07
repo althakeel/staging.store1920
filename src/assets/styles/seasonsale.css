@@ -1,0 +1,108 @@
+/* Season Sale Specific Styles */
+
+.season-sale-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: bold;
+  z-index: 2;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  animation: seasonPulse 2s infinite;
+}
+
+@keyframes seasonPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.season-sale-badge span {
+  display: inline-block;
+  animation: seasonGlow 3s ease-in-out infinite;
+}
+
+@keyframes seasonGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 107, 53, 0.5);
+  }
+}
+
+/* Season Sale Header Styles */
+.season-sale-header {
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FF6B35 100%);
+  background-size: 200% 200%;
+  animation: seasonGradient 3s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes seasonGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Season Sale Button Hover Effects */
+.season-sale-load-more:hover {
+  background: linear-gradient(135deg, #F7931E 0%, #FF6B35 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Season Sale Product Card Enhancements */
+.pcus-prd-card:hover .season-sale-badge {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* Responsive Design for Season Sale */
+@media (max-width: 768px) {
+  .season-sale-badge {
+    font-size: 8px;
+    padding: 3px 6px;
+    border-radius: 8px;
+  }
+  
+  .season-sale-header h1 {
+    font-size: 2rem !important;
+  }
+  
+  .season-sale-header p {
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .season-sale-badge {
+    font-size: 7px;
+    padding: 2px 4px;
+    border-radius: 6px;
+  }
+  
+  .season-sale-header h1 {
+    font-size: 1.5rem !important;
+  }
+  
+  .season-sale-header p {
+    font-size: 0.9rem !important;
+  }
+}

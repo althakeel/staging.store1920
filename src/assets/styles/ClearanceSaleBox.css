@@ -1,0 +1,97 @@
+.clearance-sale-box {
+  width: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 8px;
+  margin: 10px 0 0 0;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+   box-sizing: border-box;
+  background-color: transparent;
+  color: #b71c1c; /* fallback */
+}
+
+.clearance-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  color: inherit;
+  /* background and border-color set inline */
+}
+
+.clearance-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 240px;
+  white-space: nowrap;
+}
+
+.clearance-label {
+  font-size: 0.85rem;
+
+  text-align: left;
+}
+
+.clearance-endtime {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+}
+
+.clearance-progress-wrapper {
+  flex: 1;
+  min-width: 100px;
+  margin: 0 15px;
+  background-color: transparent;
+  border-radius: 0 0 8px 8px;
+  padding: 5px 0;
+  box-sizing: border-box;
+}
+
+.clearance-progress {
+  position: relative;
+  height: 5px;
+  background-color: #ffcdd2;
+  border-radius: 3px;
+  overflow: visible;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 3px 0 0 3px;
+  transition: width 0.5s ease-in-out;
+}
+
+.progress-clock {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  transition: left 1s linear, color 0.5s ease;
+}
+
+.variant-wrapper {
+  padding: 12px 20px;
+  border-style: solid;
+  border-width: 0 1px 1px 1px;
+  border-radius: 0 0 8px 8px;
+  background-color: transparent;
+  color: inherit;
+}

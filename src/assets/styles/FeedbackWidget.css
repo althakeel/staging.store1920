@@ -1,0 +1,110 @@
+/* Floating Feedback Button */
+.feedback-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0077ff;
+  color: #fff;
+  border: none;
+  padding: 14px 22px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.feedback-button:hover {
+  background-color: #005bb5;
+}
+
+/* Overlay Background */
+.feedback-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Feedback Popup Container */
+.feedback-modal {
+  background-color: #fff;
+  padding: 24px 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Popup Title */
+.feedback-modal h2 {
+  margin: 0 0 16px;
+  color: #0077ff;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+/* Feedback Question Block */
+.feedback-question {
+  margin-bottom: 16px;
+}
+
+.feedback-question p {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.feedback-question label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: normal;
+  color: #555;
+  cursor: pointer;
+}
+
+/* Button Group */
+.feedback-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.feedback-actions button {
+  flex: 1;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Submit Button */
+.feedback-actions .submit-button {
+  background-color: #0077ff;
+  color: #fff;
+}
+
+.feedback-actions .submit-button:hover {
+  background-color: #005bb5;
+}
+
+/* Cancel Button */
+.feedback-actions .cancel-button {
+  background-color: #ccc;
+  color: #333;
+}
+
+.feedback-actions .cancel-button:hover {
+  background-color: #aaa;
+}

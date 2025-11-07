@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+.purchase-protection-wrapper {
+  font-family: 'Montserrat', sans-serif;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* Container */
+.pp-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ========== Banner Section ========== */
+.pp-banner-section {
+  background-color: #eaf8ec;
+  padding: 60px 0;
+  width: 100%;
+}
+
+.pp-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.pp-banner-icon {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.pp-banner-content h2 {
+  font-size: 22px;
+  color: #1a7d1a;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.pp-banner-content p {
+  font-size: 16px;
+  color: #444;
+  max-width: 700px;
+}
+
+/* ========== Info Section ========== */
+.pp-info-section {
+  background-color: #fff;
+  padding: 80px 0;
+  width: 100%;
+}
+
+.pp-info-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.pp-text-content {
+  flex: 1;
+  min-width: 320px;
+}
+
+.pp-text-content h3 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.pp-text-content p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.pp-text-content h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.pp-text-content ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.pp-text-content ul li {
+  font-size: 15px;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.pp-image-content img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+}
+
+/* ========== Refund Section ========== */
+.pp-refund-section {
+  background-color: #fff4e9;
+  padding: 80px 0;
+  width: 100%;
+}
+
+.pp-refund-section h3 {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.pp-steps-wrapper {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.pp-step-card {
+  background-color: #fff;
+  padding: 30px;
+  flex: 1;
+  min-width: 280px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+.pp-step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.pp-step-number {
+  background-color: #ff8800;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.pp-step-card h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.pp-step-card p {
+  font-size: 15px;
+  color: #555;
+  margin: 0;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .pp-banner-content,
+  .pp-info-content,
+  .pp-steps-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pp-image-content img {
+    margin: 0 auto;
+  }
+
+  .pp-text-content {
+    text-align: left;
+  }
+}

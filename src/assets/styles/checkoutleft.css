@@ -1,0 +1,494 @@
+/* Container */
+.checkout-left {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 10px;
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  background: #fff;
+  border-radius: 12px;
+}
+
+/* Container to hold Shipping Address & Shipping Method side-by-side on desktop */
+.shipping-container {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 24px;
+  flex-wrap: wrap; /* wrap on smaller screens */
+}
+
+/* Each section roughly half width */
+.shipping-container > .section-block {
+  flex: 1 1 48%;
+  min-width: 250px;
+}
+
+/* Optional: align shipping method text nicely */
+.shipping-method-block p {
+  margin: 6px 0;
+  font-size: 0.90rem;
+  color: #444;
+}
+.shippingadress{
+  font-size: 1rem;
+  margin-bottom: 5px;
+ 
+}
+.shippingmethod{
+  font-size: 1rem;
+}
+
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 768px) {
+  .shipping-container {
+    flex-direction: column;
+  }
+  .shipping-container > .section-block {
+    flex: 1 1 100%;
+    min-width: auto;
+    margin-bottom: 24px;
+  }
+  .checkout-left {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 10px 0px;
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  background: #fff;
+  border-radius: 12px;
+}
+
+}
+
+/* Buttons (general) */
+.checkout-left button,
+.checkout-left input[type="submit"] {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 12px 22px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+/* Primary full-width button */
+.checkout-left > button {
+  background-color: #e95d0b;
+  color: white;
+  margin-bottom: 24px;
+  width: 100%;
+  box-shadow: 0 6px 15px rgb(255 90 95 / 0.4);
+}
+
+.checkout-left > button:hover {
+  background-color: #e75500;
+}
+
+/* Success & Error Messages */
+.success-message {
+  margin-bottom: 0px;
+  color: #27ae60;
+  font-weight: 600;
+  text-align: center;
+}
+
+.error-message {
+  margin-bottom: 20px;
+  color: #e74c3c;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Form Container */
+/* .checkout-left form {
+  border: 1px solid #eee;
+  padding: 24px 28px;
+  border-radius: 12px;
+  background-color: #fafafa;
+  box-shadow: inset 0 0 8px rgb(0 0 0 / 0.03);
+} */
+
+/* Headings inside form */
+/* .checkout-left h3 {
+  margin-bottom: 16px;
+  color: #ff5a5f;
+  font-weight: 700;
+  border-bottom: 2px solid #ff5a5f;
+  padding-bottom: 6px;
+} */
+
+/* Form labels */
+.checkout-left label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+/* Inputs and selects */
+.checkout-left input[type="text"],
+.checkout-left input[type="tel"],
+.checkout-left select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1.8px solid #ddd;
+  font-size: 15px;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+  outline-offset: 2px;
+}
+
+.checkout-left input[type="text"]:focus,
+.checkout-left input[type="tel"]:focus,
+.checkout-left select:focus {
+  border-color: #ff5a5f;
+  outline: none;
+}
+
+/* Flex rows for side-by-side labels/inputs */
+.flex-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.flex-row > label {
+  flex: 1;
+}
+
+/* Checkbox styling */
+.checkout-left input[type="checkbox"] {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.checkbox-label {
+  font-weight: 500;
+  color: #555;
+  user-select: none;
+}
+
+/* Submit button inside form */
+.checkout-left form button[type="submit"] {
+  background-color: #27ae60;
+  color: white;
+  width: 100%;
+  font-weight: 700;
+  /* box-shadow: 0 6px 12px rgb(39 174 96 / 0.5); */
+}
+
+.checkout-left form button[type="submit"]:hover:not(:disabled) {
+  background-color: #1e874a;
+}
+
+.checkout-left form button[type="submit"]:disabled {
+  background-color: #a5d6a7;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Help text below form */
+.help-text {
+  margin-top: 32px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+}
+
+.help-text p {
+  margin-bottom: 14px;
+}
+
+/* Back to cart button */
+.back-to-cart {
+  margin-top: 28px;
+  background-color: #f2f2f2;
+  color: #333;
+  border: 1.5px solid #ccc;
+  width: 100%;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.back-to-cart:hover {
+  background-color: #ddd;
+}
+
+/* Contact link */
+.contact-link {
+  color: #ff5a5f;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.contact-link:hover {
+  color: #e04e53;
+}
+
+/* //poup */
+
+
+/* === Popup Wrapper === */
+.addrf-popup-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* === Form Container === */
+.addrf-popup-box {
+  /* background: #fff; */
+  padding: 24px 32px;
+  border-radius: 12px;
+  max-width: 850px;
+  width: 95%;
+  /* box-shadow: 0 8px 24px rgba(0,0,0,0.1); */
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* === Close Button === */
+.addrf-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #555;
+  cursor: pointer;
+}
+
+/* === Section Heading === */
+.addrf-heading {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: #222;
+  font-weight: 600;
+}
+
+/* === Form Layout === */
+.addrf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+  margin-bottom: 24px;
+}
+
+/* === Labels and Inputs === */
+.addrf-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #333;
+}
+
+.addrf-input,
+.addrf-select {
+  margin-top: 6px;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.addrf-input:focus,
+.addrf-select:focus {
+  border-color: #007bff;
+}
+
+/* === Checkbox === */
+.addrf-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+/* === Submit Button === */
+.addrf-submit-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.addrf-submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.addrf-submit-btn:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+/* === Error Message === */
+.addrf-error {
+  background: #ffefef;
+  color: #cc0000;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+
+
+/* Change Address & Cancel button */
+.btn-add-address1 {
+  background-color: #ffffff;
+  color: rgb(43, 43, 43);
+  padding: 8px 10px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  border: none;
+  border-radius: 6px;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.btn-add-address:hover {
+  background-color: #0056b3;
+}
+.cancel-btn1 {
+  background-color: #999;
+}
+.cancel-btn:hover {
+  background-color: #666;
+}
+
+/* Toast popup for address save success */
+.addrf-toast {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #28a745;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  z-index: 1001;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: fadeSlide 3s forwards;
+}
+
+.saved-address-box {
+  background-color: #fff;
+  border: 1px solid #ddd;        /* lighter border */
+  border-radius: 4px;
+  padding: 8px 12px;             /* tighter padding */
+  max-width: 420px;
+  font-family: 'Montserrat', sans-serif;
+  color: #444;                   /* softer text color */
+  margin-bottom: 8px;            /* smaller bottom margin */
+  font-size: 12px;
+  line-height: 1.3;              /* tighter line height */
+}
+
+.saved-address-box h4 {
+  margin: 0 0 8px 0;             /* remove bottom padding, smaller margin */
+  font-weight: 600;              /* lighter weight */
+  font-size: 13px;
+  border-bottom: 1.5px solid #f39c12; /* subtle orange */
+  padding-bottom: 4px;
+  color: #b75d0c;                /* softer orange */
+  text-align: left;
+  user-select: none;
+}
+
+.saved-address-grid {
+  display: grid;
+  grid-template-columns: 75px 8px 1fr; /* slightly narrower label and colon */
+  row-gap: 4px;                   /* less vertical gap */
+  column-gap: 6px;                /* minimal horizontal gap */
+  align-items: center;
+}
+
+.saved-address-label {
+  font-weight: 500;               /* lighter than before */
+  color: #666;
+  text-align: left;
+  user-select: none;
+  line-height: 1.2;
+}
+
+.saved-address-colon {
+  text-align: center;
+  font-weight: 500;
+  color: #666;
+  user-select: none;
+  line-height: 1.2;
+}
+
+.saved-address-value {
+  word-wrap: break-word;
+  color: #555;
+  line-height: 1.2;
+}
+
+
+
+@keyframes fadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 768px) {
+  .addrf-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-left{
+    margin: 0 10px;
+  }
+  .desktop-only{
+    display: none;
+  }
+}
+
+
+
+
+
+
+/* end popup */

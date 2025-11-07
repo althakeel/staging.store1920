@@ -1,0 +1,52 @@
+.account-layout {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 10px;
+  align-items: flex-start; 
+}
+.account-main {
+  flex-grow: 1;
+  padding: 10px;
+  min-width: 0;
+}
+.account-sidebar {
+  flex: 0 0 250px;
+  position: sticky;
+  top: 10px;
+  align-self: flex-start;
+}
+
+
+/* On tablets */
+@media (max-width: 768px) {
+  .account-sidebar {
+    flex: 0 0 40px;
+    top: 5px;
+  }
+
+  .account-main {
+    padding: 5px;
+  }
+
+  .account-layout {
+    gap: 5px;
+  }
+}
+
+
+
+@media (max-width: 480px) {
+  .account-sidebar {
+    flex: 0 0 30px;
+    top: 3px;
+  }
+
+  .account-main {
+    padding: 3px;
+  }
+
+  .account-layout {
+    gap: 3px;
+  }
+}

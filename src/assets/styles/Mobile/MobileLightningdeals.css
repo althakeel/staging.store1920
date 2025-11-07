@@ -1,0 +1,49 @@
+.ltbnr-banner {
+  display: none; /* Hide on desktop */
+}
+
+@media (max-width: 1024px) {
+  .ltbnr-banner {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    margin: 15px auto;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    /* border-radius: 12px; */
+    transition: background-color 0.5s ease;
+  }
+
+  .ltbnr-content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .ltbnr-icon {
+    font-size: 18px;
+  }
+
+  .ltbnr-title {
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .ltbnr-subtitle {
+    margin-left: 4px;
+  }
+
+  .ltbnr-arrow {
+    font-size: 18px;
+  }
+}

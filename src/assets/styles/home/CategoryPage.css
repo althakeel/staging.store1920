@@ -1,0 +1,113 @@
+/* CategoryPage.css */
+.cp-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .cp-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-transform: capitalize;
+  }
+  
+  .cp-message {
+    text-align: center;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .cp-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  
+  .cp-product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s;
+    background-color: #fff;
+  }
+  
+  .cp-product-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  
+  .cp-product-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+  }
+  
+  .cp-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+  
+  .cp-product-card:hover .cp-product-image img {
+    transform: scale(1.05);
+  }
+  
+  .cp-product-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  .cp-product-price {
+    font-size: 14px;
+    color: #d32f2f;
+    font-weight: bold;
+    margin: 0 12px 12px 12px;
+  }
+  
+  .cp-add-to-cart {
+    margin: 0 12px 12px 12px;
+    padding: 8px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .cp-add-to-cart:hover {
+    background-color: #333;
+  }
+  
+  .cp-load-more-container {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .cp-load-more-btn {
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .cp-load-more-btn:hover {
+    background-color: #333;
+  }
+  
+  .cp-load-more-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  

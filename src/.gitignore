@@ -1,0 +1,52 @@
+# dependencies
+/node_modules/
+.pnp/
+.pnp.js
+
+# testing
+/coverage/
+
+# production
+/build/
+/dist/
+
+# misc
+.DS_Store
+.env
+.env.*.local
+.npmrc
+.yarn.lock
+package-lock.json
+    
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Electron build artifacts (optional, if you're using Electron)
+/out/
+*.exe
+*.dmg
+*.app
+*.snap
+
+# Firebase local emulators (optional)
+/firebase-debug.log
+.firebaserc
+
+/.parcel-cache
+/.next
+.cache/
+     

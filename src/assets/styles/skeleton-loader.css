@@ -1,0 +1,57 @@
+/* Optimized Skeleton Loader Styles for Faster Loading */
+
+.pcus-skeleton {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Optimize skeleton sizes for faster rendering */
+.pcus-prd-image-skel {
+  height: 200px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.pcus-prd-title-skel {
+  height: 16px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  width: 80%;
+}
+
+.pcus-prd-price-cart-skel {
+  height: 14px;
+  border-radius: 4px;
+  width: 60%;
+}
+
+/* Reduce layout shift during loading */
+.pcus-prd-card.pcus-skeleton {
+  min-height: 280px;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  padding: 12px;
+}

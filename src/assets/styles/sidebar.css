@@ -1,0 +1,124 @@
+/* Base sidebar styles */
+.account-sidebar {
+  margin-top: 15px;
+  border-radius: 10px;
+  padding: 12px 0;
+  width: 230px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: width 0.3s ease, padding 0.3s ease;
+}
+
+.account-sidebar ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.account-sidebar li {
+  margin-bottom: 8px;
+}
+
+.account-sidebar li:last-child {
+  margin-bottom: 0;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  color: #444;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-left: 5px solid transparent;
+  border-radius: 0 8px 8px 0;
+  transition: 
+    background-color 0.3s ease, 
+    color 0.3s ease, 
+    border-color 0.3s ease,
+    transform 0.2s ease,
+    padding 0.2s ease;
+}
+
+.sidebar-item:hover {
+  background-color: #fff3e0;
+  color: #d35400;
+  cursor: pointer;
+  transform: translateX(5px);
+  border-left-color: #d35400;
+}
+
+.sidebar-item.active {
+  font-weight: 600;
+  color: #d35400;
+  background-color: #ffe6cc;
+  border-left: 5px solid #d35400;
+  padding-left: 18px;
+  box-shadow: 2px 0 8px rgba(211, 84, 0, 0.3);
+  transform: translateX(5px);
+}
+
+.sidebar-item .icon {
+  display: inline-flex;
+  margin-right: 12px;
+  font-size: 18px;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.sidebar-item.active .icon {
+  color: #d35400;
+}
+
+.sidebar-item .label {
+  font-size: 15px;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* Tablet: ~768px */
+@media (max-width: 768px) {
+  .account-sidebar {
+    width: 40px; /* narrower for tablet */
+    padding: 12px 6px;
+  }
+
+  .sidebar-item {
+    padding: 12px 6px;
+    justify-content: center;
+  }
+
+  .sidebar-item .icon {
+    margin-right: 0;
+    font-size: 20px;
+  }
+
+  .sidebar-item .label {
+    display: none; /* hide label on tablet */
+  }
+
+  .sidebar-item.active {
+
+  padding-left: 5px;
+
+}
+}
+
+/* Mobile: ~480px */
+@media (max-width: 480px) {
+  .account-sidebar {
+    width: 40px; /* ultra-narrow on mobile */
+    padding: 12px 4px;
+  }
+
+  .sidebar-item {
+    padding: 12px 4px;
+    justify-content: center;
+  }
+
+  .sidebar-item .icon {
+    font-size: 22px; /* slightly bigger for mobile */
+  }
+
+  .sidebar-item .label {
+    display: none;
+  }
+}

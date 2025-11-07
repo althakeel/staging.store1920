@@ -1,0 +1,212 @@
+.courier-banner-section {
+  width: 100%;
+  margin: 20px 0;
+  background-color: #FF0100;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.banner-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.banner-image {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  object-position: left center;
+  flex-shrink: 0;
+  z-index: 3;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-left: 70px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.marquee-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  flex-grow: 1;
+}
+
+.marquee {
+  display: inline-block;
+  animation: marquee 15s linear infinite;
+}
+
+.marquee-item {
+  display: inline-block;
+  margin-right: 100px; /* space between messages */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+}
+
+.banner-arrow {
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); } /* adjust for seamless scroll */
+}
+
+
+/* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 15px;
+  box-sizing: border-box;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Popup Box */
+.popup-box {
+  background-color: #eafaf1; /* very light green for readability */
+  border-radius: 16px;
+  padding: 30px 25px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  text-align: left;
+  position: relative;
+  animation: scaleUp 0.3s ease-in-out;
+  overflow-y: auto;
+  max-height: 90vh;
+  border: 2px solid #2ecc71; /* soft green border */
+}
+
+/* Popup Title */
+.popup-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #27ae60; /* green heading */
+  margin-bottom: 15px;
+}
+
+/* Popup Message */
+.popup-message {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1e3d2f; /* dark green text for readability */
+  margin-bottom: 20px;
+}
+
+/* Popup Features List */
+.popup-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.popup-features li {
+  font-size: 14px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.popup-features li strong {
+  color: #27ae60; /* green highlights */
+}
+
+/* Popup Note */
+.popup-note {
+  font-size: 13px;
+  color: #3b5240; /* readable soft green-dark */
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Close Button */
+.popup-close-btn {
+  background-color: #27ae60; /* green button */
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  max-width: 180px;
+  display: block;
+  margin: 0 auto;
+}
+
+.popup-close-btn:hover {
+  background-color: #1e8449; /* darker green hover */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
+
+
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .banner-image { height: 40px; }
+  .marquee-item { font-size: 16px; margin-right: 50px; }
+  .banner-arrow { font-size: 20px; }
+
+   .popup-box {
+    padding: 20px 15px;
+  }
+
+  .popup-title { font-size: 20px; }
+  .popup-message { font-size: 14px; }
+  .popup-features li { font-size: 13px; }
+  .popup-note { font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+  .courier-banner-section { display: none; }
+    .popup-box { padding: 15px 10px; }
+  .popup-title { font-size: 18px; }
+  .popup-message { font-size: 13px; }
+  .popup-features li { font-size: 12px; }
+  .popup-note { font-size: 11px; }
+  .popup-close-btn { max-width: 100%; padding: 10px; }
+}

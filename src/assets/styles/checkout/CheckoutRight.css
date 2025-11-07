@@ -1,0 +1,281 @@
+/* CheckoutRight.module.css or unique-prefixed CSS */
+
+.checkoutRightContainer {
+  font-family: 'Montserrat', sans-serif;
+  max-width: 360px;
+  padding: 20px;
+  background-color: #fff;
+  color: #111827; /* dark text */
+  user-select: none;
+  border: none !important;
+  border-radius: 8px;
+}
+
+.checkoutRightContainer h2 {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+  color: #111827;
+}
+.mobile-only{
+  display: none;
+}
+
+.mobileStickyButton {
+  display: block;
+}
+
+
+.summaryRowCR {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #374151;
+}
+
+.summaryRowCR.discountCR {
+  color: #2f6d0f; /* red-600 */
+  font-weight: 600;
+}
+
+.summaryRowCR.totalCR {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #111827;
+  margin-top: 8px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 12px;
+}
+
+.checkoutRightContainer p {
+  font-size: 0.875rem;
+  color: #6b7280; /* gray-500 */
+  line-height: 1.4;
+  margin-top: 16px;
+}
+
+.checkoutRightContainer p a {
+  color: #2563eb; /* blue-600 */
+  text-decoration: underline;
+}
+
+.checkoutRightContainer p a:hover,
+.checkoutRightContainer p a:focus {
+  color: #1d4ed8; /* blue-700 */
+  outline: none;
+  text-decoration: none;
+}
+
+.placeOrderBtnCR {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 14px 36px;
+  border-radius: 25px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  min-width: 300px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.15s ease;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  font-family: "Montserrat", "Segoe UI", sans-serif;
+}
+
+.placeOrderBtnCR:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.placeOrderBtnCR:not(:disabled):hover {
+  transform: scale(1.03);
+}
+
+.placeOrderBtnCR:not(:disabled):active {
+  transform: scale(0.97);
+}
+
+.placeOrderBtnCR:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}
+
+/* Alert Styles */
+
+.alertCR {
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  color: white;
+  font-weight: 600;
+}
+
+.alertCR.infoCR {
+  background-color: #2f86eb;
+}
+
+.alertCR.successCR {
+  background-color: #28a745;
+}
+
+.alertCR.errorCR {
+  background-color: #dc3545;
+}
+
+.alertCR button {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* CheckoutRight.module.css */
+
+/* Default styles (desktop) are already defined above */
+
+/* Tablet screens */
+@media (max-width: 1024px) {
+  .checkoutRightContainer {
+    max-width: 100%;
+    padding: 16px;
+    margin: 0 auto;
+  }
+
+  .checkoutRightContainer h2 {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+  }
+
+  .summaryRowCR {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+
+  .placeOrderBtnCR {
+    font-size: 0.9rem;
+    padding: 12px 28px;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 640px) {
+  .checkoutRightContainer {
+    max-width: 100%;
+    padding: 14px;
+    border-radius: 6px;
+  }
+  .mobile-only{
+  display: block;
+}
+
+
+  .checkoutRightContainer h2 {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .summaryRowCR {
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
+
+  .summaryRowCR.totalCR {
+    font-size: 1rem;
+    padding-top: 10px;
+  }
+
+  .placeOrderBtnCR {
+    font-size: 0.85rem;
+    padding: 12px 24px;
+    border-radius: 20px;
+  }
+
+  .alertCR {
+    font-size: 0.85rem;
+    padding: 10px 14px;
+  }
+
+  .alertCR button {
+    font-size: 14px;
+    top: 8px;
+    right: 8px;
+  }
+}
+
+/* Default: button behaves normally */
+.mobileStickyButton {
+  display: block;
+}
+
+/* Mobile: stick button to bottom */
+/* Mobile: stick button to bottom */
+@media (max-width: 768px) {
+  .mobileStickyButton {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff; /* full background */
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+    padding: -0px 16px 18px ; /* slightly smaller for mobile */
+    z-index: 10000; /* high z-index */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box; /* ensure padding doesn't exceed width */
+  }
+
+  .mobileStickyButton .mobileSubtotal {
+    font-weight: 700;
+    font-size: 16px;
+    color: #111827;
+    margin-right: 8px;
+    flex-shrink: 0;
+    margin-top: 15px;
+  }
+
+  .mobileStickyButton .placeOrderBtnCR {
+    flex: 1; /* allow it to take remaining space */
+    max-width: calc(100% - 100px); /* leave room for subtotal */
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 0.8rem;
+    min-width: 0;
+  }
+
+  /* prevent container content from being hidden under sticky button */
+  .checkoutRightContainer {
+    padding-bottom: 80px; /* slightly smaller than sticky height */
+  }
+
+  /* hide desktop button */
+  .desktopStickyButton {
+    display: none !important;
+  }
+}
+
+
+
+@media (min-width:768px){
+  .mobileStickyButton{
+
+    display: none !important;
+  }
+}

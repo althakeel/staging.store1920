@@ -1,0 +1,75 @@
+.coupon-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.coupon-tabs {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 20px;
+}
+
+.coupon-tab {
+  flex: 1;
+  padding: 12px;
+  text-align: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: #888;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.coupon-tab.active {
+  color: #d35400;
+  border-bottom: 2px solid #d35400;
+}
+
+.coupon-content {
+  margin-top: 10px;
+}
+
+.coupon-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.coupon-card {
+  border: 1px dashed #ffa726;
+  border-left: 6px solid #fb8c00;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #fffbe6;
+}
+
+.coupon-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #d35400;
+}
+
+.coupon-desc {
+  margin-top: 6px;
+  color: #555;
+}
+
+.coupon-discount,
+.coupon-expiry {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #444;
+}
+
+.no-coupons {
+  text-align: center;
+  color: #888;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+}

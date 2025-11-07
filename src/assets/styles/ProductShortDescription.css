@@ -1,0 +1,56 @@
+.product-short-description {
+  max-width: 700px;       /* limit width */
+  width: 100%;            /* make it responsive */
+  margin: 10px 0;
+  padding: 10px 0;          /* fixed missing value */
+  background-color: #fff;
+
+  /* border-bottom: 1px solid #858585; */
+  border-top: 1px solid #cacaca;
+
+  /* Text wrap */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+
+  font-family: 'Montserrat', sans-serif;  /* Montserrat font */
+}
+
+.product-short-description h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #222;
+  margin-top: 10px;
+
+  /* Remove underline or border line */
+  text-decoration: none;
+  border-bottom: none;
+  box-shadow: none;
+  padding-bottom: 0;
+}
+
+
+.product-short-description div {
+  font-size: 0.75rem;
+  color: #131313;
+  line-height: 1.4;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+
+  font-family: 'Montserrat', sans-serif;  /* Montserrat font */
+}
+
+/* Remove underline from links inside product-short-description */
+.product-short-description a {
+  text-decoration: none;
+  color: inherit; /* keep link color same as surrounding text */
+}
+
+/* Optionally, add a hover effect */
+.product-short-description a:hover {
+  text-decoration: underline;
+  color: #0073e6; /* or any accent color */
+}
