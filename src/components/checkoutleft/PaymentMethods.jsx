@@ -254,7 +254,7 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
         </div>
 
         {/* Tamara */}
-        {/* <div className="payment-method-item">
+        <div className="payment-method-item">
           <input 
             type="radio" 
             id="tamara" 
@@ -298,7 +298,7 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
               </div>
             </div>
           </label>
-        </div> */}
+        </div>
 
         {/* Cash on Delivery */}
         {hasOnlyStaticProducts && !hasNonStaticProducts && staticProductIds.length > 0 && (
