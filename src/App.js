@@ -1,6 +1,6 @@
 // App.js
 import React, { useRef, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate, useSearchParams } from 'react-router-dom';
 
 import { CartProvider, useCart } from './contexts/CartContext';
 import { CompareProvider } from './contexts/CompareContext';
@@ -51,7 +51,8 @@ import StaticProductDetails from './pages/StaticProductDetails';
 import ProductRouteWrapper from './pages/ProductRouteWrapper '
 import CustomCheckout from './pages/adcheckout'
 import Fastdelivery from './pages/Fastdelivery';
-
+import OrderFailure from './pages/OrderFailure';
+import OrderCancel from './pages/OrderCancel';
 
 // Components
 import Topbar from './components/topbar';
@@ -250,6 +251,12 @@ const AppContent = () => {
     }
   }, [path, excludeMiniCartPaths, isCartOpen, setIsCartOpen]);
 
+  // Helper redirect components
+  function RedirectWithQuery({ to }) {
+    const [search] = useSearchParams();
+    return <Navigate to={to + window.location.search} replace />;
+  }
+
   return (
     <ThemeProvider>
 <GoogleOAuthProvider clientId={CLIENT_ID}>
@@ -346,6 +353,8 @@ const AppContent = () => {
                     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                     <Route path="/terms-0f-use" element={<Terms0fuse />} />
                     <Route path="/order-success" element={<OrderSuccess />} />
+                    <Route path="/order-failure" element={<OrderFailure />} />
+                    <Route path="/order-cancel" element={<OrderCancel />} />
                     <Route path="/track-order" element={<TrackOrder />} />
                     <Route path="/fest-sale" element={<Festsale />} />
                     <Route path="/season-sale" element={<SeasonSale />} />
@@ -358,8 +367,9 @@ const AppContent = () => {
                     <Route path="search" element={<Search />} />
 
                     <Route path="fast-delivery" element={<Fastdelivery />} />
-                    <Route path="/payment-success" element={<PaymobSuccess />} />
-                    <Route path="/paymob-checkout" element={<PaymobCheckoutPage />} />
+                    <Route path="/payment-success" element={<RedirectWithQuery to="/order-success" />} />
+                    <Route path="/payment-failed" element={<RedirectWithQuery to="/order-failure" />} />
+                    <Route path="/payment-cancelled" element={<RedirectWithQuery to="/order-cancel" />} />
                         <Route path="/adscheckout" element={<CustomCheckout />} />
 
                   </Routes>

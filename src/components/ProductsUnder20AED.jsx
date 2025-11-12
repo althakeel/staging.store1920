@@ -85,6 +85,18 @@ const ProductsUnder20AED = () => {
     setLoadedImages((prev) => ({ ...prev, [id]: true }));
   };
 
+  // Filter out products with price 0.00 or missing main image
+  const filteredProducts = products.filter(
+    (p) =>
+      p.id &&
+      p.price &&
+      Number(p.price) > 0 &&
+      p.images &&
+      p.images[0] &&
+      p.images[0].src &&
+      p.images[0].src.trim() !== ''
+  );
+
   return (
     <div className="pu20-wrapper">
       <div className="pu20-content">
@@ -93,7 +105,7 @@ const ProductsUnder20AED = () => {
         <div className="pu20-grid">
           {(loading && products.length === 0
             ? Array.from({ length: 8 }).map((_, i) => <div key={i} className="pu20-card pu20-skeleton" />)
-            : products
+            : filteredProducts
           ).map((p) => {
             if (p.id) {
               return (
@@ -108,7 +120,7 @@ const ProductsUnder20AED = () => {
                   <div className="pu20-image-wrapper">
                     {!loadedImages[p.id] && <div className="pu20-image-skeleton" />}
                     <img
-                       src={p.images?.[0]?.src || PlaceholderImage}
+                      src={p.images?.[0]?.src || PlaceholderImage}
                       alt={decodeHTML(p.name)}
                       className={`pu20-image primary ${loadedImages[p.id] ? 'visible' : 'hidden'}`}
                       loading="lazy"

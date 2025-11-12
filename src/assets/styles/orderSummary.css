@@ -1,14 +1,84 @@
-.os-container {
-    background: #fff;
-    border-radius: 14px;
-    padding: 10px 14px;
-    max-width: 420px;
-    width: 100%;
-    font-family: 'Montserrat',  sans-serif;
-    color: #333;
-    box-sizing: border-box;
-    min-height: 50vh;
-  }
+/* Tabby Installment Box (Cart Page) */
+.tabby-installment-box {
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+  padding: 18px 18px 18px 18px;
+  margin: 18px 0 18px 0;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.tabby-installment-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.tabby-installment-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+}
+.tabby-installment-text-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2px;
+}
+.tabby-installment-line1 {
+  color: #222;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 0px;
+}
+.tabby-currency {
+  font-family: inherit;
+  font-size: 15px;
+  margin-right: 2px;
+}
+.tabby-amount {
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0 2px;
+  letter-spacing: 0.5px;
+}
+.tabby-per {
+  font-weight: 500;
+  margin-left: 2px;
+  font-size: 15px;
+}
+.tabby-installment-line2 {
+  color: #222;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 2px;
+}
+.tabby-learn-more {
+  color: #222;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 2px;
+}
+.tabby-logo-img {
+  height: 24px;
+  width: auto;
+  border-radius: 6px;
+  background: none;
+  padding: 0;
+  object-fit: contain;
+  box-shadow: none;
+  margin-left: 2px;
+  margin-right: 0;
+  display: block;
+}
   
   .os-title {
     font-size: 22px;

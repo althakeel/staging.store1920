@@ -9,6 +9,10 @@ function CartItem({ item, isUnavailable = false }) {
   // Parse prices safely
   const price = parseFloat(item.price);
   const originalPrice = parseFloat(item.originalPrice);
+  // Hide item if price is 0.00
+  if (!price || price === 0) {
+    return null;
+  }
 
 
   function decodeHtml(html) {

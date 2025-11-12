@@ -1,3 +1,4 @@
+// ...existing code...
 import React from 'react';
 import '../../assets/styles/checkoutleft/paymentmethods.css';
 
@@ -159,6 +160,14 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
     return null;
   };
 
+
+  // Tabby always visible for testing (bypass pre-scoring)
+  const tabbyStatus = 'created';
+
+  // Tabby pre-scoring API call
+
+  // (No Tabby pre-scoring effect, bypassed for always-on Tabby)
+
   return (
     <div className="pm-wrapper">
       <h3>Payment methods</h3>
@@ -207,51 +216,34 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
         </div>
 
         {/* Tabby */}
-        <div className="payment-method-item">
-          <input 
-            type="radio" 
-            id="tabby" 
-            name="payment-method"
-            checked={selectedMethod === 'tabby'}
-            onChange={() => onMethodSelect('tabby', 'Tabby', TabbyIcon)}
-          />
-          <label htmlFor="tabby" className="payment-method-label">
-            <div className="payment-method-content">
-              <div className="payment-header-row">
-                <img src={TabbyIcon} alt="Tabby" className="payment-method-logo" />
-                <div className="payment-text-content">
-                  <div className="payment-title-row">
-                    <span className="payment-title">Tabby: Split into 4 Payments</span>
-                    <span className="info-icon">ℹ️</span>
-                  </div>
-                  <span className="payment-description">Pay AED{tabbyInstallment} today and the rest in 3 interest-free payments</span>
+        {tabbyStatus === 'created' && ( 
+          <div className="payment-method-item tabby-checkout-method">
+            <input
+              type="radio"
+              id="tabby"
+              name="payment-method"
+              checked={selectedMethod === 'tabby'}
+              onChange={() => onMethodSelect('tabby', 'Tabby', TabbyIcon)}
+            />
+            <label htmlFor="tabby" className="payment-method-label tabby-method-label">
+              <div className="tabby-method-row">
+                <img src="https://levantine.ae/wp-content/uploads/2023/03/tabby-badge.png" alt="Tabby" className="tabby-method-logo" />
+                <div className="tabby-method-texts">
+                  <div className="tabby-method-title">Pay later with Tabby.<span className="tabby-method-c">©</span></div>
+                  <div className="tabby-method-sub">Use any card.</div>
                 </div>
               </div>
-              <div className="payment-schedule-container">
-                <div className="schedule-item">
-                  <div className="amount">AED{tabbyInstallment}</div>
-                  <div className="period">Today</div>
-                  <div className="progress-bar active"></div>
-                </div>
-                <div className="schedule-item">
-                  <div className="amount">AED{tabbyInstallment}</div>
-                  <div className="period">In 1 month</div>
-                  <div className="progress-bar"></div>
-                </div>
-                <div className="schedule-item">
-                  <div className="amount">AED{tabbyInstallment}</div>
-                  <div className="period">In 2 months</div>
-                  <div className="progress-bar"></div>
-                </div>
-                <div className="schedule-item">
-                  <div className="amount">AED{tabbyInstallment}</div>
-                  <div className="period">In 3 months</div>
-                  <div className="progress-bar"></div>
-                </div>
-              </div>
+            </label>
+          </div>
+        )}
+
+        {tabbyStatus === 'loading' && (
+          <div className="payment-method-item tabby-checkout-method tabby-loading">
+            <div className="tabby-method-row">
+              <div className="tabby-method-texts">Checking Tabby eligibility...</div>
             </div>
-          </label>
-        </div>
+          </div>
+        )}
 
         {/* Tamara */}
         <div className="payment-method-item">

@@ -90,20 +90,23 @@ export default function OrderSummary({
       </div>
 
       <p className="os-note">Please refer to your final actual payment amount.</p>
-      <p className="os-installment">
-  Up to 12 installments with{" "}
-  <img
-    src="https://levantine.ae/wp-content/uploads/2023/03/tabby-badge.png"
-    alt="Tabby"
-    className="os-installment-logo"
-  /><Tooltip text={tabbyText} /> {" "}
-  or 4 interest-free installments of AED {(totalAfterCoupon / 4).toFixed(2)} with{" "}
-  <img
-    src="https://m.media-amazon.com/images/G/01/support_images/GUID-674F7E9B-5776-4702-A950-A6CC211609E6=1=en-GB=Normal.svg"
-    alt="Tamara"
-    className="os-installment-logo"
-  /><Tooltip text={tamaraText} />.
-</p>
+
+      {/* Tabby Installment Box */}
+      <div className="tabby-installment-box">
+        <div className="tabby-installment-content">
+          <div className="tabby-installment-text-col">
+            <div className="tabby-installment-line1">
+              As low as <span className="tabby-currency">د.إ</span>
+              <span className="tabby-amount">{(totalAfterCoupon / 4).toFixed(2)}</span>
+              <span className="tabby-per">/month</span>
+            </div>
+            <div className="tabby-installment-line2">
+              or 4 interest-free payments. <span className="tabby-learn-more">Learn more</span>
+            </div>
+          </div>
+          <img src="https://levantine.ae/wp-content/uploads/2023/03/tabby-badge.png" alt="tabby" className="tabby-logo-img" />
+        </div>
+      </div>
 
       <button
         type="button"
