@@ -45,6 +45,15 @@ const TABBY_MERCHANT_CODE = 'Store1920';
 const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = [] }) => {
   const [showCodPopup, setShowCodPopup] = React.useState(false);
 
+  // Set Tabby as default if nothing is selected and Tabby is available
+  React.useEffect(() => {
+    // Only select Tabby by default if subtotal > 0 and nothing is selected
+    if (!selectedMethod && subtotal > 0) {
+      onMethodSelect('tabby', 'Tabby', require('../../assets/images/Footer icons/3.webp'));
+    }
+    // eslint-disable-next-line
+  }, [selectedMethod, subtotal, onMethodSelect]);
+
   // Get all static product IDs from staticProducts.js with error handling
   let staticProductIds = [];
   try {
@@ -75,40 +84,38 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
     }
   }, [cartItems, selectedMethod, onMethodSelect, hasOnlyStaticProducts, hasNonStaticProducts, staticProductIds.length]);
 
-  // TabbyCard integration for Tabby method
+  // TabbyCard integration: always show TabbyCard widget
   useEffect(() => {
-    if (selectedMethod === 'tabby') {
-      if (!document.getElementById('tabby-card-js')) {
-        const script = document.createElement('script');
-        script.src = 'https://checkout.tabby.ai/tabby-card.js';
-        script.id = 'tabby-card-js';
-        script.onload = () => {
-          if (window.TabbyCard) {
-            new window.TabbyCard({
-              selector: '#tabbyCard',
-              currency: 'AED',
-              price: (Number(subtotal) || 0).toFixed(2),
-              lang: 'en',
-              shouldInheritBg: false,
-              publicKey: TABBY_PUBLIC_KEY,
-              merchantCode: TABBY_MERCHANT_CODE
-            });
-          }
-        };
-        document.body.appendChild(script);
-      } else if (window.TabbyCard) {
-        new window.TabbyCard({
-          selector: '#tabbyCard',
-          currency: 'AED',
-          price: (Number(subtotal) || 0).toFixed(2),
-          lang: 'en',
-          shouldInheritBg: false,
-          publicKey: TABBY_PUBLIC_KEY,
-          merchantCode: TABBY_MERCHANT_CODE
-        });
-      }
+    if (!document.getElementById('tabby-card-js')) {
+      const script = document.createElement('script');
+      script.src = 'https://checkout.tabby.ai/tabby-card.js';
+      script.id = 'tabby-card-js';
+      script.onload = () => {
+        if (window.TabbyCard) {
+          new window.TabbyCard({
+            selector: '#tabbyCard',
+            currency: 'AED',
+            price: (Number(subtotal) || 0).toFixed(2),
+            lang: 'en',
+            shouldInheritBg: false,
+            publicKey: TABBY_PUBLIC_KEY,
+            merchantCode: TABBY_MERCHANT_CODE
+          });
+        }
+      };
+      document.body.appendChild(script);
+    } else if (window.TabbyCard) {
+      new window.TabbyCard({
+        selector: '#tabbyCard',
+        currency: 'AED',
+        price: (Number(subtotal) || 0).toFixed(2),
+        lang: 'en',
+        shouldInheritBg: false,
+        publicKey: TABBY_PUBLIC_KEY,
+        merchantCode: TABBY_MERCHANT_CODE
+      });
     }
-  }, [selectedMethod, subtotal]);
+  }, [subtotal]);
 
   return (
     <div className="pm-wrapper">
@@ -172,17 +179,14 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
                 borderRadius:'16px',
                 border:'1px solid #e5e5e5',
                 padding:'2px 0',
-             
                 boxShadow:'0 2px 8px 0 rgba(0,0,0,0.03)',
                 position:'relative',
-                marginLeft:0
+                marginLeft:0,
+                opacity: selectedMethod === 'tabby' ? 1 : 0.7,
+                filter: selectedMethod === 'tabby' ? 'none' : 'grayscale(0.3)'
               }}>
-                {/* TabbyCard container - only show when selected */}
-      
-                  <div id="tabbyCard" style={{marginTop:'0px', width:'100%'}}></div>
-               
-             
-                
+                {/* TabbyCard container - always show */}
+                <div id="tabbyCard" style={{marginTop:'0px', width:'100%'}}></div>
               </div>
             </div>
           </label>

@@ -111,7 +111,6 @@ const CustomProductDetails = () => {
                   selectedBundle?.originalPrice ?? product.regularPrice,
               }}
             />
-
             {/* Bundle Title Separator */}
             <h3
               style={{
@@ -133,6 +132,7 @@ const CustomProductDetails = () => {
                   marginRight: "10px",
                 }}
               />
+              
             
                 {selectedBundle?.bundleTitle || product.BundleTitle || "Bundle"}
              
@@ -145,6 +145,8 @@ const CustomProductDetails = () => {
                 }}
               />
             </h3>
+            
+            
 
             {/* Bundle Selector */}
             <Bundle
@@ -153,6 +155,7 @@ const CustomProductDetails = () => {
               setSelected={setSelectedBundleIndex}
               onAddToCart={handleAddToCart}
             />
+            
 
             <DeliveryInfo />
             <Desciption product={product} />

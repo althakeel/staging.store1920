@@ -116,57 +116,45 @@ export default function ProductInfo({ product, variations, selectedVariation, on
     
 
       <PriceDisplay product={product} selectedVariation={selectedVariation} />
-      {/* Tabby Payment Info */}
-      {(() => {
-        // Match logic from PriceDisplay.jsx
-        const defaultVariation = product.variations?.[0] || {};
-        const price = selectedVariation?.price ?? defaultVariation.price ?? product.price ?? 0;
-        const regularPrice = selectedVariation?.regular_price ?? defaultVariation.regular_price ?? product.regular_price ?? 0;
-        const salePrice = selectedVariation?.sale_price ?? defaultVariation.sale_price ?? product.sale_price ?? 0;
-        const priceNum = parseFloat(price) || 0;
-        const regularPriceNum = parseFloat(regularPrice) || 0;
-        const salePriceNum = parseFloat(salePrice) || 0;
-        const displayPrice = salePriceNum > 0 && salePriceNum !== regularPriceNum ? salePriceNum : priceNum;
-        return (
-          <>
-            {/* Tabby */}
-            <div style={{
-              background: '#fff',
-              borderRadius: '8px',
-              border: '1px solid #eee',
-              padding: '16px',
-              margin: '12px 0',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '16px',
-              width: '100%'
-            }}>
-              <span style={{fontSize: '16px', color: '#222'}}>
-                As low as <b>AED {(displayPrice / 4).toFixed(2)}/month</b> or 4 interest-free payments.
-                <span style={{fontWeight: 600, marginLeft: 4}}>Learn more</span>
-              </span>
-              <img src="https://staging.store1920.com/static/media/3.9badcf46f11759f54b31.webp" alt="tabby" style={{height: '32px', marginLeft: 'auto'}} />
-            </div>
-            {/* Tamara */}
-            <div style={{
-              background: '#fff',
-              borderRadius: '8px',
-              border: '1px solid #eee',
-              padding: '16px',
-              margin: '12px 0',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '16px',
-              width: '100%'
-            }}>
-              <span style={{fontSize: '16px', color: '#222'}}>
-                As low as <b>AED {(displayPrice / 4).toFixed(2)}/month</b> or 4 interest-free payments.
-                <span style={{fontWeight: 600, marginLeft: 4}}>Learn more</span>
-              </span>
-              <img src="https://staging.store1920.com/static/media/6.bea004ebb6414ae7de30.webp" alt="tamara" style={{height: '32px', marginLeft: 'auto'}} />
-            </div>
-          </>
-        );
+      {/* Official TabbyCard widget above Buy Now button (only one Tabby, as requested) */}
+      <div style={{width:'100%', margin:'18px 0'}}>
+        <div id="tabbyProductCard" style={{width:'100%'}}></div>
+      </div>
+      {/* TabbyCard script loader */}
+      {typeof window !== 'undefined' && (() => {
+        // Ensure price is always a number before calling toFixed
+        const rawPrice = selectedVariation?.price ?? product.price ?? 0;
+        const priceNum = parseFloat(rawPrice) || 0;
+        if (!document.getElementById('tabby-product-card-js')) {
+          const script = document.createElement('script');
+          script.src = 'https://checkout.tabby.ai/tabby-card.js';
+          script.id = 'tabby-product-card-js';
+          script.onload = () => {
+            if (window.TabbyCard) {
+              new window.TabbyCard({
+                selector: '#tabbyProductCard',
+                currency: 'AED',
+                price: priceNum.toFixed(2),
+                lang: 'en',
+                shouldInheritBg: false,
+                publicKey: 'pk_test_019a4e3b-c868-29ff-1078-04aec08847bf',
+                merchantCode: 'Store1920'
+              });
+            }
+          };
+          document.body.appendChild(script);
+        } else if (window.TabbyCard) {
+          new window.TabbyCard({
+            selector: '#tabbyProductCard',
+            currency: 'AED',
+            price: priceNum.toFixed(2),
+            lang: 'en',
+            shouldInheritBg: false,
+            publicKey: 'pk_test_019a4e3b-c868-29ff-1078-04aec08847bf',
+            merchantCode: 'Store1920'
+          });
+        }
+        return null;
       })()}
       <ProductShortDescription shortDescription={product.short_description} />
 
@@ -209,6 +197,49 @@ export default function ProductInfo({ product, variations, selectedVariation, on
   handleAddToCart={handleAddToCart}
 />
 
+
+      {/* Official TabbyCard widget above Buy Now button */}
+      <div style={{width:'100%', margin:'18px 0'}}>
+        <div id="tabbyProductCard" style={{width:'350px'}}></div>
+      </div>
+
+      {/* TabbyCard script loader */}
+     
+ {typeof window !== 'undefined' && (() => {
+        // Ensure price is always a number before calling toFixed
+        const rawPrice = selectedVariation?.price ?? product.price ?? 0;
+        const priceNum = parseFloat(rawPrice) || 0;
+        if (!document.getElementById('tabby-product-card-js')) {
+          const script = document.createElement('script');
+          script.src = 'https://checkout.tabby.ai/tabby-card.js';
+          script.id = 'tabby-product-card-js';
+          script.onload = () => {
+            if (window.TabbyCard) {
+              new window.TabbyCard({
+                selector: '#tabbyProductCard',
+                currency: 'AED',
+                price: priceNum.toFixed(2),
+                lang: 'en',
+                shouldInheritBg: false,
+                publicKey: 'pk_test_019a4e3b-c868-29ff-1078-04aec08847bf',
+                merchantCode: 'Store1920'
+              });
+            }
+          };
+          document.body.appendChild(script);
+        } else if (window.TabbyCard) {
+          new window.TabbyCard({
+            selector: '#tabbyProductCard',
+            currency: 'AED',
+            price: priceNum.toFixed(2),
+            lang: 'en',
+            shouldInheritBg: false,
+            publicKey: 'pk_test_019a4e3b-c868-29ff-1078-04aec08847bf',
+            merchantCode: 'Store1920'
+          });
+        }
+        return null;
+      })()}
       <ButtonSection
         product={product}
         selectedVariation={selectedVariation}

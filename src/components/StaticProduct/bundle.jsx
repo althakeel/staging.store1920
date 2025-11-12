@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useCart } from "../../contexts/CartContext";
 
-
 const Bundle = ({ product, bundles, selected, setSelected }) => {
   const [variants, setVariants] = useState({});
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -13,6 +12,39 @@ const Bundle = ({ product, bundles, selected, setSelected }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // ✅ Load and render TabbyCard (Full Width)
+  useEffect(() => {
+    if (!bundles[selected]) return;
+    const priceNum = parseFloat(bundles[selected].price) || 0;
+
+    const loadTabby = () => {
+      if (window.TabbyCard) {
+        new window.TabbyCard({
+          selector: "#tabbyProductCard",
+          currency: "AED",
+          price: priceNum.toFixed(2),
+          lang: "en",
+          shouldInheritBg: false,
+          publicKey: "pk_test_019a4e3b-c868-29ff-1078-04aec08847bf",
+          merchantCode: "Store1920",
+          style: {
+            width: "100%", // ✅ ensures full width
+          },
+        });
+      }
+    };
+
+    if (!document.getElementById("tabby-product-card-js")) {
+      const script = document.createElement("script");
+      script.src = "https://checkout.tabby.ai/tabby-card.js";
+      script.id = "tabby-product-card-js";
+      script.onload = loadTabby;
+      document.body.appendChild(script);
+    } else {
+      loadTabby();
+    }
+  }, [selected, bundles]);
 
   // Handle variant selection
   const handleVariantChange = (bundleIndex, productIndex, color) => {
@@ -26,42 +58,34 @@ const Bundle = ({ product, bundles, selected, setSelected }) => {
   const formatAED = (value) => `AED ${value.toFixed(2)}`;
 
   // Handle Buy Now click
-const handleBuyNow = () => {
-  const bundle = bundles[selected];
+  const handleBuyNow = () => {
+    const bundle = bundles[selected];
+    const bundleImage = bundle.image || bundle.images?.[0] || bundle.productImage || null;
 
-  // Get bundle image: fallback to main product image
-  const bundleImage = bundle.image || bundle.images?.[0] || bundle.productImage || null;
+    const bundleToCart = {
+      id: bundle.wooId || bundle.id || 0,
+      name: bundle.type,
+      price: bundle.price,
+      originalPrice: bundle.originalPrice,
+      quantity: 1,
+      variation: variants,
+      image: bundleImage,
+    };
 
-  const bundleToCart = {
-  id: bundle.wooId || bundle.id || 0, // make sure this is 523369, 523370, or 523371
-    name: bundle.type,
-    price: bundle.price,
-    originalPrice: bundle.originalPrice,
-    quantity: 1,
-    variation: variants,
-    image: bundleImage, // pass proper image
+    addToCart(bundleToCart, false);
+
+    const query = new URLSearchParams({
+      type: bundleToCart.name,
+      price: bundleToCart.price,
+      quantity: bundleToCart.quantity,
+      image: bundleImage,
+    });
+
+    window.location.href = `/checkout?${query.toString()}`;
   };
-
-  // Add to cart
-  addToCart(bundleToCart, false);
-
-  // Redirect to checkout
-  const query = new URLSearchParams({
-    type: bundleToCart.name,
-    price: bundleToCart.price,
-    quantity: bundleToCart.quantity,
-    image: bundleImage, // pass image URL if needed
-  });
-
-  window.location.href = `/checkout?${query.toString()}`;
-};
-
 
   return (
     <div style={{ padding: "16px", fontFamily: "Arial, sans-serif" }}>
-      {/* Title */}
-
-
       {/* Bundles */}
       {bundles.map((bundle, index) => {
         const totalSavings = bundle.originalPrice - bundle.price;
@@ -136,7 +160,7 @@ const handleBuyNow = () => {
                 </span>
               </div>
 
-              {/* Price */}
+              {/* Price Section */}
               <div style={{ textAlign: "right" }}>
                 <p
                   style={{
@@ -168,52 +192,21 @@ const handleBuyNow = () => {
                 style={{ marginLeft: "12px", accentColor: "#d45a5a" }}
               />
             </div>
-
-            {/* Variant Selector */}
-            {bundle.colors &&
-              bundle.colors.map((row, i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginBottom: "6px",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: "11px",
-                      color: "#777",
-                      marginRight: "8px",
-                      width: "20px",
-                    }}
-                  >
-                    #{i + 1}
-                  </span>
-                  {row.map((c, j) => {
-                    const key = `${index}-${i}`;
-                    const isSelectedColor = variants[key] === c;
-                    return (
-                      <div
-                        key={j}
-                        onClick={() => handleVariantChange(index, i, c)}
-                        style={{
-                          width: "24px",
-                          height: "24px",
-                          borderRadius: "50%",
-                          border: isSelectedColor ? "2px solid #d45a5a" : "1px solid #ccc",
-                          marginRight: "6px",
-                          background: c,
-                          cursor: "pointer",
-                        }}
-                      />
-                    );
-                  })}
-                </div>
-              ))}
           </div>
         );
       })}
+
+      {/* ✅ Full-Width TabbyCard Widget */}
+      <div style={{ width: "100%", margin: "18px 0" }}>
+        <div
+          id="tabbyProductCard"
+          style={{
+            width: "100%",
+            maxWidth: "100%",
+            display: "block",
+          }}
+        ></div>
+      </div>
 
       {/* Buy Now Button */}
       <div
