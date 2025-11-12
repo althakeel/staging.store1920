@@ -47,7 +47,7 @@ export default function OrderFailure() {
         <div className="order-header">
           <div className="fail-icon" style={{ fontSize: '4rem', color: '#dc3545', marginBottom: '1rem' }}>✗</div>
           <h1 className="thank-you-title" style={{ color: '#dc3545' }}>Order Failed</h1>
-          <p className="thank-you-subtitle">Sorry, your order could not be completed.</p>
+          <p className="thank-you-subtitle">Sorry, Tabby is unable to approve this purchase. Please use an alternative payment method for your order.</p>
         </div>
         {order && (
           <div className="order-info-grid">
@@ -55,21 +55,18 @@ export default function OrderFailure() {
               <span className="info-label">Order date:</span>
               <span className="info-value">{new Date(order.date_created).toLocaleDateString('en-GB')}</span>
             </div>
-            <div className="info-item">
-              <span className="info-label">Total:</span>
-              <span className="info-value">{formatPrice(order.total)}</span>
-            </div>
+            
             <div className="info-item">
               <span className="info-label">Payment method:</span>
               <span className="info-value">{order.payment_method_title || 'N/A'}</span>
             </div>
           </div>
         )}
-        <div style={{ padding: '20px', backgroundColor: '#fee', borderRadius: '8px', marginTop: '20px', textAlign: 'center' }}>
+        {/* <div style={{ padding: '20px', backgroundColor: '#fee', borderRadius: '8px', marginTop: '20px', textAlign: 'center' }}>
           <p style={{ margin: 0, color: '#c0392b' }}>
             The payment failed. Please try again or contact support if the problem persists.
           </p>
-        </div>
+        </div> */}
         <div style={{ display: 'flex', gap: '10px', marginTop: '20px', justifyContent: 'center' }}>
           <button className="track-order-btn" onClick={() => navigate('/')}>Continue Shopping</button>
           <button className="track-order-btn" onClick={() => navigate('/contact')} style={{ backgroundColor: '#95a5a6' }}>Contact Support</button>

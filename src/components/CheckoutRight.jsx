@@ -11,12 +11,6 @@ import Tamara from '../assets/images/Footer icons/6.webp'
 // Alert Component
 // -----------------------------
 function Alert({ message, type = 'info', onClose }) {
-  useEffect(() => {
-    if (!message) return;
-    const timer = setTimeout(onClose, 4000);
-    return () => clearTimeout(timer);
-  }, [message, onClose]);
-
   if (!message) return null;
   const colors = { info: '#2f86eb', success: '#28a745', error: '#dc3545' };
 
@@ -53,6 +47,7 @@ function Alert({ message, type = 'info', onClose }) {
     </div>
   );
 }
+
 
 // -----------------------------
 // Utility: parse price safely
@@ -201,7 +196,20 @@ export default function CheckoutRight({ cartItems, formData, createOrder, clearC
       }
 
       // TABBY
+     
+
+
+       // ✅ TABBY
       if (formData.paymentMethod === 'tabby') {
+        const normalized = {
+          first_name: shippingOrBilling.first_name || 'First',
+          last_name:  shippingOrBilling.last_name  || 'Last',
+          email:      shippingOrBilling.email      || 'customer@example.com',
+          phone_number: shippingOrBilling.phone_number?.startsWith('+')
+            ? shippingOrBilling.phone_number
+            : `+${shippingOrBilling.phone_number || '971501234567'}`
+        };
+
         const payload = {
           amount: amountToSend,
           order_id: id.id || id,
@@ -218,38 +226,45 @@ export default function CheckoutRight({ cartItems, formData, createOrder, clearC
           const data = await res.json();
           console.log('✅ Tabby Response =>', data);
 
-          if (!res.ok || !data.checkout_url) {
-            throw new Error(data.error || 'Failed to start Tabby session.');
+          // 🧠 Pre-scoring Rejection Handling
+          if (data.status === 'rejected') {
+            const reason =
+              data.rejection_reason ||
+              data.configuration?.products?.installments?.rejection_reason ||
+              'not_available';
+
+            const messages = {
+    not_available:
+      'Sorry, Tabby is unable to approve this purchase. Please use an alternative payment method for your order.',
+    order_amount_too_high:
+      'This purchase is above your current spending limit with Tabby. Try a smaller cart or use another payment method.',
+    order_amount_too_low:
+      'The purchase amount is below the minimum required to use Tabby. Try adding more items or use another payment method.',
+  };
+const userMessage = messages[reason] || messages.not_available;
+            showAlert(userMessage, 'error');
+            console.warn('🚫 Tabby Pre-scoring rejected:', reason);
+            return; // 🛑 Stay on same page (no redirect)
           }
 
-          window.location.href = data.checkout_url;
-          return;
+          // ✅ Success Case: redirect to Tabby checkout
+          if (data.checkout_url) {
+            window.location.href = data.checkout_url;
+            return;
+          }
+
+          // ❌ Any other fallback case
+          const fallbackMessage =
+            data.error ||
+            'We’re unable to start your Tabby session right now. Please try again later or use another payment method.';
+          showAlert(fallbackMessage, 'error');
         } catch (err) {
           console.error('❌ TABBY ERROR:', err);
           showAlert(err.message || 'Failed to initiate Tabby payment.', 'error');
         }
       }
 
-if (formData.paymentMethod === 'tamara') {
-  const payload = {
-    amount: amountToSend,
-    order_id: id.id || id,
-    billing: shippingOrBilling,
-  };
 
-  const res = await fetch('https://db.store1920.com/wp-json/custom/v1/tamara-intent', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-
-  const data = await res.json();
-  if (data.checkout_url) {
-    window.location.href = data.checkout_url;
-  } else {
-    console.error('Tamara error:', data);
-  }
-}
 
 
 
