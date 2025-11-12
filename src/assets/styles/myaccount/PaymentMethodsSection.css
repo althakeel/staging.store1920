@@ -1,0 +1,210 @@
+.payment-wrapper {
+  padding: 30px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.payment-heading {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.lock-icon {
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.encrypted-text {
+  color: green;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.payment-card-box {
+  border: 1px solid #ddd;
+  padding: 25px;
+  border-radius: 8px;
+  background: #fff;
+  margin-bottom: 30px;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.payment-graphic {
+  max-width: 100px;
+  margin: 0 auto 15px;
+}
+
+.payment-graphic img {
+  width: 80px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.payment-description {
+  margin-bottom: 15px;
+}
+
+.payment-text {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.badges {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.badge {
+  background: #e8f5e9;
+  color: green;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 12px;
+}
+
+.add-card-button {
+  background: #ff6a00;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  font-size: 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 20px 0;
+  transition: background 0.3s;
+}
+
+.add-card-button:hover {
+  background: #e55b00;
+}
+
+.card-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.card-icons img {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+.card-security-info {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card-security-info h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: green;
+  display: flex;
+  align-items: center;
+  margin-top: 0;
+}
+
+.card-security-info ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.card-security-info li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.check-icon {
+  color: green;
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.security-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.security-logos img {
+  height: 32px;
+  object-fit: contain;
+}
+/* Popup overlay & box */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.close-popup {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.popup-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.card-form input,
+.card-form select {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.expiry-fields {
+  display: flex;
+  gap: 10px;
+}
+
+.error-text {
+  font-size: 12px;
+  color: red;
+  margin-top: -10px;
+}

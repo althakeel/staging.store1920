@@ -1,0 +1,29 @@
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  color: #444;
+  text-align: center;
+}
+
+.notFoundPage h1 {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.notFoundPage p {
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+
+.backHomeLink {
+  font-weight: 600;
+  color: #2196f3;
+  text-decoration: none;
+}
+
+.backHomeLink:hover {
+  text-decoration: underline;
+}

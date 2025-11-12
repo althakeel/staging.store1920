@@ -1,0 +1,135 @@
+/* SkeletonLoader.css */
+
+/* Container */
+.skeleton-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Left and Right Sections */
+.skeleton-left,
+.skeleton-right {
+  flex: 0 0 50%;
+  max-width: 50%;
+  box-sizing: border-box;
+}
+
+/* Left Side */
+.skeleton-left {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;  <-- remove this */
+}
+.skeleton-image {
+  width: 100%;
+  height: 400px;
+  background: #eee;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-thumbnails {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start; /* Align thumbnails to the left */
+  width: 100%; /* Ensure it spans the full container width */
+}
+.skeleton-thumb {
+  width: 60px;
+  height: 60px;
+  background: #eee;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Right Side */
+.skeleton-title {
+  width: 60%;
+  height: 32px;
+  background: #eee;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-text {
+  height: 20px;
+  background: #eee;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-text.short {
+  width: 30%;
+}
+
+.skeleton-text.medium {
+  width: 50%;
+}
+
+.skeleton-text.long {
+  width: 80%;
+}
+
+.skeleton-button {
+  width: 120px;
+  height: 40px;
+  background: #eee;
+  border-radius: 8px;
+  margin-top: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -450px 0;
+  }
+  100% {
+    background-position: 450px 0;
+  }
+}
+
+.skeleton-image,
+.skeleton-thumb,
+.skeleton-title,
+.skeleton-text,
+.skeleton-button {
+  background: linear-gradient(
+    90deg,
+    #eee 25%,
+    #f5f5f5 37%,
+    #eee 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .skeleton-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .skeleton-left,
+  .skeleton-right {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .skeleton-thumbnails {
+    justify-content: center; /* Keep thumbnails centered on mobile */
+  }
+}

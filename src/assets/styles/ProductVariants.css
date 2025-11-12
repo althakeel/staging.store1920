@@ -1,0 +1,168 @@
+/* ========================
+   Product Variants - Responsive CSS
+   ======================== */
+
+/* Base styles (desktop) */
+.variants-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.variant-attribute-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.variant-title {
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.variants-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Variant buttons */
+.variant-btn {
+  flex: 1 1 55px; /* grow, shrink, base width */
+  min-width: 50px;
+  max-width: 80px;
+  padding: 5px 2px;
+  border: 0.5px solid #cfcfcf;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.15rem;
+  color: #333;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.variant-btn:hover:not(.selected):not(.out-of-stock) {
+  border-color: #ffa84d;
+}
+
+.variant-btn.selected {
+  border-color: #000000;
+  font-weight: bold;
+    border: 2.5px solid #ff6309d7;
+}
+
+.variant-btn.out-of-stock {
+  opacity: 0.4;
+  pointer-events: none;
+  border-style: dashed;
+}
+
+/* Image inside button */
+.variant-image-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.variant-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px 4px 0 0;
+  margin-bottom: 4px;
+}
+
+.variant-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  color: #000;
+  font-size: 0.65rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px 4px 0 0;
+  pointer-events: none;
+}
+
+/* Label */
+.variant-label {
+  display: block;
+  max-width: 80px; /* adjust as needed */
+  text-align: center;
+  font-size: 10px;
+  line-height: 1.2;
+  word-break: break-word; /* breaks long words */
+  white-space: normal; /* allows wrapping */
+  overflow-wrap: break-word; /* ensures wrapping works */
+}
+
+/* ----------------------
+   Tablet (max-width: 1024px)
+   ---------------------- */
+@media (max-width: 1024px) {
+  .variant-btn {
+    flex: 1 1 80px;
+    min-width: 60px;
+    font-size: 0.5rem;
+  }
+
+  .variant-title {
+    font-size: 0.8rem;
+  }
+
+  .variants-list {
+    gap: 6px;
+  }
+}
+
+/* ----------------------
+   Mobile (max-width: 768px)
+   ---------------------- */
+@media (max-width: 768px) {
+  .variant-btn {
+    flex: 1 1 45%; /* roughly two buttons per row */
+    min-width: 45px;
+    font-size: 0.45rem;
+  }
+
+  .variant-title {
+    font-size: 0.75rem;
+    margin-bottom: 4px;
+  }
+
+  .variant-label {
+    font-size: 0.65rem;
+  }
+
+  .variants-list {
+    gap: 6px;
+  }
+}
+
+/* ----------------------
+   Extra small mobile (max-width: 480px)
+   ---------------------- */
+@media (max-width: 480px) {
+  .variant-btn {
+    flex: 1 1 48%; /* two per row, small spacing */
+    min-width: 40px;
+    font-size: 0.4rem;
+  }
+
+  .variant-label {
+    font-size: 0.6rem;
+  }
+
+  .variants-list {
+    gap: 4px;
+  }
+}

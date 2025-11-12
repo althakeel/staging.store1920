@@ -1,0 +1,75 @@
+.button-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0 18px;
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+}
+
+/* Common button styles */
+.button-section button {
+  flex: 1 1 100%;
+  padding: 12px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+/* Individual buttons */
+.add-to-cart-btn {
+  background-color: #ff7a00;
+  color: #fff;
+}
+
+.go-to-cart-btn {
+  background-color: #f57c00;
+  color: #fff;
+}
+
+.go-to-checkout-btn {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.buy-now-btn {
+  background-color: #d32f2f;
+  color: #fff;
+}
+
+/* Responsive fix for small screens (below 480px) */
+@media (max-width: 480px) {
+  .button-section {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .button-section button {
+    font-size: 14px;
+    padding: 10px 14px;
+    border-radius: 5px;
+  }
+}
+
+/* Tablets (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .button-section {
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .button-section button {
+    flex: 1 1 calc(50% - 5px);
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 769px) {
+  .button-section button {
+    flex: 1 1 calc(50% - 5px);
+  }
+}

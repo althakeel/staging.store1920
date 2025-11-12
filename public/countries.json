@@ -1,0 +1,12 @@
+[
+  { "name": "United Arab Emirates", "dial_code": "+971", "code": "AE", "flag": "🇦🇪" },
+  { "name": "India", "dial_code": "+91", "code": "IN", "flag": "🇮🇳" },
+  { "name": "United States", "dial_code": "+1", "code": "US", "flag": "🇺🇸" },
+  { "name": "United Kingdom", "dial_code": "+44", "code": "GB", "flag": "🇬🇧" },
+  { "name": "Germany", "dial_code": "+49", "code": "DE", "flag": "🇩🇪" },
+  { "name": "France", "dial_code": "+33", "code": "FR", "flag": "🇫🇷" },
+  { "name": "Canada", "dial_code": "+1", "code": "CA", "flag": "🇨🇦" },
+  { "name": "Australia", "dial_code": "+61", "code": "AU", "flag": "🇦🇺" },
+  { "name": "Pakistan", "dial_code": "+92", "code": "PK", "flag": "🇵🇰" }
+
+]

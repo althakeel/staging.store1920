@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Category API</title>
+</head>
+<body>
+    <h1>Category API Test</h1>
+    <div id="results"></div>
+    <button onclick="testAPI()">Test API</button>
+
+    <script>
+        async function testAPI() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<p>Testing...</p>';
+            
+            const testSlugs = [
+                'automotive-motorcycle',
+                'accessories', 
+                'beauty-personal-care',
+                'electronics-smart-devices',
+                'nonexistent-category'
+            ];
+            
+            let output = '';
+            
+            for (const slug of testSlugs) {
+                output += `<h3>Testing: ${slug}</h3>`;
+                
+                try {
+                    const response = await fetch(`https://db.store1920.com/wp-json/store1920/v1/category/${slug}`);
+                    const data = await response.json();
+                    
+                    output += `<p><strong>Status:</strong> ${response.status}</p>`;
+                    output += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                    
+                    // If category found, test products
+                    if (data.id && !data.code) {
+                        const productsUrl = `https://db.store1920.com/wp-json/wc/v3/products?category=${data.id}&per_page=3&consumer_key=ck_f44feff81d804619a052d7bbdded7153a1f45bdd&consumer_secret=cs_92458ba6ab5458347082acc6681560911a9e993d`;
+                        
+                        try {
+                            const prodResponse = await fetch(productsUrl);
+                            const products = await prodResponse.json();
+                            output += `<p><strong>Products found:</strong> ${Array.isArray(products) ? products.length : 'Error'}</p>`;
+                            
+                            if (Array.isArray(products) && products.length > 0) {
+                                output += `<p>Sample product: ${products[0].name}</p>`;
+                            }
+                        } catch (prodError) {
+                            output += `<p style="color: red;">Products error: ${prodError.message}</p>`;
+                        }
+                    }
+                    
+                } catch (error) {
+                    output += `<p style="color: red;">Error: ${error.message}</p>`;
+                }
+                
+                output += '<hr>';
+            }
+            
+            results.innerHTML = output;
+        }
+    </script>
+</body>
+</html>

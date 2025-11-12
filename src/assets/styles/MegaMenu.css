@@ -1,0 +1,198 @@
+.custom-megamenu-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  border-radius: 12px;
+  background: #fff;
+  margin: 0px auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  overflow: hidden; 
+  height: 600px; /* fixed height for container */
+}
+
+/* Custom Scrollbar */
+.custom-megamenu-left::-webkit-scrollbar {
+  width: 3px;   /* vertical scrollbar */
+  height: 6px;  /* horizontal scrollbar */
+}
+
+.custom-megamenu-left::-webkit-scrollbar-thumb {
+  background: #ccc;      /* scrollbar color */
+  border-radius: 10px;
+}
+
+.custom-megamenu-left::-webkit-scrollbar-thumb:hover {
+  background: #999;      /* darker on hover */
+}
+
+.custom-megamenu-left::-webkit-scrollbar-track {
+  background: transparent; /* no background track */
+}
+
+
+
+/* LEFT SIDE */
+.custom-megamenu-left {
+  width: 300px;
+  background: #f5f5f5;
+  border-right: 1px solid #eee;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  color: #555;
+
+  overflow-y: auto; /* scrollable if too many categories */
+  flex-shrink: 0;   /* prevent shrinking */
+}
+
+.custom-megamenu-left-item {
+  padding: 14px 18px;
+  cursor: pointer;
+  margin: 5px 15px;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+.custom-megamenu-left-item.active,
+.custom-megamenu-left-item:hover {
+  background: linear-gradient(90deg, #ff6a00, #ff8c42);
+  color: #fff;
+  font-weight: 600;
+}
+/* RIGHT SIDE */
+.custom-megamenu-right {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  min-width: 0; /* important for flex layout */
+}
+
+.custom-megamenu-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+}
+
+/* GRID */
+.custom-megamenu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 20px;
+}
+
+.custom-megamenu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.custom-megamenu-item:hover {
+  transform: translateY(-5px);
+  /* box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12); */
+}
+
+.custom-megamenu-imgbox {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; /* Make image fully round */
+  overflow: hidden;    /* Ensure image stays inside circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+  border: 1px solid #eee;
+  margin-bottom: 10px; /* space between image and name */
+  transition: all 0.3s ease;
+}
+/* Image inside the box */
+.custom-megamenu-imgbox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* cover entire circle */
+  display: block;
+  border-radius: 50%;  /* round inside too */
+}
+.custom-megamenu-item span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-top: 5px;
+  text-align: center;
+  display: block;
+}
+
+.custom-megamenu-empty {
+  color: #999;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Loading */
+.custom-megamenu-loading {
+  text-align: center;
+  padding: 50px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Responsive for Tablet */
+@media (max-width: 1024px) {
+  .custom-megamenu-container {
+    width: 95%;
+    height: 70vh;
+  }
+
+  .custom-megamenu-left {
+    width: 250px; /* fixed width for tablet */
+  }
+
+  .custom-megamenu-right {
+    width: calc(100% - 250px);
+    padding: 15px;
+  }
+
+  .custom-megamenu-imgbox {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+  .custom-megamenu-container {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  .custom-megamenu-left {
+    flex-direction: row;
+    overflow-x: auto;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .custom-megamenu-left-item {
+    flex: 0 0 auto;
+    padding: 10px 14px;
+    margin: 4px 6px;
+  }
+
+  .custom-megamenu-right {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .custom-megamenu-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+}

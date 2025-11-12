@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+.festsale-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Montserrat', sans-serif;
+  color: #222;
+}
+
+.festsale-heading {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  text-align: center;
+  color: #e60023;
+}
+
+.festsale-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.festsale-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+
+.festsale-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+.festsale-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+
+.festsale-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.3s ease;
+}
+
+.festsale-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #ff4444;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  user-select: none;
+}
+
+.festsale-info {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.festsale-name {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  height: 38px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.festsale-price {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.sale-price {
+  color: #e60023;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.regular-price {
+  color: #777;
+  text-decoration: line-through;
+  font-size: 13px;
+}
+
+.add-to-cart-btn1 {
+  width: 100%;
+  padding: 8px 0;
+  background-color: #e60023;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.add-to-cart-btn1:hover {
+  background-color: #b8001a;
+}
+
+.mini-cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+  z-index: 9999;
+}
+
+.mini-cart {
+  background: #fff;
+  width: 320px;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+}
+
+.mini-cart h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.mini-cart ul {
+  list-style: none;
+  padding-left: 0;
+  max-height: 60vh;
+  overflow-y: auto;
+  margin-bottom: 15px;
+}
+
+.mini-cart li {
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+
+/* Responsive */
+@media (max-width: 600px) {
+  .festsale-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}

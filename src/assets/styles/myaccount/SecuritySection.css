@@ -1,0 +1,135 @@
+.security-wrapper {
+  max-width: 720px;
+  margin: 40px auto;
+  padding: 30px 40px;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  color: #222;
+}
+.security-section{
+    padding-bottom: 50px;
+}
+
+.security-header h3 {
+  color: #1a7f37; /* Temu-like green */
+  font-weight: 700;
+  font-size: 1.75rem;
+  margin-bottom: 10px;
+}
+
+.security-header p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+.security-list {
+  border-top: 1px solid #eee;
+  padding-top: 24px;
+}
+
+.security-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.security-item span {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #333;
+}
+
+.security-inline {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #444;
+  font-size: 1rem;
+}
+
+.security-inline span {
+  max-width: 280px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.security-item button {
+  padding: 8px 20px;
+  border-radius: 30px;
+  border: none;
+  background-color: #1a7f37;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(26,127,55,0.3);
+  transition: background-color 0.3s ease;
+}
+
+.security-item button:hover:not(:disabled) {
+  background-color: #145c27;
+}
+
+.security-item button:disabled {
+  background-color: #d6d6d6;
+  color: #999;
+  cursor: default;
+  box-shadow: none;
+}
+
+.security-subtitle {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #444;
+  margin: 40px 0 20px 0;
+  border-bottom: 2px solid #1a7f37;
+  padding-bottom: 6px;
+}
+
+.security-error {
+  background-color: #fff5f5;
+  border: 1px solid #ffcccc;
+  color: #cc0000;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.security-footer {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.security-footer a {
+  color: #1a7f37;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: text-decoration 0.3s ease;
+}
+
+.security-footer a:hover {
+  text-decoration: underline;
+}
+
+.security-loading {
+  text-align: center;
+  padding: 60px 0;
+  font-size: 1.2rem;
+  color: #666;
+}

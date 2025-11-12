@@ -1,0 +1,62 @@
+
+/* Make sure padding/border included in width */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent body from causing horizontal overflow */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  
+}
+
+
+body {
+  --sb-track-color: #232E33;
+  --sb-thumb-color: #a9a9a9;
+  --sb-size: 5px;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size)
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+  
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color)
+                     var(--sb-track-color);
+  }
+}
+body {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+/* Hide MiniCart on mobile and tablet (up to 1024px width) */
+@media (max-width: 1024px) {
+  .mini-cart-wrapper {
+    display: none;
+  }
+}
+
+/* Show MiniCart on desktop */
+@media (min-width: 1025px) {
+  .mini-cart-wrapper {
+    display: block; /* or flex depending on your layout */
+  }
+}
+

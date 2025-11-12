@@ -1,0 +1,33 @@
+.offer-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+  font-family: Arial, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.offer-box img.animating,
+.offer-text.animating {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+@media (max-width: 480px) {
+  .offer-box {
+    flex-wrap: wrap;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .offer-box img {
+    width: 100px;
+    align-self: flex-start;
+  }
+
+  .offer-text {
+    font-size: 16px;
+  }
+}

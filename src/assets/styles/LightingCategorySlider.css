@@ -1,0 +1,66 @@
+.lighting-slider-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 0;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.lighting-slider-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.lighting-slider-card {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.slider-product-link {
+  display: block;
+  background: #f9f9f9;
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease;
+}
+
+.slider-product-link:hover {
+  transform: scale(1.03);
+}
+
+.slider-product-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background-color: #eee;
+}
+
+.slider-product-info {
+  padding: 10px;
+  text-align: center;
+}
+
+.slider-product-name {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 5px 0;
+}
+
+.slider-product-price {
+  color: #e60023;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.lighting-slider-loading,
+.lighting-slider-empty {
+  text-align: center;
+  padding: 30px 0;
+  font-size: 1.2rem;
+  color: #666;
+}

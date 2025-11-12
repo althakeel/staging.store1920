@@ -1,0 +1,308 @@
+/* --- Layout reset for precise sizing --- */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ==============================
+   GRID CATEGORIES CONTAINER
+   ============================== */
+.gcx-container {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 2fr;
+  gap: 15px;
+  margin: 20px auto 40px;
+  max-width: 1400px;
+  padding: 0 0px;
+  font-family: "Inter", sans-serif;
+  align-items: stretch;
+  height: 520px; 
+}
+
+.gcx-product-title {
+  font-size: 12px;
+  font-weight: 500;
+  margin: 5px 0;
+ 
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+
+.gcx-left,
+.gcx-middle,
+.gcx-right {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ==============================
+   SECTION TITLES
+   ============================== */
+.gcx-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+/* ==============================
+   LEFT - CATEGORIES
+   ============================== */
+.gcx-left {
+  background: #222222;
+  border-radius: 12px;
+  padding: 15px 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.gcx-left-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  flex: 1 1 auto;    
+  height: 100%;
+}
+
+.gcx-category-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;     
+}
+
+.gcx-category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+
+.gcx-category-card img {
+  width: 100%;
+  height: 100%;           
+  object-fit: cover;      
+  border-radius: 12px 12px 0 0;
+  background-color: #f5f5f5;
+  min-height: 0;
+}
+
+
+.gcx-cat-info {
+  padding: 8px 10px;
+  text-align: center;
+}
+
+.gcx-cat-info h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 4px 0;
+}
+
+.gcx-cat-info p {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+}
+
+/* ==============================
+   CENTER - PRODUCTS
+   ============================== */
+.gcx-middle {
+  background: #FF4D4D;
+  border-radius: 12px;
+  padding: 15px 10px;
+}
+
+.gcx-featured-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex: 0 0 auto; 
+}
+
+.gcx-mega-title {
+  font-size: 20px;
+  font-weight: 900;
+  /* background: linear-gradient(90deg, #ff0080, #ff6600);
+   */
+   background-color: #fff;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gcx-featured-countdown {
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(255, 0, 0, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+
+.gcx-middle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, minmax(0, 1fr)); 
+  gap: 15px;
+  flex: 1 1 auto; 
+  min-height: 0;  
+  height: 100%;
+}
+
+.gcx-product-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  height: 100%; 
+  min-height: 0;
+}
+
+.gcx-product-card img {
+  width: 100%;
+  max-height: 100px; 
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+.gcx-price-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.gcx-old-price {
+  font-size: 12px;
+  color: #888;
+  text-decoration: line-through;
+}
+
+.gcx-product-price {
+  font-size: 15px;
+  font-weight: 700;
+  color: #e60023;
+}
+
+.gcx-cart-btn {
+  background: #ffce00;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.gcx-cart-btn:hover {
+  transform: scale(1.05);
+  background: #ffd633;
+}
+
+/* ==============================
+   RIGHT - BANNERS
+   ============================== */
+.gcx-right {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 0;               
+  display: flex;
+  flex-direction: column;   
+  gap: 15px;
+  height: 100%;
+  min-height: 0;
+}
+
+.gcx-banner {
+  flex: 1;                    
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  min-height: 0;
+}
+
+.gcx-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         
+  border-radius: 12px;
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+@media (max-width: 1200px) {
+  .gcx-container {
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: 12px;
+    padding: 0 20px;
+    height: 460px;           /* slightly shorter on md screens */
+  }
+}
+
+@media (max-width: 992px) {
+  .gcx-container {
+    grid-template-columns: 1fr 1fr;
+    height: auto;            /* stack naturally on tablets */
+  }
+  .gcx-left { display: none; }
+}
+
+@media (max-width: 768px) {
+  .gcx-container {
+    grid-template-columns: 1fr;
+    padding: 0 15px;
+    height: auto;   
+    margin: 20px auto 20px;         /* full flow on mobile */
+  }
+  .gcx-left { display: none; }
+ 
+
+  .gcx-middle-grid {
+    grid-template-columns: repeat(2, 1fr); /* ✅ 2 columns on mobile */
+    gap: 10px;
+  }
+  .gcx-product-card img {
+    height: auto; /* smaller images to fit mobile */
+  }
+  .gcx-product-card {
+    padding: 8px;
+  }
+  .gcx-cart-btn {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+    .gcx-right {
+    flex-direction: row;       /* optional: banners side-by-side or keep column */
+    gap: 10px;
+    height: auto;              /* let it grow naturally */
+  }
+
+  .gcx-banner {
+    flex: 1;
+    height: auto;              /* allow natural height */
+  }
+
+  .gcx-banner img {
+    width: 100%;
+    height: auto;              /* let image height scale */
+    object-fit: contain;       /* prevent cropping */
+    border-radius: 12px;
+  }
+
+}
+

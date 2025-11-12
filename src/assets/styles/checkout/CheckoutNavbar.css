@@ -1,0 +1,43 @@
+.checkout-navbar {
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 10px 20px;
+  z-index: 999;
+  box-sizing: border-box;
+}
+
+
+.checkout-navbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 1400px;
+  margin: 0 auto; /* centers the inner content */
+  width: 100%; /* ensure it fills horizontally up to max-width */
+}
+.checkout-logo img {
+  height: 40px;
+  border-radius: 10px;
+}
+
+.checkout-message {
+  display: flex;
+  align-items: center;
+  color: #0f9d58;
+  font-weight: 500;
+  font-size: 14px;
+  min-height: 20px;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in-out {
+  animation: fade 2s infinite;
+}
+
+@keyframes fade {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { opacity: 0; }
+}

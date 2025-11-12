@@ -1,0 +1,320 @@
+/* =====================
+   Checkout Page Styles
+===================== */
+
+.checkoutGrid {
+  display: flex;
+  gap: 20px;
+  max-width: 1350px; /* updated max-width */
+  margin: 40px auto;
+  padding: 0 16px;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  min-height: 500px;
+  min-height: 40vh;
+}
+
+/* Left & Right Panels */
+.checkoutLeft,
+.checkoutRight {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.07);
+  padding: 32px 28px;
+  transition: box-shadow 0.3s ease;
+}
+
+.checkoutLeft:hover,
+.checkoutRight:hover {
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+}
+
+.checkoutLeft {
+  flex: 1 1 750px; /* more space for form */
+  min-width: 320px;
+}
+
+.checkoutRight {
+  flex: 0 0 450px; /* summary panel wider */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Loading State */
+.loading {
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Country Selector */
+.countrySelectorWrapper {
+  margin-bottom: 20px;
+  max-width: 280px;
+}
+
+.countrySelectorLabel {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Form Elements */
+.checkoutForm label {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.checkoutForm input,
+.checkoutForm select {
+  width: 100%;
+  padding: 10px 14px;
+  margin-top: 6px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1.8px solid #ccc;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.checkoutForm input:focus,
+.checkoutForm select:focus {
+  border-color: #2196f3;
+  outline: none;
+  box-shadow: 0 0 6px #2196f3aa;
+}
+
+/* Form Row */
+.formRow {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.formRow label {
+  flex: 1;
+}
+
+
+/* loader in checkout  */
+
+/* Loader Overlay */
+.checkoutLoader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.85);
+  z-index: 9999;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Spinner */
+.loaderSpinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #ccc;
+  border-top-color: #2196f3;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+/* end  */
+
+/* Section Divider */
+.sectionDivider {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 28px 0;
+}
+
+/* Ship Different Checkbox */
+.shipDifferentLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  cursor: pointer;
+  color: #444;
+}
+
+/* Payment Methods */
+.paymentMethods {
+  margin-top: 20px;
+}
+
+.paymentMethodOption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1.5px solid transparent;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.paymentMethodOption:hover {
+  background-color: #f4f9ff;
+  border-color: #2196f3;
+}
+
+.paymentMethodOption input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.paymentMethodDetails {
+  background: #eef6ff;
+  border-left: 4px solid #2196f3;
+  padding: 14px 16px;
+  font-size: 14px;
+  color: #3b4a66;
+  margin-top: 12px;
+  border-radius: 6px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* Summary */
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  font-size: 1.2rem;
+  color: #444;
+  font-weight: 600;
+}
+
+.summaryRow.total {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #111;
+  border-top: 1.5px solid #ddd;
+  padding-top: 14px;
+  margin-top: 28px;
+}
+
+/* Coupon Box */
+.couponBox {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+}
+
+.couponBox input {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1.8px solid #ccc;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.couponBox input:focus {
+  border-color: #1976d2;
+  outline: none;
+  box-shadow: 0 0 8px #1976d2aa;
+}
+
+.couponBox button {
+  padding: 12px 20px;
+  background-color: #1976d2;
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.couponBox button:hover {
+  background-color: #0f4a88;
+}
+
+.couponError {
+  color: #d32f2f;
+  font-size: 13px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* Place Order Button */
+.placeOrderBtn {
+  margin-top: 36px;
+  width: 100%;
+  padding: 16px 0;
+  font-size: 20px;
+  font-weight: 800;
+  color: white;
+  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(245, 124, 0, 0.55);
+  transition: background 0.3s ease;
+}
+
+.placeOrderBtn:hover {
+  background: linear-gradient(135deg, #fb8c00 0%, #ef6c00 100%);
+}
+
+/* =====================
+   Responsive
+===================== */
+
+@media (max-width: 1200px) {
+  .checkoutLeft {
+    flex: 1 1 65%;
+  }
+  .checkoutRight {
+    flex: 0 0 35%;
+  }
+}
+
+@media (max-width: 900px) {
+  .checkoutGrid {
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 12px;
+  }
+
+  .checkoutLeft,
+  .checkoutRight {
+    width: 100% !important;
+    flex: none !important;
+  }
+
+  .formRow {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

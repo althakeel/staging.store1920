@@ -1,0 +1,166 @@
+.credit-balance-container {
+  max-width: 1400px;
+  margin: auto;
+  padding: 24px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+}
+
+.balance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.coin-btn {
+  padding: 8px 16px;
+  background-color: #ff6f00;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.safe-note {
+  color: #777;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.scam-warning {
+  font-size: 13px;
+  color: #d35400;
+  margin-bottom: 20px;
+}
+
+.total-section {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #fffbe6;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ffe0b2;
+}
+
+.total-value {
+  color: #d35400;
+}
+
+.history-title {
+  margin: 20px 0 10px;
+  font-size: 16px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 6px;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.history-table th,
+.history-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.history-table th {
+  background-color: #fafafa;
+  color: #555;
+}
+
+.empty-history {
+  padding: 30px;
+  text-align: center;
+  color: #777;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+}
+
+.coin-info {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #555;
+}
+
+.coin-info p {
+  margin: 4px 0;
+}
+/* Base styles (your existing ones) */
+
+/* Responsive tweaks */
+
+@media (max-width: 1024px) {
+  .credit-balance-container {
+    max-width: 90%;
+    padding: 16px;
+  }
+
+  .balance-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .coin-btn {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 16px;
+  }
+
+  .total-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .history-table th,
+  .history-table td {
+    padding: 8px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 600px) {
+  .credit-balance-container {
+    padding: 12px;
+  }
+
+  .balance-header {
+    gap: 8px;
+  }
+
+  .coin-btn {
+    font-size: 14px;
+    padding: 10px 0;
+  }
+
+  .total-section {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .history-title {
+    font-size: 14px;
+  }
+
+  .history-table th,
+  .history-table td {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .empty-history {
+    padding: 20px;
+    font-size: 13px;
+  }
+}

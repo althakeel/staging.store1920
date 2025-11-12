@@ -1,0 +1,22 @@
+.product-badges {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+}
+
+.badge-best_seller {
+  background-color: #ff6f00;
+}
+
+.badge-recommended {
+  background-color: #142515;
+}

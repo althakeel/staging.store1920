@@ -1,0 +1,550 @@
+/* ===============================
+   Root & Global
+================================== */
+.ot-root {
+  font-family: "Montserrat", Arial, sans-serif;
+
+  box-sizing: border-box;
+ 
+
+}
+
+
+
+
+/* Progress bar filled portion */
+.ot-progress-line-fill {
+  position: absolute;
+  left: 6%;
+  top: 47px;
+  height: 4px;
+  background: #ff6600;
+  border-radius: 4px;
+  z-index: 2;
+  transition: width 0.4s ease;
+}
+
+/* Completed step circles */
+.ot-step-circle.completed {
+  background: #11b300; /* green for completed */
+  box-shadow: 0 0 0 4px rgba(17, 179, 0, 0.15);
+}
+
+/* Active step circle stays orange */
+.ot-step-circle.active {
+  background: #ff6600;
+}
+
+/* Completed step labels */
+.ot-step-label.completed {
+  color: #11b300;
+}
+
+
+/* ===============================
+   Card Wrapper
+================================== */
+.ot-card {
+  max-width: 1400px;
+  margin: auto;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+  transition: box-shadow 0.3s ease;
+}
+.ot-card:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* ===============================
+   Guarantee Bar
+================================== */
+.ot-guarantee {
+  background: linear-gradient(90deg, #0a7d00, #18a300);
+  color: #fff;
+  font-size: 13px;
+  padding: 9px 14px;
+}
+.ot-guarantee-inner {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.ot-sep {
+  opacity: 0.7;
+}
+
+/* ===============================
+   Header
+================================== */
+.ot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 18px 20px;
+  gap: 12px;
+  border-bottom: 1px solid #f4f4f4;
+}
+.ot-header-left h2 {
+  margin: 0 0 6px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #222;
+}
+.ot-sub {
+  margin: 0 0 8px 0;
+  color: #666;
+  font-size: 14px;
+}
+.ot-link-btn {
+  background: none;
+  border: none;
+  color: #f55003;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  transition: color 0.2s;
+}
+.ot-link-btn:hover {
+  color: #005bb5;
+}
+
+/* Header Pills */
+.ot-header-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.ot-pill {
+  border: 1px solid #dcdcdc;
+  background: #fff;
+  padding: 8px 14px;
+  border-radius: 24px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.ot-pill:hover {
+  background: #f5f5f5;
+}
+
+/* ===============================
+   Guarantee Modal Styling
+================================== */
+/* ===============================
+   Guarantee Modal - New Design
+================================== */
+.ot-guarantee-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 12px 0;
+}
+
+.ot-guarantee-section {
+  background: #f9fef9;
+  border-left: 4px solid #18a300;
+  padding: 16px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(24, 163, 0, 0.15);
+  transition: background-color 0.3s ease;
+}
+
+.ot-guarantee-section:hover {
+  background: #e6f7e6;
+}
+
+.ot-guarantee-section h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f7c00;
+  letter-spacing: 0.02em;
+}
+
+.ot-guarantee-section p {
+  margin: 0;
+  font-size: 15px;
+  color: #2f3b27;
+  line-height: 1.6;
+}
+
+.ot-guarantee-section .ot-note {
+  font-size: 13px;
+  color: #547153;
+  font-style: italic;
+  margin-top: 6px;
+}
+
+/* Modal footer updated style */
+.ot-modal-footer {
+  margin-top: 20px;
+  text-align: center;
+  color: #4a6a2f;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ot-modal-footer a {
+  color: #18a300;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.3s;
+}
+
+.ot-modal-footer a:hover {
+  color: #0f7c00;
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .ot-modal-large {
+    width: 95%;
+    padding: 20px 16px;
+  }
+  .ot-guarantee-section {
+    padding: 14px 16px;
+  }
+  .ot-guarantee-section h3 {
+    font-size: 16px;
+  }
+  .ot-guarantee-section p {
+    font-size: 14px;
+  }
+}
+
+
+/* ===============================
+   Progress Bar
+================================== */
+.ot-progress {
+  position: relative;
+  padding: 28px 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+.ot-progress-line {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: 47px;
+  height: 4px;
+  background: #e6e6e6;
+  border-radius: 4px;
+  z-index: 1;
+}
+.ot-step {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ot-step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #cfcfcf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 4px #f8f8f8;
+  transition: all 0.25s;
+}
+.ot-step-circle.active {
+  background: #ff6600;
+  box-shadow: 0 0 0 4px rgba(255, 102, 0, 0.15);
+}
+.ot-step-label {
+  margin-top: 8px;
+  font-size: 13px;
+  text-align: center;
+  color: #555;
+  font-weight: 500;
+}
+
+/* ===============================
+   Address & Delivery
+================================== */
+.ot-address-wrap {
+  display: flex;
+  gap: 12px;
+  padding: 18px 20px;
+  border-top: 1px solid #f4f4f4;
+  border-bottom: 1px solid #f4f4f4;
+  flex-wrap: wrap;
+}
+.ot-address {
+  flex: 1 1 420px;
+}
+.ot-address-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ot-address-title h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+.ot-change-link {
+  color: #ff6600;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.ot-change-link:hover {
+  color: #e05600;
+}
+.ot-address-note {
+  margin-top: 6px;
+  color: #999;
+  font-size: 13px;
+}
+.ot-address-value {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #333;
+  max-width: 500px;
+}
+
+/* Delivery */
+.ot-delivery {
+  flex: 0 0 240px;
+  text-align: right;
+}
+.ot-delivery-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+.ot-delivery-value {
+  margin-top: 6px;
+  color: #ff6600;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* ===============================
+   Items Row
+================================== */
+.ot-items-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px 20px 20px;
+}
+.ot-order-id {
+  font-size: 14px;
+  color: #444;
+}
+.ot-thumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.ot-thumb-img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+/* ===============================
+   Modal
+================================== */
+.ot-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1400;
+}
+.ot-modal {
+  width: 100%;
+  max-width: 800px !important;
+  max-width: 94%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+.ot-modal-small {
+  width: 420px;
+}
+
+.ot-update-list{
+  font-size: 1rem;
+
+}
+/* Modal header */
+.ot-modal-close {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #666;
+}
+.ot-modal-title {
+  text-align: center;
+  margin: 6px 0 16px 0;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* Timeline */
+.ot-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 6px 2px 10px 2px;
+}
+.ot-timeline-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  border-bottom: 1px solid #f3f3f3;
+  padding-bottom: 8px;
+}
+.ot-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #cfcfcf;
+  margin-top: 6px;
+  box-shadow: 0 0 0 3px #f8f8f8;
+}
+.ot-dot.green {
+  background: #11b300;
+}
+.ot-timeline-status {
+  font-weight: 600;
+  color: #444;
+}
+.ot-timeline-status.green-text {
+  color: #11b300;
+}
+.ot-timeline-date {
+  font-size: 13px;
+  color: #7a7a7a;
+}
+
+/* ===============================
+   Buttons
+================================== */
+.ot-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
+}
+.ot-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s;
+}
+.ot-btn-primary {
+  background: #ff6600;
+  color: #fff;
+  border-color: #ff6600;
+}
+.ot-btn-primary:hover {
+  background: #e05600;
+}
+.ot-btn-secondary {
+  background: #fff;
+  color: #444;
+  border: 1px solid #ddd;
+}
+.ot-btn-secondary:hover {
+  background: #f8f8f8;
+}
+
+/* ===============================
+   Notes & Footer
+================================== */
+.ot-note {
+  color: #666;
+  font-size: 13px;
+}
+.ot-modal-footer {
+  margin-top: 12px;
+  text-align: center;
+  color: #8c8c8c;
+  font-size: 13px;
+}
+
+/* ===============================
+   Responsive
+================================== */
+@media (max-width: 800px) {
+  .ot-progress-line {
+    left: 4%;
+    right: 4%;
+    top: 38px;
+  }
+  .ot-step-circle {
+    width: 28px;
+    height: 28px;
+  }
+  .ot-delivery {
+    text-align: left;
+    flex: 1 1 100%;
+    margin-top: 12px;
+  }
+  .ot-address {
+    flex: 1 1 100%;
+  }
+  .ot-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .ot-header-right {
+    align-self: stretch;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  .ot-items-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+@media (max-width: 420px) {
+  .ot-step-label {
+    font-size: 12px;
+  }
+  .ot-thumb-img {
+    width: 48px;
+    height: 48px;
+  }
+  .ot-card {
+    border-radius: 12px;
+  }
+  .ot-modal {
+    padding: 16px;
+  }
+}

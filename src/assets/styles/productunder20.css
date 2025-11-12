@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+
+
+
+
+/* skelton */
+.pu20-image-skeleton {
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0;
+  border-radius: 5px 5px 0 0;
+  animation: pulse 1.4s infinite ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.pu20-image.hidden {
+  opacity: 0;
+}
+
+.pu20-image.visible {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+
+
+
+/* end skelton */
+.pu20-wrapper {
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0 10px;
+}
+
+.pu20-content {
+  width: 100%;
+  transition: width 0.3s ease;
+}
+
+.pu20-title {
+  padding: 10px 20px 10px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+}
+
+.pu20-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+}
+
+.pu20-card {
+  border: 0.5px solid #eee;
+  border-radius: 5px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.3s ease;
+}
+
+.pu20-card:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+}
+
+.pu20-image-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px 5px 0 0;
+}
+
+.pu20-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.pu20-image.primary {
+  z-index: 1;
+  opacity: 1;
+}
+
+.pu20-image.secondary {
+  z-index: 2;
+  opacity: 0;
+}
+
+.pu20-card:hover .pu20-image.primary {
+  opacity: 0;
+}
+
+.pu20-card:hover .pu20-image.secondary {
+  opacity: 1;
+}
+
+.pu20-info {
+  padding: 5px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pu20-product-title {
+  font-size: 12px;
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pu20-price-cart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.pu20-prices {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pu20-currency-icon {
+  width: auto;
+  height: 13px;
+  margin-right: 4px;
+}
+
+.pu20-price {
+  font-size: 13px;
+}
+
+.pu20-add-cart-btn {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.pu20-add-cart-btn.added {
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.pu20-add-cart-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.pu20-skeleton {
+  animation: pulse 1.4s infinite ease-in-out;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.pu20-no-products {
+  min-height: 300px;
+  text-align: center;
+  padding-top: 40px;
+  font-size: 18px;
+  color: #666;
+}
+
+.pu20-loadmore-wrapper {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.pu20-loadmore-btn {
+  padding: 12px 20px;
+  border-radius: 25px;
+  background-color: #fb7701;
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.pu20-toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #28a745;
+  color: white;
+  padding: 16px 28px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 9999;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pu20-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 5px;
+  }
+
+  .pu20-image-wrapper {
+    height: 150px;
+    aspect-ratio: unset;
+  }
+
+  .pu20-price-cart {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .pu20-add-cart-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pu20-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .pu20-price-cart {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .pu20-add-cart-btn {
+    width: 28px;
+    height: 28px;
+  }
+}

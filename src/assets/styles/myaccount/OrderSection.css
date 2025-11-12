@@ -1,0 +1,230 @@
+.order-section {
+  padding: 2rem;
+  background-color: #fefefe;
+  border-radius: 16px;
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Header */
+.order-header {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.order-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  color: #222;
+}
+
+/* Search box */
+.order-search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.order-search input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  transition: border 0.3s ease;
+  box-sizing: border-box;
+}
+
+.order-search input:focus {
+  border-color: #00bfa6;
+  outline: none;
+}
+
+.order-search button {
+  background-color: #bf5600;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+}
+
+.order-search button:hover {
+  background-color: #009e8a;
+}
+
+.reset-search {
+  background-color: #f44336 !important;
+}
+
+.reset-search:hover {
+  background-color: #c62828 !important;
+}
+
+/* Icon (SVG) */
+.scoped-search-icon12 {
+  width: 20px;
+  height: 20px;
+  stroke: #fff;
+  margin-right: 0.5rem;
+}
+
+/* Tabs */
+.order-tabs {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  border-bottom: 1px solid #ddd;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: #bf7300 transparent;
+  position: relative;
+}
+
+.order-tabs::-webkit-scrollbar {
+  height: 6px;
+}
+
+.order-tabs::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.order-tabs::-webkit-scrollbar-thumb {
+  background-color: #bf7300;
+  border-radius: 3px;
+}
+
+/* Optional fade effect at edges to hint scroll */
+.order-tabs::before,
+.order-tabs::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2rem;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.order-tabs::before {
+  left: 0;
+  background: linear-gradient(to right, #fefefe, transparent);
+}
+
+.order-tabs::after {
+  right: 0;
+  background: linear-gradient(to left, #fefefe, transparent);
+}
+
+.tab-button {
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.tab-button:hover {
+  color: #bf7300;
+}
+
+.tab-button.active {
+  color: #bf7300;
+  border-bottom-color: #bf7300;
+  font-weight: 700;
+}
+
+/* Status / Messages */
+.error {
+  color: #e53935;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.order-section p {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 1rem;
+}
+
+/* Responsive Enhancements */
+/* Mobile - below 480px */
+@media (max-width: 480px) {
+  .order-section {
+    padding: 0.8rem 0.5rem;
+  }
+
+  .order-header h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Search */
+  .order-search input,
+  .order-search button {
+    font-size: 0.85rem;
+    padding: 0.45rem 0.6rem;
+  }
+
+  /* Tabs */
+  .order-tabs {
+    gap: 0.4rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .tab-button {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  /* Reduce order row/card height */
+  .order-card, 
+  .processing-order-card,
+  .shipped-order-card,
+  .delivered-order-card,
+  .returned-order-card {
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  /* Optional: smaller buttons in order cards */
+  .order-card button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  /* Reduce spacing for order details inside card */
+  .order-card .order-item,
+  .order-card .order-status {
+    margin-bottom: 0.25rem;
+  }
+
+  .order-section p {
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+}

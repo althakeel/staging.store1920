@@ -1,0 +1,75 @@
+.pd-price-container {
+  margin-bottom: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pd-sale-price {
+  color: #000000;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.price-int {
+  font-size: 1.8rem; /* big number */
+  font-weight: 700;
+}
+
+.price-dec {
+  font-size: 1rem; /* smaller number */
+  vertical-align: super; /* raise decimal slightly */
+}
+
+
+.pd-regular-price {
+  color: #6b6b6b; /* text color */
+  position: relative;
+  font-weight: 400;
+  font-size: .9rem;
+}
+
+/* Custom colored line-through */
+.pd-regular-price::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 55%;
+  width: 100%;
+  border-bottom: 1px solid #e60023; /* red colored line-through */
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.pd-discount-badge {
+  padding: 1px 5px;
+  border: 1px solid #f06c01;
+  border-radius: 4px;
+  font-size: .6rem;
+  font-weight: 700;
+  color: #e60023;
+  background-color: transparent;
+  user-select: none;
+}
+.price-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.currency-icon {
+  width: 22px;
+  height: 22x;
+  /* remove position/top from here when using flex */
+  margin-right: 0; /* spacing handled by gap in price-wrapper */
+}
+.currency-icon1 {
+  width: 13px;
+  height: 14x;
+  /* remove position/top from here when using flex */
+  margin-right: 0; /* spacing handled by gap in price-wrapper */
+}

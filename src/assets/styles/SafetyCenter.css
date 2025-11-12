@@ -1,0 +1,172 @@
+/* === Container === */
+.safety-center-container {
+  font-family: 'Montserrat', sans-serif;
+  /* background-color: #f3f4f6; */
+  /* min-height: 100vh; */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Header === */
+.safety-header {
+  width: 100vw; /* full viewport width */
+  background: linear-gradient(to right, #007d2f, #19c37d);
+  color: white;
+  padding: 60px 0 120px 0; /* vertical padding */
+  position: relative;
+  /* background-image: url('https://db.store1920.com/wp-content/uploads/2025/07/checkout_bg_05.jpg'); 
+  */
+  background-color: #007d2f;
+  background-size: cover;
+  background-position: center;
+  /* border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px; */
+  box-sizing: border-box;
+}
+
+/* Inner wrapper to constrain header content */
+.safety-header > .header-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between; /* text left, image right */
+  align-items: center; /* vertical alignment */
+}
+
+.header-image img {
+  max-width: 120px; /* adjust size */
+  height: auto;
+}
+
+
+.safety-header h1 {
+  font-size: 42px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.safety-header .subtitle {
+  font-size: 18px;
+  margin-top: 15px;
+  max-width: 700px;
+}
+
+/* === Content Card === */
+.safety-content {
+  background-color: white;
+  max-width: 1000px;
+  margin: -80px auto 60px auto;
+  padding: 40px 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* === Sections === */
+.safety-section {
+  margin-bottom: 50px;
+}
+
+.safety-section h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+/* === Button Cards === */
+.safety-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.safety-grid button {
+  background-color: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 18px 24px;
+  flex: 1 1 calc(33.333% - 20px);
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  text-align: left;
+}
+
+.safety-grid button:hover {
+  background-color: #f0fdf4;
+  border-color: #34d399;
+  box-shadow: 0 4px 12px rgba(52, 211, 153, 0.2);
+  transform: translateY(-2px);
+}
+
+/* === Image inside button (optional) === */
+.safety-grid button img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* === Full Width for Long Text Buttons === */
+.report-grid button {
+  flex: 1 1 100%;
+}
+
+/* === Safety Partners === */
+.partner-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+  justify-content: flex-start;
+}
+
+.partner-logos img {
+  height: 38px;
+  object-fit: contain;
+  /* filter: grayscale(100%); */
+  transition: filter 0.3s;
+}
+
+.partner-logos img:hover {
+  filter: none;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .safety-header > .header-inner {
+    padding: 0 16px;
+    max-width: 100%; /* full width on mobile */
+  }
+
+  .safety-content {
+    max-width: 100%;
+    margin: -60px 16px 40px 16px;
+    padding: 30px 16px;
+    border-radius: 12px;
+  }
+
+  .safety-grid button {
+    flex: 1 1 100%;
+  }
+
+  .safety-header {
+    padding: 40px 0 100px 0;
+  }
+
+  .safety-header h1 {
+    font-size: 30px;
+  }
+
+  .safety-header .subtitle {
+    font-size: 16px;
+  }
+}

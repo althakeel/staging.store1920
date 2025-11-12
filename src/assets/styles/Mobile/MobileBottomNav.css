@@ -1,0 +1,154 @@
+/* Sticky bottom nav */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  background: #fff;
+  border-radius: 24px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 25;
+  left: 0;
+  right: 0;
+  width: 95%;
+  background: #ffffff;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 0 4px;
+  z-index: 9999;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+
+.slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+/* Keyframes for sliding from bottom */
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+/* Slide-up animation */
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.slide-up { animation: slideUp 0.4s ease-out; }
+
+/* Nav items */
+.nav-item {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  font-size: 12px;
+  color: #888;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.nav-item.active { color: #000000; }
+
+.icon-wrapper {
+  font-size: 22px;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Center "New" button */
+.nav-center-btn {
+  position: relative;
+  top: 12px;
+  width: 40px;        /* narrower */
+  height: 40px;       /* taller */
+  border-radius: 25px; /* oval shape */
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  transition: all 0.3s;
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+}
+.nav-center-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+}
+.new-icon { font-size: 18px; }
+
+/* Profile pic */
+.nav-profile-pic {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ff5500;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .mobile-bottom-nav { padding: 6px 0; border-radius: 16px; }
+  .icon-wrapper { font-size: 18px; }
+  .nav-item { font-size: 12px; }
+
+.nav-center-btn {
+  position: relative;
+  width: 40px;          /* fixed width */
+  height: 40px;         /* fixed height */
+  max-width: 40px;      /* ensure it never grows */
+  max-height: 40px;     /* ensure it never grows */
+  border-radius: 50%;   /* perfectly round */
+  color: #fff;
+  display: flex;
+  justify-content: center; /* horizontal centering */
+  align-items: center;     /* vertical centering */
+  font-size: 8px;          /* small enough to fit */
+  font-weight: bold;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  transition: all 0.3s;
+  padding: 0;             /* remove extra space */
+  overflow: hidden;     
+  padding-bottom: 3PX;  /* prevent content from overflowing */
+  top: 0;
+}
+
+/* Shrink icon/text inside to fit circle */
+.nav-center-btn .icon-wrapper,
+.nav-center-btn .label {
+  font-size: 12px;          /* make text small enough */
+  line-height: 1;          /* no extra line spacing */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+}
