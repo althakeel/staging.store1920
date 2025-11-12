@@ -1,3 +1,56 @@
+/* Tabby Checkout Payment Method Custom Design */
+.tabby-checkout-method {
+  align-items: center;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.tabby-method-label {
+  width: 100%;
+  align-items: center;
+  gap: 0;
+}
+.tabby-method-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.tabby-method-logo {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
+  background: #bffbe6;
+  padding: 2px 16px;
+  object-fit: contain;
+  box-shadow: 0 1px 4px rgba(80,200,120,0.08);
+  display: block;
+}
+.tabby-method-texts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2px;
+}
+.tabby-method-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.tabby-method-c {
+  font-size: 13px;
+  font-weight: 400;
+  margin-left: 2px;
+}
+.tabby-method-sub {
+  font-size: 15px;
+  color: #444;
+  font-weight: 400;
+  margin-top: 0;
+}
 /* Import Montserrat */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 

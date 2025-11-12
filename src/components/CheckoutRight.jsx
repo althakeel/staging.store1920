@@ -69,6 +69,7 @@ const parsePrice = (raw) => {
 // CheckoutRight Component
 // -----------------------------
 export default function CheckoutRight({ cartItems, formData, createOrder, clearCart, orderId }) {
+  // ...existing code...
   const [alert, setAlert] = useState({ message: '', type: 'info' });
   const [hoverMessage, setHoverMessage] = useState('');
   const [isPlacingOrder, setIsPlacingOrder] = useState(false);
@@ -84,6 +85,24 @@ export default function CheckoutRight({ cartItems, formData, createOrder, clearC
   }, 0);
 
   const subtotal = Math.max(0, itemsTotal - discount - coinDiscount);
+  // Tabby Installment Calculation (must be after subtotal is defined)
+  const tabbyInstallments = 4;
+  const tabbyMonthly = (subtotal / tabbyInstallments).toFixed(2);
+
+  // Tabby Info Box (above payment methods or summary)
+  const TabbyInfoBox = () => (
+    <div style={{ margin: '14px 0 8px 0', width: '100%' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, width: '100%' }}>
+        <span style={{ color: '#222', fontWeight: 400, fontSize: 15, lineHeight: 1.3, flex: 1 }}>
+          As low as <span style={{ fontWeight: 700, fontSize: 18 }}>{tabbyMonthly}</span> <span style={{ fontSize: 13 }}>AED/month</span>
+        </span>
+        <img src={Tabby} alt="tabby" style={{ height: 22, borderRadius: 4, background: '#3fffc0', padding: '1px 8px', marginLeft: 6, verticalAlign: 'middle' }} />
+      </div>
+      <div style={{ color: '#444', fontSize: 13, marginTop: 2, lineHeight: 1.2, width: '100%' }}>
+        or 4 interest-free payments. <a href="https://tabby.ai/en-AE/consumer" target="_blank" rel="noopener noreferrer" style={{ color: '#222', textDecoration: 'underline', fontWeight: 500 }}>Learn more</a>
+      </div>
+    </div>
+  );
   const totalWithDelivery = subtotal;
   const amountToSend = Math.max(totalWithDelivery, 0.01);
   const hasCartItems = cartItems.some((item) => (parseInt(item.quantity, 10) || 0) > 0);
@@ -140,19 +159,20 @@ export default function CheckoutRight({ cartItems, formData, createOrder, clearC
       await captureOrderItems(id, cartItems, shippingOrBilling);
 
       // COD
+      // Define normalized before use
+      const normalized = {
+        first_name: shippingOrBilling.first_name || 'First',
+        last_name:  shippingOrBilling.last_name  || 'Last',
+        email:      shippingOrBilling.email      || 'customer@example.com',
+        phone_number: shippingOrBilling.phone_number?.startsWith('+')
+          ? shippingOrBilling.phone_number
+          : `+971${shippingOrBilling.phone_number || ''}`,
+      };
+
       if (formData.paymentMethod === 'cod') {
         clearCart();
         window.location.href = `/order-success?order_id=${id.id || id}`;
-        return;
-      }
-
-      // ✅ STRIPE FLOW
-      if (formData.paymentMethod === 'stripe') {
-        const normalized = {
-          first_name: shippingOrBilling.first_name || 'First',
-          last_name: shippingOrBilling.last_name || 'Last',
-          email: shippingOrBilling.email || 'customer@example.com',
-        };
+        // No return or misplaced object here
 
         const payload = {
           amount: amountToSend,
@@ -180,43 +200,35 @@ export default function CheckoutRight({ cartItems, formData, createOrder, clearC
         }
       }
 
+      // TABBY
       if (formData.paymentMethod === 'tabby') {
-  const normalized = {
-    first_name: shippingOrBilling.first_name || 'First',
-    last_name:  shippingOrBilling.last_name  || 'Last',
-    email:      shippingOrBilling.email      || 'customer@example.com',
-    phone_number: shippingOrBilling.phone_number?.startsWith('+')
-      ? shippingOrBilling.phone_number
-      : `+${shippingOrBilling.phone_number || '971501234567'}`
-  };
+        const payload = {
+          amount: amountToSend,
+          order_id: id.id || id,
+          billing: normalized
+        };
 
-  const payload = {
-    amount: amountToSend,
-    order_id: id.id || id,
-    billing: normalized
-  };
+        try {
+          const res = await fetch('https://db.store1920.com/wp-json/custom/v1/tabby-intent', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
 
-  try {
-    const res = await fetch('https://db.store1920.com/wp-json/custom/v1/tabby-intent', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
+          const data = await res.json();
+          console.log('✅ Tabby Response =>', data);
 
-    const data = await res.json();
-    console.log('✅ Tabby Response =>', data);
+          if (!res.ok || !data.checkout_url) {
+            throw new Error(data.error || 'Failed to start Tabby session.');
+          }
 
-    if (!res.ok || !data.checkout_url) {
-      throw new Error(data.error || 'Failed to start Tabby session.');
-    }
-
-    window.location.href = data.checkout_url;
-    return;
-  } catch (err) {
-    console.error('❌ TABBY ERROR:', err);
-    showAlert(err.message || 'Failed to initiate Tabby payment.', 'error');
-  }
-}
+          window.location.href = data.checkout_url;
+          return;
+        } catch (err) {
+          console.error('❌ TABBY ERROR:', err);
+          showAlert(err.message || 'Failed to initiate Tabby payment.', 'error');
+        }
+      }
 
 if (formData.paymentMethod === 'tamara') {
   const payload = {
@@ -356,14 +368,15 @@ if (formData.paymentMethod === 'tamara') {
     const defaultLogos = {
       tabby: Tabby,
       tamara: Tamara,
+      card: 'https://aimg.kwcdn.com/upload_aimg/temu/ebeb26a5-1ac2-4101-862e-efdbc11544f3.png.slim.png',
     };
 
     const method = formData.paymentMethod;
     const hasMethod = Boolean(method);
     const label = hasMethod ? (labels[method] || method) : 'Order';
-  const rawLogo = hasMethod ? (defaultLogos[method] || formData.paymentMethodLogo || null) : null;
-  const shouldHideLogo = method === 'cod' || method === 'card';
-  const logoUrl = shouldHideLogo ? null : rawLogo;
+    const rawLogo = hasMethod ? (defaultLogos[method] || formData.paymentMethodLogo || null) : null;
+    const shouldHideLogo = method === 'cod' || method === 'card';
+    const logoUrl = shouldHideLogo ? null : rawLogo;
     const baseText = isPlacingOrder
       ? hasMethod
         ? `Placing Order with ${label}...`
@@ -381,10 +394,7 @@ if (formData.paymentMethod === 'tamara') {
       minHeight: '24px',
       textAlign: 'center',
     };
-
-    if (!logoUrl) {
-      return <span style={wrapperStyle}>{baseText}</span>;
-    }
+    // ...existing code...
 
     const logoStyle = {
       height: method === 'tabby' || method === 'tamara' ? '38px' : '32px',
@@ -396,7 +406,25 @@ if (formData.paymentMethod === 'tamara') {
       border: '1px solid #d1d5db',
     };
 
-    if (method === 'tabby' || method === 'tamara') {
+    if (method === 'tabby') {
+      return (
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 2, minHeight: 0, padding: 0, margin: 0}}>
+          <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6}}>
+            <span style={{fontWeight: 600, color: '#fff', fontSize: 16, margin: 0, lineHeight: 1}}>Place Order with Tabby</span>
+            <img src={Tabby} alt="tabby" style={{height: 22, width: 'auto', borderRadius: 4, background: '#3fffc0', padding: '1px 8px', margin: 0, display: 'block'}} />
+          </div>
+          <span style={{fontWeight: 500, color: '#fff', fontSize: 13, marginTop: 2, background: 'rgba(0,0,0,0.10)', borderRadius: 4, padding: '2px 8px', letterSpacing: '0.2px'}}>
+            As low as <span style={{fontWeight: 700, fontSize: 15}}>{tabbyMonthly}</span> <span style={{fontSize: 12}}>AED/month</span>
+          </span>
+        </div>
+      );
+    }
+    if (method === 'card') {
+      return (
+        <span style={{fontWeight: 600, color: '#fff', fontSize: 18}}>Place Order with Card</span>
+      );
+    }
+    if (method === 'tamara') {
       logoStyle.backgroundColor = 'transparent';
       logoStyle.border = 'none';
     } else if (method === 'cod') {
@@ -434,9 +462,12 @@ if (formData.paymentMethod === 'tamara') {
       <CouponDiscount onApplyCoupon={() => {}} />
 
       <div className="summaryRowCR">
-        <span>Total:</span>
-        <span>AED {totalWithDelivery.toFixed(2)}</span>
+        <span style={{ fontWeight: 700, fontSize: 18, color: '#222' }}>Total:</span>
+        <span style={{ fontWeight: 800, fontSize: 22, color: '#ff9800', letterSpacing: '0.5px' }}>AED {totalWithDelivery.toFixed(2)}</span>
       </div>
+
+ {/* Show Tabby installment info only if Tabby is selected, below the pay button */}
+      {/* {formData.paymentMethod === 'tabby' && <TabbyInfoBox />} */}
 
       <button
         className="placeOrderBtnCR"
@@ -447,6 +478,7 @@ if (formData.paymentMethod === 'tamara') {
         {getButtonLabel()}
       </button>
 
+     
       <TrustSection />
     </aside>
   );
