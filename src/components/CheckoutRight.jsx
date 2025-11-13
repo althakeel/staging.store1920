@@ -196,10 +196,15 @@ export default function CheckoutRight({ cartItems, formData, createOrder, clearC
       }
 
       // TABBY
+<<<<<<< HEAD
      
 
 
        // ✅ TABBY
+=======
+
+      // ✅ TABBY
+>>>>>>> bf1d070 (Integrate Tamara payment widget in PaymentMethods)
       if (formData.paymentMethod === 'tabby') {
         const normalized = {
           first_name: shippingOrBilling.first_name || 'First',
@@ -234,6 +239,7 @@ export default function CheckoutRight({ cartItems, formData, createOrder, clearC
               'not_available';
 
             const messages = {
+<<<<<<< HEAD
     not_available:
       'Sorry, Tabby is unable to approve this purchase. Please use an alternative payment method for your order.',
     order_amount_too_high:
@@ -242,6 +248,16 @@ export default function CheckoutRight({ cartItems, formData, createOrder, clearC
       'The purchase amount is below the minimum required to use Tabby. Try adding more items or use another payment method.',
   };
 const userMessage = messages[reason] || messages.not_available;
+=======
+              not_available:
+                'Sorry, Tabby is unable to approve this purchase. Please use an alternative payment method for your order.',
+              order_amount_too_high:
+                'This purchase is above your current spending limit with Tabby. Try a smaller cart or use another payment method.',
+              order_amount_too_low:
+                'The purchase amount is below the minimum required to use Tabby. Try adding more items or use another payment method.',
+            };
+            const userMessage = messages[reason] || messages.not_available;
+>>>>>>> bf1d070 (Integrate Tamara payment widget in PaymentMethods)
             showAlert(userMessage, 'error');
             console.warn('🚫 Tabby Pre-scoring rejected:', reason);
             return; // 🛑 Stay on same page (no redirect)
@@ -264,6 +280,48 @@ const userMessage = messages[reason] || messages.not_available;
         }
       }
 
+<<<<<<< HEAD
+=======
+      // ✅ TAMARA
+      if (formData.paymentMethod === 'tamara') {
+        const normalized = {
+          first_name: shippingOrBilling.first_name || 'First',
+          last_name:  shippingOrBilling.last_name  || 'Last',
+          email:      shippingOrBilling.email      || 'customer@example.com',
+          phone_number: shippingOrBilling.phone_number?.startsWith('+')
+            ? shippingOrBilling.phone_number
+            : `+${shippingOrBilling.phone_number || '971501234567'}`
+        };
+
+        const payload = {
+          amount: amountToSend,
+          order_id: id.id || id,
+          billing: normalized
+        };
+
+        try {
+          const res = await fetch('https://db.store1920.com/wp-json/custom/v1/tamara-intent', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          const data = await res.json();
+          if (data.checkout_url) {
+            window.location.href = data.checkout_url;
+            return;
+          } else {
+            console.error('Tamara error:', data);
+            showAlert('Failed to initiate Tamara payment.', 'error');
+          }
+        } catch (err) {
+          console.error('❌ TAMARA ERROR:', err);
+          showAlert(err.message || 'Failed to initiate Tamara payment.', 'error');
+        }
+      }
+
+
+
+>>>>>>> bf1d070 (Integrate Tamara payment widget in PaymentMethods)
 if (formData.paymentMethod === 'tamara') {
   const payload = {
     amount: amountToSend,
@@ -283,9 +341,12 @@ if (formData.paymentMethod === 'tamara') {
   }
 }
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> bf1d070 (Integrate Tamara payment widget in PaymentMethods)
       // ✅ PAYMOB / TABBY / TAMARA / CARD FLOW
       if (['paymob', 'card'].includes(formData.paymentMethod)) {
         const normalized = {

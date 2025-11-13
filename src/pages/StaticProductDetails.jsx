@@ -132,10 +132,14 @@ const CustomProductDetails = () => {
                   marginRight: "10px",
                 }}
               />
+<<<<<<< HEAD
               
             
                 {selectedBundle?.bundleTitle || product.BundleTitle || "Bundle"}
              
+=======
+              {selectedBundle?.bundleTitle || product.BundleTitle || "Bundle"}
+>>>>>>> bf1d070 (Integrate Tamara payment widget in PaymentMethods)
               <span
                 style={{
                   flex: 1,
@@ -145,8 +149,11 @@ const CustomProductDetails = () => {
                 }}
               />
             </h3>
+<<<<<<< HEAD
             
             
+=======
+>>>>>>> bf1d070 (Integrate Tamara payment widget in PaymentMethods)
 
             {/* Bundle Selector */}
             <Bundle
@@ -155,7 +162,10 @@ const CustomProductDetails = () => {
               setSelected={setSelectedBundleIndex}
               onAddToCart={handleAddToCart}
             />
+<<<<<<< HEAD
             
+=======
+>>>>>>> bf1d070 (Integrate Tamara payment widget in PaymentMethods)
 
             <DeliveryInfo />
             <Desciption product={product} />

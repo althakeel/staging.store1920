@@ -53,6 +53,15 @@ import CustomCheckout from './pages/adcheckout'
 import Fastdelivery from './pages/Fastdelivery';
 import OrderFailure from './pages/OrderFailure';
 import OrderCancel from './pages/OrderCancel';
+<<<<<<< HEAD
+=======
+import TabbySuccess from './pages/tabby-success';
+import TabbyFailure from './pages/tabby-failure';
+import TabbyCancel from './pages/tabby-cancel';
+import TamaraSuccess from './pages/tamara-success';
+import TamaraFailure from './pages/tamara-failure';
+import TamaraCancel from './pages/tamara-cancel';
+>>>>>>> bf1d070 (Integrate Tamara payment widget in PaymentMethods)
 
 // Components
 import Topbar from './components/topbar';
@@ -355,6 +364,15 @@ const AppContent = () => {
                     <Route path="/order-success" element={<OrderSuccess />} />
                     <Route path="/order-failure" element={<OrderFailure />} />
                     <Route path="/order-cancel" element={<OrderCancel />} />
+<<<<<<< HEAD
+=======
+                    <Route path="/tabby-success" element={<TabbySuccess />} />
+                    <Route path="/tabby-failure" element={<TabbyFailure />} />
+                    <Route path="/tabby-cancel" element={<TabbyCancel />} />
+                    <Route path="/tamara-success" element={<TamaraSuccess />} />
+                    <Route path="/tamara-failure" element={<TamaraFailure />} />
+                    <Route path="/tamara-cancel" element={<TamaraCancel />} />
+>>>>>>> bf1d070 (Integrate Tamara payment widget in PaymentMethods)
                     <Route path="/track-order" element={<TrackOrder />} />
                     <Route path="/fest-sale" element={<Festsale />} />
                     <Route path="/season-sale" element={<SeasonSale />} />

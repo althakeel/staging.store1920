@@ -119,7 +119,56 @@ export default function ProductInfo({ product, variations, selectedVariation, on
       {/* Official TabbyCard widget above Buy Now button (only one Tabby, as requested) */}
       <div style={{width:'100%', margin:'18px 0'}}>
         <div id="tabbyProductCard" style={{width:'100%'}}></div>
+<<<<<<< HEAD
       </div>
+=======
+        {/* Tamara Product Widget below Tabby */}
+        <div
+          className="tamara-product-widget"
+          data-lang="en"
+          data-price={selectedVariation?.price ?? product.price ?? 0}
+          data-currency="AED"
+          data-country-code="AE"
+          data-color-type="default"
+          data-tag-position="inside"
+          data-show-border="true"
+          data-payment-type="installment"
+          data-public-key="610bc886-8883-42f4-9f61-4cf0ec45c02e"
+          data-number-of-installments="4"
+          data-disable-installment="false"
+          data-disable-paylater="true"
+        ></div>
+      </div>
+      {/* Tamara widget loader (official async pattern) */}
+      {typeof window !== 'undefined' && (() => {
+        // Only load once
+        if (!document.getElementById('tamara-product-widget-js')) {
+          window.tamaraAsyncCallback = function () {
+            if (window.TamaraProductWidget) {
+              window.TamaraProductWidget.init({
+                lang: 'en',
+                currency: 'AED',
+                publicKey: '610bc886-8883-42f4-9f61-4cf0ec45c02e'
+              });
+              window.TamaraProductWidget.render();
+            }
+          };
+          const script = document.createElement('script');
+          script.src = 'https://cdn.tamara.co/widget/product-widget.min.js';
+          script.async = true;
+          script.id = 'tamara-product-widget-js';
+          document.body.appendChild(script);
+        } else if (window.TamaraProductWidget) {
+          window.TamaraProductWidget.init({
+            lang: 'en',
+            currency: 'AED',
+            publicKey: '610bc886-8883-42f4-9f61-4cf0ec45c02e'
+          });
+          window.TamaraProductWidget.render();
+        }
+        return null;
+      })()}
+>>>>>>> bf1d070 (Integrate Tamara payment widget in PaymentMethods)
       {/* TabbyCard script loader */}
       {typeof window !== 'undefined' && (() => {
         // Ensure price is always a number before calling toFixed
@@ -155,7 +204,11 @@ export default function ProductInfo({ product, variations, selectedVariation, on
           });
         }
         return null;
+<<<<<<< HEAD
       })()}
+=======
+  })()}
+>>>>>>> bf1d070 (Integrate Tamara payment widget in PaymentMethods)
       <ProductShortDescription shortDescription={product.short_description} />
 
       {showClearance && clearanceEndTime ? (
@@ -196,6 +249,7 @@ export default function ProductInfo({ product, variations, selectedVariation, on
   showClearance={showClearance}
   handleAddToCart={handleAddToCart}
 />
+<<<<<<< HEAD
 
 
       {/* Official TabbyCard widget above Buy Now button */}
@@ -240,6 +294,8 @@ export default function ProductInfo({ product, variations, selectedVariation, on
         }
         return null;
       })()}
+=======
+>>>>>>> bf1d070 (Integrate Tamara payment widget in PaymentMethods)
       <ButtonSection
         product={product}
         selectedVariation={selectedVariation}
