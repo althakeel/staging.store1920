@@ -266,7 +266,24 @@ const userMessage = messages[reason] || messages.not_available;
 
 
 
-
+if (formData.paymentMethod === 'tamara') {
+  const payload = {
+    amount: amountToSend,
+    order_id: id.id || id,
+    billing: shippingOrBilling,
+  };
+  const res = await fetch('https://db.store1920.com/wp-json/custom/v1/tamara-intent', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  const data = await res.json();
+  if (data.checkout_url) {
+    window.location.href = data.checkout_url;
+  } else {
+    console.error('Tamara error:', data);
+  }
+}
 
       // ✅ PAYMOB / TABBY / TAMARA / CARD FLOW
       if (['paymob', 'card'].includes(formData.paymentMethod)) {
