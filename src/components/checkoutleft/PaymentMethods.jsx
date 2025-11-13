@@ -190,7 +190,7 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
               </div>
             </div>
           </label>
-        </div>
+        </div>    
 
         {/* Tamara */}
         <div className="payment-method-item">
