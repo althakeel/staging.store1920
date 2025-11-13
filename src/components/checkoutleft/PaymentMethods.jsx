@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-// ...existing code...
-import React from 'react';
-=======
 import React, { useEffect } from 'react';
->>>>>>> master
 import '../../assets/styles/checkoutleft/paymentmethods.css';
 
 import circleEmpty from '../../assets/images/tabby/full.webp';
@@ -42,18 +37,6 @@ try {
   staticProducts = [];
 }
 
-<<<<<<< HEAD
-const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = [] }) => {
-  const [showCodPopup, setShowCodPopup] = React.useState(false);
-
-  // Get all static product IDs from staticProducts.js with error handling
-  let staticProductIds = [];
-  
-  try {
-    staticProductIds = staticProducts.flatMap(product => {
-      const ids = [product.id];
-      // Add bundle IDs from each product's bundles array
-=======
 // Tabby credentials (provided by user)
 const TABBY_PUBLIC_KEY = 'pk_test_019a4e3b-c868-29ff-1078-04aec08847bf';
 const TABBY_MERCHANT_CODE = 'Store1920';
@@ -76,7 +59,6 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
   try {
     staticProductIds = staticProducts.flatMap(product => {
       const ids = [product.id];
->>>>>>> master
       if (product.bundles && Array.isArray(product.bundles)) {
         product.bundles.forEach(bundle => {
           if (bundle.id) {
@@ -87,48 +69,6 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
       return ids;
     });
   } catch (error) {
-<<<<<<< HEAD
-    console.warn('Error loading static products for COD logic:', error);
-    // Fallback to empty array if there's an error
-    staticProductIds = [];
-  }
-
-  // Check if cart contains only static products
-  const hasOnlyStaticProducts = cartItems.length > 0 && staticProductIds.length > 0 && cartItems.every(item => 
-    staticProductIds.includes(item.id)
-  );
-
-  // Check if cart has any non-static products
-  const hasNonStaticProducts = staticProductIds.length > 0 && cartItems.some(item => 
-    !staticProductIds.includes(item.id)
-  );
-
-  // Calculate dynamic amounts for payment methods
-  const amount = Number(subtotal) || 0;
-  const tabbyInstallment = (amount / 4).toFixed(2);
-  
-  // Payment options - COD only shows for static products only
-  const paymentOptions = [
-    ...(hasOnlyStaticProducts && !hasNonStaticProducts && staticProductIds.length > 0 ? [
-      { id: 'cod', title: 'Cash On Delivery', description: 'Pay with cash on delivery', img: CashIcon }
-    ] : []),
-    { id: 'card', title: 'Credit/Debit Card', description: 'Pay securely with card', img: CardIcon },
-    { 
-      id: 'tabby', 
-      title: 'Tabby: Split into 4 Payments', 
-      description: `Pay AED${tabbyInstallment} today and the rest in 3 interest-free payments`,
-      img: TabbyIcon 
-    },
-    { 
-      id: 'tamara', 
-      title: 'Tamara: Split in up to 4 payments', 
-      description: `Pay AED${tabbyInstallment} today and the rest in 3 interest-free payments`,
-      img: TamaraIcon 
-    },
-  ];
-
-  // Auto-switch to card if COD was selected but is no longer available
-=======
     staticProductIds = [];
   }
 
@@ -137,78 +77,12 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
   const amount = Number(subtotal) || 0;
   const tabbyInstallment = (amount / 4).toFixed(2);
 
->>>>>>> master
   React.useEffect(() => {
     const isCodAvailable = hasOnlyStaticProducts && !hasNonStaticProducts && staticProductIds.length > 0;
     if (selectedMethod === 'cod' && !isCodAvailable) {
       onMethodSelect('card', 'Credit/Debit Card', CardIcon);
     }
   }, [cartItems, selectedMethod, onMethodSelect, hasOnlyStaticProducts, hasNonStaticProducts, staticProductIds.length]);
-<<<<<<< HEAD
-    
-  const renderExtraInfo = (method) => {
-    const amount = Number(subtotal) || 0;
-    const today = new Date();
-    const formatDate = (date) =>
-      date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
-
-    if (method === 'tabby') {
-      const installment = (amount / 4).toFixed(2);
-      const dates = [0, 30, 60, 90].map((d) => {
-        const dt = new Date(today);
-        dt.setDate(today.getDate() + d);
-        return formatDate(dt);
-      });
-
-      const progressImages = [circleQuarter, circleHalf, circleFull, circleEmpty];
-
-      return (
-        <div className="pm-extra tabby-extra">
-          <p style={{ color: 'grey' }}>Use Any cards</p>
-          <p className="tabby-note">Pay in 4 easy installments without any extra fees</p>
-          <div className="tabby-progress">
-            {dates.map((date, idx) => (
-              <div key={idx} className="tabby-step-wrapper">
-                {idx !== 0 && <div className="tabby-line"></div>}
-                <div className="tabby-step">
-                  <img src={progressImages[idx]} alt={`Step ${idx + 1}`} className="tabby-circle" />
-                  <div className="tabby-amount">
-                    <img src={aedIcon} alt="AED" className="aed-icon" /> {installment}
-                  </div>
-                  <div className="tabby-date">{idx === 0 ? 'Today' : date}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      );
-    }
-
-    if (method === 'tamara') {
-      const dueDate = new Date(today);
-      dueDate.setDate(today.getDate() + 14);
-      return (
-        <div className="pm-extra tamara-extra">
-          <p style={{ color: 'grey' }}>Use Any cards</p>
-          <p>Pay later in 14 days:</p>
-          <ul>
-            <li>AED {amount.toFixed(2)} — {formatDate(dueDate)}</li>
-          </ul>
-        </div>
-      );
-    }
-
-    return null;
-  };
-
-
-  // Tabby always visible for testing (bypass pre-scoring)
-  const tabbyStatus = 'created';
-
-  // Tabby pre-scoring API call
-
-  // (No Tabby pre-scoring effect, bypassed for always-on Tabby)
-=======
 
   // TabbyCard integration: always show TabbyCard widget
   useEffect(() => {
@@ -242,16 +116,10 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
       });
     }
   }, [subtotal]);
->>>>>>> master
 
   return (
     <div className="pm-wrapper">
       <h3>Payment methods</h3>
-<<<<<<< HEAD
-      
-      {/* Show message when COD is not available */}
-=======
->>>>>>> master
       {cartItems.length > 0 && hasNonStaticProducts && staticProductIds.length > 0 && (
         <div style={{
           backgroundColor: '#fff3cd',
@@ -264,12 +132,7 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
         }}>
           ℹ️ Cash on Delivery is only available for selected products. Your cart contains items that require online payment.
         </div>
-<<<<<<< HEAD
-      )} 
-      
-=======
       )}
->>>>>>> master
       <div className="payment-methods-list">
         {/* Credit/Debit Card */}
         <div className="payment-method-item">
@@ -285,15 +148,8 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
               <div className="card-payment-header">
                 <span className="card-text">Card</span>
                 <div className="card-icons-group">
-<<<<<<< HEAD
-                  {/* <img src='http://localhost:3000/static/media/19.596d7738d41ca6630085.webp' alt="Visa" className="card-icon" /> */}
                   <img src={MasterCardIcon} alt="Mastercard" className="card-icon" />
                   <img src={AmexIcon} alt="American Express" className="card-icon" />
-                   {/* <img src='http://localhost:3000/static/media/20.c033ec0799cf09bb276d.webp' alt="American Express" className="card-icon" /> */}
-=======
-                  <img src={MasterCardIcon} alt="Mastercard" className="card-icon" />
-                  <img src={AmexIcon} alt="American Express" className="card-icon" />
->>>>>>> master
                   <img src="https://aimg.kwcdn.com/upload_aimg/temu/ebeb26a5-1ac2-4101-862e-efdbc11544f3.png.slim.png" alt="Discover" className="card-icon" />
                   <img src={ApplePayIcon} alt="Diners Club" className="card-icon" />
                   <img src={GooglePayIcon} alt="JCB" className="card-icon" />
@@ -303,37 +159,6 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
           </label>
         </div>
 
-<<<<<<< HEAD
-        {/* Tabby */}
-        {tabbyStatus === 'created' && ( 
-          <div className="payment-method-item tabby-checkout-method">
-            <input
-              type="radio"
-              id="tabby"
-              name="payment-method"
-              checked={selectedMethod === 'tabby'}
-              onChange={() => onMethodSelect('tabby', 'Tabby', TabbyIcon)}
-            />
-            <label htmlFor="tabby" className="payment-method-label tabby-method-label">
-              <div className="tabby-method-row">
-                <img src="https://levantine.ae/wp-content/uploads/2023/03/tabby-badge.png" alt="Tabby" className="tabby-method-logo" />
-                <div className="tabby-method-texts">
-                  <div className="tabby-method-title">Pay later with Tabby.<span className="tabby-method-c">©</span></div>
-                  <div className="tabby-method-sub">Use any card.</div>
-                </div>
-              </div>
-            </label>
-          </div>
-        )}
-
-        {tabbyStatus === 'loading' && (
-          <div className="payment-method-item tabby-checkout-method tabby-loading">
-            <div className="tabby-method-row">
-              <div className="tabby-method-texts">Checking Tabby eligibility...</div>
-            </div>
-          </div>
-        )}
-=======
         {/* Tabby Payment Method (official checkout snippet) */}
         <div className="payment-method-item tabby-checkout-method" style={{width:'100%'}}>
           <input
@@ -366,7 +191,6 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
             </div>
           </label>
         </div>    
->>>>>>> master
 
         {/* Tamara */}
         <div className="payment-method-item">

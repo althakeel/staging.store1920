@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useCart } from "../../contexts/CartContext";
 
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 const Bundle = ({ product, bundles, selected, setSelected }) => {
   const [variants, setVariants] = useState({});
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -17,8 +13,6 @@ const Bundle = ({ product, bundles, selected, setSelected }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-<<<<<<< HEAD
-=======
   // ✅ Load and render TabbyCard (Full Width)
   useEffect(() => {
     if (!bundles[selected]) return;
@@ -52,7 +46,6 @@ const Bundle = ({ product, bundles, selected, setSelected }) => {
     }
   }, [selected, bundles]);
 
->>>>>>> master
   // Handle variant selection
   const handleVariantChange = (bundleIndex, productIndex, color) => {
     setVariants((prev) => ({
@@ -65,44 +58,6 @@ const Bundle = ({ product, bundles, selected, setSelected }) => {
   const formatAED = (value) => `AED ${value.toFixed(2)}`;
 
   // Handle Buy Now click
-<<<<<<< HEAD
-const handleBuyNow = () => {
-  const bundle = bundles[selected];
-
-  // Get bundle image: fallback to main product image
-  const bundleImage = bundle.image || bundle.images?.[0] || bundle.productImage || null;
-
-  const bundleToCart = {
-  id: bundle.wooId || bundle.id || 0, // make sure this is 523369, 523370, or 523371
-    name: bundle.type,
-    price: bundle.price,
-    originalPrice: bundle.originalPrice,
-    quantity: 1,
-    variation: variants,
-    image: bundleImage, // pass proper image
-  };
-
-  // Add to cart
-  addToCart(bundleToCart, false);
-
-  // Redirect to checkout
-  const query = new URLSearchParams({
-    type: bundleToCart.name,
-    price: bundleToCart.price,
-    quantity: bundleToCart.quantity,
-    image: bundleImage, // pass image URL if needed
-  });
-
-  window.location.href = `/checkout?${query.toString()}`;
-};
-
-
-  return (
-    <div style={{ padding: "16px", fontFamily: "Arial, sans-serif" }}>
-      {/* Title */}
-
-
-=======
   const handleBuyNow = () => {
     const bundle = bundles[selected];
     const bundleImage = bundle.image || bundle.images?.[0] || bundle.productImage || null;
@@ -131,7 +86,6 @@ const handleBuyNow = () => {
 
   return (
     <div style={{ padding: "16px", fontFamily: "Arial, sans-serif" }}>
->>>>>>> master
       {/* Bundles */}
       {bundles.map((bundle, index) => {
         const totalSavings = bundle.originalPrice - bundle.price;
@@ -206,11 +160,7 @@ const handleBuyNow = () => {
                 </span>
               </div>
 
-<<<<<<< HEAD
-              {/* Price */}
-=======
               {/* Price Section */}
->>>>>>> master
               <div style={{ textAlign: "right" }}>
                 <p
                   style={{
@@ -242,58 +192,10 @@ const handleBuyNow = () => {
                 style={{ marginLeft: "12px", accentColor: "#d45a5a" }}
               />
             </div>
-<<<<<<< HEAD
-
-            {/* Variant Selector */}
-            {bundle.colors &&
-              bundle.colors.map((row, i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginBottom: "6px",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: "11px",
-                      color: "#777",
-                      marginRight: "8px",
-                      width: "20px",
-                    }}
-                  >
-                    #{i + 1}
-                  </span>
-                  {row.map((c, j) => {
-                    const key = `${index}-${i}`;
-                    const isSelectedColor = variants[key] === c;
-                    return (
-                      <div
-                        key={j}
-                        onClick={() => handleVariantChange(index, i, c)}
-                        style={{
-                          width: "24px",
-                          height: "24px",
-                          borderRadius: "50%",
-                          border: isSelectedColor ? "2px solid #d45a5a" : "1px solid #ccc",
-                          marginRight: "6px",
-                          background: c,
-                          cursor: "pointer",
-                        }}
-                      />
-                    );
-                  })}
-                </div>
-              ))}
-=======
->>>>>>> master
           </div>
         );
       })}
 
-<<<<<<< HEAD
-=======
       {/* ✅ Full-Width TabbyCard Widget */}
       <div style={{ width: "100%", margin: "18px 0" }}>
         <div
@@ -306,7 +208,6 @@ const handleBuyNow = () => {
         ></div>
       </div>
 
->>>>>>> master
       {/* Buy Now Button */}
       <div
         style={{

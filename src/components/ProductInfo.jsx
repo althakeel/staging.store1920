@@ -116,8 +116,6 @@ export default function ProductInfo({ product, variations, selectedVariation, on
     
 
       <PriceDisplay product={product} selectedVariation={selectedVariation} />
-<<<<<<< HEAD
-=======
       {/* Official TabbyCard widget above Buy Now button (only one Tabby, as requested) */}
       <div style={{width:'100%', margin:'18px 0'}}>
         <div id="tabbyProductCard" style={{width:'100%'}}></div>
@@ -157,8 +155,7 @@ export default function ProductInfo({ product, variations, selectedVariation, on
           });
         }
         return null;
-      })()}
->>>>>>> master
+  })()}
       <ProductShortDescription shortDescription={product.short_description} />
 
       {showClearance && clearanceEndTime ? (
@@ -199,53 +196,6 @@ export default function ProductInfo({ product, variations, selectedVariation, on
   showClearance={showClearance}
   handleAddToCart={handleAddToCart}
 />
-
-<<<<<<< HEAD
-=======
-
-      {/* Official TabbyCard widget above Buy Now button */}
-      <div style={{width:'100%', margin:'18px 0'}}>
-        <div id="tabbyProductCard" style={{width:'350px'}}></div>
-      </div>
-
-      {/* TabbyCard script loader */}
-     
- {typeof window !== 'undefined' && (() => {
-        // Ensure price is always a number before calling toFixed
-        const rawPrice = selectedVariation?.price ?? product.price ?? 0;
-        const priceNum = parseFloat(rawPrice) || 0;
-        if (!document.getElementById('tabby-product-card-js')) {
-          const script = document.createElement('script');
-          script.src = 'https://checkout.tabby.ai/tabby-card.js';
-          script.id = 'tabby-product-card-js';
-          script.onload = () => {
-            if (window.TabbyCard) {
-              new window.TabbyCard({
-                selector: '#tabbyProductCard',
-                currency: 'AED',
-                price: priceNum.toFixed(2),
-                lang: 'en',
-                shouldInheritBg: false,
-                publicKey: 'pk_test_019a4e3b-c868-29ff-1078-04aec08847bf',
-                merchantCode: 'Store1920'
-              });
-            }
-          };
-          document.body.appendChild(script);
-        } else if (window.TabbyCard) {
-          new window.TabbyCard({
-            selector: '#tabbyProductCard',
-            currency: 'AED',
-            price: priceNum.toFixed(2),
-            lang: 'en',
-            shouldInheritBg: false,
-            publicKey: 'pk_test_019a4e3b-c868-29ff-1078-04aec08847bf',
-            merchantCode: 'Store1920'
-          });
-        }
-        return null;
-      })()}
->>>>>>> master
       <ButtonSection
         product={product}
         selectedVariation={selectedVariation}
