@@ -37,43 +37,46 @@ try {
   staticProducts = [];
 }
 
-// Tabby credentials (provided by user)
+// Tabby credentials
 const TABBY_PUBLIC_KEY = 'pk_test_019a4e3b-c868-29ff-1078-04aec08847bf';
 const TABBY_MERCHANT_CODE = 'Store1920';
 
+// Tamara credentials
+const TAMARA_PUBLIC_KEY = '610bc886-8883-42f4-9f61-4cf0ec45c02e';
 
 const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = [] }) => {
   const [showCodPopup, setShowCodPopup] = React.useState(false);
 
-  // Set Tabby as default if nothing is selected and Tabby is available
+  // Set Tabby as default if nothing is selected and subtotal > 0
   React.useEffect(() => {
-    // Only select Tabby by default if subtotal > 0 and nothing is selected
     if (!selectedMethod && subtotal > 0) {
-      onMethodSelect('tabby', 'Tabby', require('../../assets/images/Footer icons/3.webp'));
+      onMethodSelect('tabby', 'Tabby', TabbyIcon);
     }
-    // eslint-disable-next-line
   }, [selectedMethod, subtotal, onMethodSelect]);
 
-  // Get all static product IDs from staticProducts.js with error handling
+  // Static product checks
   let staticProductIds = [];
   try {
     staticProductIds = staticProducts.flatMap(product => {
       const ids = [product.id];
       if (product.bundles && Array.isArray(product.bundles)) {
-        product.bundles.forEach(bundle => {
-          if (bundle.id) {
-            ids.push(bundle.id);
-          }
-        });
+        product.bundles.forEach(bundle => bundle.id && ids.push(bundle.id));
       }
       return ids;
     });
-  } catch (error) {
+  } catch {
     staticProductIds = [];
   }
 
-  const hasOnlyStaticProducts = cartItems.length > 0 && staticProductIds.length > 0 && cartItems.every(item => staticProductIds.includes(item.id));
-  const hasNonStaticProducts = staticProductIds.length > 0 && cartItems.some(item => !staticProductIds.includes(item.id));
+  const hasOnlyStaticProducts =
+    cartItems.length > 0 &&
+    staticProductIds.length > 0 &&
+    cartItems.every(item => staticProductIds.includes(item.id));
+
+  const hasNonStaticProducts =
+    staticProductIds.length > 0 &&
+    cartItems.some(item => !staticProductIds.includes(item.id));
+
   const amount = Number(subtotal) || 0;
   const tabbyInstallment = (amount / 4).toFixed(2);
 
@@ -84,7 +87,7 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
     }
   }, [cartItems, selectedMethod, onMethodSelect, hasOnlyStaticProducts, hasNonStaticProducts, staticProductIds.length]);
 
-  // TabbyCard integration: always show TabbyCard widget
+  // --- TabbyCard integration ---
   useEffect(() => {
     if (!document.getElementById('tabby-card-js')) {
       const script = document.createElement('script');
@@ -117,28 +120,58 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
     }
   }, [subtotal]);
 
+  // --- Tamara Installment Widget Integration ---
+  useEffect(() => {
+    const loadTamaraWidget = () => {
+      if (window.TamaraInstallmentPlan) {
+        window.TamaraInstallmentPlan.init({
+          lang: 'en',
+          currency: 'AED',
+          publicKey: TAMARA_PUBLIC_KEY
+        });
+        window.TamaraInstallmentPlan.render();
+      }
+    };
+
+    if (!document.getElementById('tamara-widget-js')) {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.tamara.co/widget/installment-plan.min.js';
+      script.id = 'tamara-widget-js';
+      script.async = true;
+      script.onload = loadTamaraWidget;
+      document.head.appendChild(script);
+    } else {
+      loadTamaraWidget();
+    }
+  }, [subtotal]);
+
   return (
     <div className="pm-wrapper">
       <h3>Payment methods</h3>
+
       {cartItems.length > 0 && hasNonStaticProducts && staticProductIds.length > 0 && (
-        <div style={{
-          backgroundColor: '#fff3cd',
-          border: '1px solid #ffeaa7',
-          borderRadius: '4px',
-          padding: '12px',
-          marginBottom: '16px',
-          fontSize: '14px',
-          color: '#856404'
-        }}>
+        <div
+          style={{
+            backgroundColor: '#fff3cd',
+            border: '1px solid #ffeaa7',
+            borderRadius: '4px',
+            padding: '12px',
+            marginBottom: '16px',
+            fontSize: '14px',
+            color: '#856404'
+          }}
+        >
           ℹ️ Cash on Delivery is only available for selected products. Your cart contains items that require online payment.
         </div>
       )}
+
       <div className="payment-methods-list">
-        {/* Credit/Debit Card */}
+
+        {/* Card Payment */}
         <div className="payment-method-item">
-          <input 
-            type="radio" 
-            id="card" 
+          <input
+            type="radio"
+            id="card"
             name="payment-method"
             checked={selectedMethod === 'card'}
             onChange={() => onMethodSelect('card', 'Credit/Debit Card', CardIcon)}
@@ -151,16 +184,16 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
                   <img src={MasterCardIcon} alt="Mastercard" className="card-icon" />
                   <img src={AmexIcon} alt="American Express" className="card-icon" />
                   <img src="https://aimg.kwcdn.com/upload_aimg/temu/ebeb26a5-1ac2-4101-862e-efdbc11544f3.png.slim.png" alt="Discover" className="card-icon" />
-                  <img src={ApplePayIcon} alt="Diners Club" className="card-icon" />
-                  <img src={GooglePayIcon} alt="JCB" className="card-icon" />
+                  <img src={ApplePayIcon} alt="Apple Pay" className="card-icon" />
+                  <img src={GooglePayIcon} alt="Google Pay" className="card-icon" />
                 </div>
               </div>
             </div>
           </label>
         </div>
 
-        {/* Tabby Payment Method (official checkout snippet) */}
-        <div className="payment-method-item tabby-checkout-method" style={{width:'100%'}}>
+        {/* Tabby Widget */}
+        <div className="payment-method-item tabby-checkout-method" style={{ width: '100%' }}>
           <input
             type="radio"
             id="tabby"
@@ -168,73 +201,54 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
             checked={selectedMethod === 'tabby'}
             onChange={() => onMethodSelect('tabby', 'Tabby', TabbyIcon)}
           />
-          <label htmlFor="tabby" className="payment-method-label" style={{width:'100%'}}>
-            <div className="payment-method-content" style={{width:'100%'}}>
-              <div style={{
-                display:'flex',
-                flexDirection:'column',
-                alignItems:'center',
-                width:'100%',
-                background:'#fff',
-                borderRadius:'16px',
-                border:'1px solid #e5e5e5',
-                padding:'2px 0',
-                boxShadow:'0 2px 8px 0 rgba(0,0,0,0.03)',
-                position:'relative',
-                marginLeft:0,
-                opacity: selectedMethod === 'tabby' ? 1 : 0.7,
-                filter: selectedMethod === 'tabby' ? 'none' : 'grayscale(0.3)'
-              }}>
-                {/* TabbyCard container - always show */}
-                <div id="tabbyCard" style={{marginTop:'0px', width:'100%'}}></div>
+          <label htmlFor="tabby" className="payment-method-label" style={{ width: '100%' }}>
+            <div className="payment-method-content" style={{ width: '100%' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  width: '100%',
+                  background: '#fff',
+                  borderRadius: '16px',
+                  border: '1px solid #e5e5e5',
+                  padding: '2px 0',
+                  boxShadow: '0 2px 8px 0 rgba(0,0,0,0.03)',
+                  position: 'relative',
+                  marginLeft: 0,
+                  opacity: selectedMethod === 'tabby' ? 1 : 0.7,
+                  filter: selectedMethod === 'tabby' ? 'none' : 'grayscale(0.3)'
+                }}
+              >
+                <div id="tabbyCard" style={{ marginTop: '0px', width: '100%' }}></div>
               </div>
             </div>
           </label>
-        </div>    
+        </div>
 
-        {/* Tamara */}
-        <div className="payment-method-item">
-          <input 
-            type="radio" 
-            id="tamara" 
+        {/* Tamara Official Widget */}
+        <div className="payment-method-item" style={{ width: '100%' }}>
+          <input
+            type="radio"
+            id="tamara"
             name="payment-method"
             checked={selectedMethod === 'tamara'}
             onChange={() => onMethodSelect('tamara', 'Tamara', TamaraIcon)}
           />
-          <label htmlFor="tamara" className="payment-method-label">
-            <div className="payment-method-content">
-              <div className="payment-header-row">
-                <img src={TamaraIcon} alt="Tamara" className="payment-method-logo" />
-                <div className="payment-text-content">
-                  <div className="payment-title-row">
-                    <span className="payment-title">Tamara: Split in up to 4 payments</span>
-                    <span className="info-icon">ℹ️</span>
-                  </div>
-                  <span className="payment-description">Pay AED{tabbyInstallment} today and the rest in 3 interest-free payments</span>
-                </div>
-              </div>
-              <div className="payment-schedule-container">
-                <div className="schedule-item">
-                  <div className="amount">AED{tabbyInstallment}</div>
-                  <div className="period">Today</div>
-                  <div className="progress-bar active tamara"></div>
-                </div>
-                <div className="schedule-item">
-                  <div className="amount">AED{tabbyInstallment}</div>
-                  <div className="period">In 1 month</div>
-                  <div className="progress-bar tamara"></div>
-                </div>
-                <div className="schedule-item">
-                  <div className="amount">AED{tabbyInstallment}</div>
-                  <div className="period">In 2 months</div>
-                  <div className="progress-bar tamara"></div>
-                </div>
-                <div className="schedule-item">
-                  <div className="amount">AED{tabbyInstallment}</div>
-                  <div className="period">In 3 months</div>
-                  <div className="progress-bar tamara"></div>
-                </div>
-              </div>
+          <label htmlFor="tamara" className="payment-method-label" style={{ width: '100%' }}>
+            <div className="payment-method-content" style={{ width: '100%' }}>
+              <div
+                className="tamara-installment-plan-widget"
+                data-lang="en"
+                data-currency="AED"
+                data-price={(Number(subtotal) || 0).toFixed(2)}
+                data-number-of-installments="4"
+                data-disable-installment="false"
+                data-installment-minimum-amount="99"
+                data-installment-maximum-amount="3000"
+                data-installment-available-amount="99"
+                style={{ width: '100%', marginTop: '4px' }}
+              ></div>
             </div>
           </label>
         </div>
@@ -242,9 +256,9 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
         {/* Cash on Delivery */}
         {hasOnlyStaticProducts && !hasNonStaticProducts && staticProductIds.length > 0 && (
           <div className="payment-method-item">
-            <input 
-              type="radio" 
-              id="cod" 
+            <input
+              type="radio"
+              id="cod"
               name="payment-method"
               checked={selectedMethod === 'cod'}
               onChange={() => onMethodSelect('cod', 'Cash on Delivery', CashIcon)}
@@ -254,7 +268,7 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
               <span className="cod-text-container">
                 Cash on Delivery
                 <div className="cod-info-wrapper">
-                  <span 
+                  <span
                     className="cod-info-icon"
                     onMouseEnter={() => setShowCodPopup(true)}
                     onMouseLeave={() => setShowCodPopup(false)}

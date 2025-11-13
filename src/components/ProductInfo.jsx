@@ -154,8 +154,50 @@ export default function ProductInfo({ product, variations, selectedVariation, on
             merchantCode: 'Store1920'
           });
         }
+        // Tamara widget integration (asynchronous load)
+        if (!document.getElementById('tamara-product-widget-js')) {
+          const tamaraScript = document.createElement('script');
+          tamaraScript.src = 'https://cdn.tamara.co/widget/product-widget.min.js';
+          tamaraScript.id = 'tamara-product-widget-js';
+          tamaraScript.async = true;
+          tamaraScript.onload = () => {
+            if (window.TamaraProductWidget) {
+              window.TamaraProductWidget.init({
+                lang: 'en',
+                currency: 'AED',
+                publicKey: 'pk_live_YourTamaraPublicKeyHere' // Replace with your real public key
+              });
+              window.TamaraProductWidget.render();
+            }
+          };
+          document.body.appendChild(tamaraScript);
+        } else if (window.TamaraProductWidget) {
+          window.TamaraProductWidget.init({
+            lang: 'en',
+            currency: 'AED',
+            publicKey: 'pk_live_YourTamaraPublicKeyHere' // Replace with your real public key
+          });
+          window.TamaraProductWidget.render();
+        }
         return null;
-  })()}
+      })()}
+      {/* Tamara Product Widget below Tabby */}
+      <div
+        className="tamara-product-widget"
+        data-lang="en"
+        data-price={(() => {
+          const rawPrice = selectedVariation?.price ?? product.price ?? 0;
+          return parseFloat(rawPrice) || 0;
+        })()}
+        data-currency="AED"
+        data-payment-type="installment"
+        data-disable-installment="false"
+        data-disable-paylater="false"
+        data-installment-minimum-amount="99"
+        data-installment-maximum-amount="3000"
+        data-installment-available-amount="99"
+        data-pay-later-max-amount="0"
+      ></div>
       <ProductShortDescription shortDescription={product.short_description} />
 
       {showClearance && clearanceEndTime ? (

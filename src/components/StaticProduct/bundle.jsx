@@ -13,7 +13,7 @@ const Bundle = ({ product, bundles, selected, setSelected }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // ✅ Load and render TabbyCard (Full Width)
+  // ✅ Load and render TabbyCard (Full Width) and Tamara widget
   useEffect(() => {
     if (!bundles[selected]) return;
     const priceNum = parseFloat(bundles[selected].price) || 0;
@@ -43,6 +43,28 @@ const Bundle = ({ product, bundles, selected, setSelected }) => {
       document.body.appendChild(script);
     } else {
       loadTabby();
+    }
+
+    // Tamara widget integration (asynchronous load)
+    const loadTamara = () => {
+      if (window.TamaraProductWidget) {
+        window.TamaraProductWidget.init({
+          lang: 'en',
+          currency: 'AED',
+          publicKey: 'pk_live_YourTamaraPublicKeyHere' // Replace with your real public key
+        });
+        window.TamaraProductWidget.render();
+      }
+    };
+    if (!document.getElementById('tamara-product-widget-js')) {
+      const tamaraScript = document.createElement('script');
+      tamaraScript.src = 'https://cdn.tamara.co/widget/product-widget.min.js';
+      tamaraScript.id = 'tamara-product-widget-js';
+      tamaraScript.async = true;
+      tamaraScript.onload = loadTamara;
+      document.body.appendChild(tamaraScript);
+    } else {
+      loadTamara();
     }
   }, [selected, bundles]);
 
@@ -207,6 +229,23 @@ const Bundle = ({ product, bundles, selected, setSelected }) => {
           }}
         ></div>
       </div>
+      {/* Tamara Product Widget below Tabby */}
+      <div
+        className="tamara-product-widget"
+        data-lang="en"
+        data-price={(() => {
+          const price = bundles[selected]?.price ?? 0;
+          return parseFloat(price) || 0;
+        })()}
+        data-currency="AED"
+        data-payment-type="installment"
+        data-disable-installment="false"
+        data-disable-paylater="false"
+        data-installment-minimum-amount="99"
+        data-installment-maximum-amount="3000"
+        data-installment-available-amount="99"
+        data-pay-later-max-amount="0"
+      ></div>
 
       {/* Buy Now Button */}
       <div
