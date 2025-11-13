@@ -53,15 +53,13 @@ import CustomCheckout from './pages/adcheckout'
 import Fastdelivery from './pages/Fastdelivery';
 import OrderFailure from './pages/OrderFailure';
 import OrderCancel from './pages/OrderCancel';
-<<<<<<< HEAD
-=======
+
 import TabbySuccess from './pages/tabby-success';
 import TabbyFailure from './pages/tabby-failure';
 import TabbyCancel from './pages/tabby-cancel';
 import TamaraSuccess from './pages/tamara-success';
 import TamaraFailure from './pages/tamara-failure';
 import TamaraCancel from './pages/tamara-cancel';
->>>>>>> bf1d070 (Integrate Tamara payment widget in PaymentMethods)
 
 // Components
 import Topbar from './components/topbar';

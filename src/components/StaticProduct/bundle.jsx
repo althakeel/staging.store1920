@@ -196,10 +196,6 @@ const Bundle = ({ product, bundles, selected, setSelected }) => {
         );
       })}
 
-<<<<<<< HEAD
-=======
-
->>>>>>> bf1d070 (Integrate Tamara payment widget in PaymentMethods)
       {/* ✅ Full-Width TabbyCard Widget */}
       <div style={{ width: "100%", margin: "18px 0" }}>
         <div
@@ -210,10 +206,6 @@ const Bundle = ({ product, bundles, selected, setSelected }) => {
             display: "block",
           }}
         ></div>
-<<<<<<< HEAD
-      </div>
-
-=======
         {/* Tamara Product Widget below Tabby */}
         <div
           className="tamara-product-widget"
@@ -261,7 +253,6 @@ const Bundle = ({ product, bundles, selected, setSelected }) => {
         return null;
       })()}
 
->>>>>>> bf1d070 (Integrate Tamara payment widget in PaymentMethods)
       {/* Buy Now Button */}
       <div
         style={{
@@ -300,8 +291,4 @@ const Bundle = ({ product, bundles, selected, setSelected }) => {
   );
 };
 
-<<<<<<< HEAD
 export default Bundle;
-=======
-export default Bundle;
->>>>>>> bf1d070 (Integrate Tamara payment widget in PaymentMethods)
