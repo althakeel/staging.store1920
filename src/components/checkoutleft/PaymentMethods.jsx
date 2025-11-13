@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 // ...existing code...
 import React from 'react';
+=======
+import React, { useEffect } from 'react';
+>>>>>>> master
 import '../../assets/styles/checkoutleft/paymentmethods.css';
 
 import circleEmpty from '../../assets/images/tabby/full.webp';
@@ -38,6 +42,7 @@ try {
   staticProducts = [];
 }
 
+<<<<<<< HEAD
 const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = [] }) => {
   const [showCodPopup, setShowCodPopup] = React.useState(false);
 
@@ -48,6 +53,30 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
     staticProductIds = staticProducts.flatMap(product => {
       const ids = [product.id];
       // Add bundle IDs from each product's bundles array
+=======
+// Tabby credentials (provided by user)
+const TABBY_PUBLIC_KEY = 'pk_test_019a4e3b-c868-29ff-1078-04aec08847bf';
+const TABBY_MERCHANT_CODE = 'Store1920';
+
+
+const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = [] }) => {
+  const [showCodPopup, setShowCodPopup] = React.useState(false);
+
+  // Set Tabby as default if nothing is selected and Tabby is available
+  React.useEffect(() => {
+    // Only select Tabby by default if subtotal > 0 and nothing is selected
+    if (!selectedMethod && subtotal > 0) {
+      onMethodSelect('tabby', 'Tabby', require('../../assets/images/Footer icons/3.webp'));
+    }
+    // eslint-disable-next-line
+  }, [selectedMethod, subtotal, onMethodSelect]);
+
+  // Get all static product IDs from staticProducts.js with error handling
+  let staticProductIds = [];
+  try {
+    staticProductIds = staticProducts.flatMap(product => {
+      const ids = [product.id];
+>>>>>>> master
       if (product.bundles && Array.isArray(product.bundles)) {
         product.bundles.forEach(bundle => {
           if (bundle.id) {
@@ -58,6 +87,7 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
       return ids;
     });
   } catch (error) {
+<<<<<<< HEAD
     console.warn('Error loading static products for COD logic:', error);
     // Fallback to empty array if there's an error
     staticProductIds = [];
@@ -98,12 +128,23 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
   ];
 
   // Auto-switch to card if COD was selected but is no longer available
+=======
+    staticProductIds = [];
+  }
+
+  const hasOnlyStaticProducts = cartItems.length > 0 && staticProductIds.length > 0 && cartItems.every(item => staticProductIds.includes(item.id));
+  const hasNonStaticProducts = staticProductIds.length > 0 && cartItems.some(item => !staticProductIds.includes(item.id));
+  const amount = Number(subtotal) || 0;
+  const tabbyInstallment = (amount / 4).toFixed(2);
+
+>>>>>>> master
   React.useEffect(() => {
     const isCodAvailable = hasOnlyStaticProducts && !hasNonStaticProducts && staticProductIds.length > 0;
     if (selectedMethod === 'cod' && !isCodAvailable) {
       onMethodSelect('card', 'Credit/Debit Card', CardIcon);
     }
   }, [cartItems, selectedMethod, onMethodSelect, hasOnlyStaticProducts, hasNonStaticProducts, staticProductIds.length]);
+<<<<<<< HEAD
     
   const renderExtraInfo = (method) => {
     const amount = Number(subtotal) || 0;
@@ -167,12 +208,50 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
   // Tabby pre-scoring API call
 
   // (No Tabby pre-scoring effect, bypassed for always-on Tabby)
+=======
+
+  // TabbyCard integration: always show TabbyCard widget
+  useEffect(() => {
+    if (!document.getElementById('tabby-card-js')) {
+      const script = document.createElement('script');
+      script.src = 'https://checkout.tabby.ai/tabby-card.js';
+      script.id = 'tabby-card-js';
+      script.onload = () => {
+        if (window.TabbyCard) {
+          new window.TabbyCard({
+            selector: '#tabbyCard',
+            currency: 'AED',
+            price: (Number(subtotal) || 0).toFixed(2),
+            lang: 'en',
+            shouldInheritBg: false,
+            publicKey: TABBY_PUBLIC_KEY,
+            merchantCode: TABBY_MERCHANT_CODE
+          });
+        }
+      };
+      document.body.appendChild(script);
+    } else if (window.TabbyCard) {
+      new window.TabbyCard({
+        selector: '#tabbyCard',
+        currency: 'AED',
+        price: (Number(subtotal) || 0).toFixed(2),
+        lang: 'en',
+        shouldInheritBg: false,
+        publicKey: TABBY_PUBLIC_KEY,
+        merchantCode: TABBY_MERCHANT_CODE
+      });
+    }
+  }, [subtotal]);
+>>>>>>> master
 
   return (
     <div className="pm-wrapper">
       <h3>Payment methods</h3>
+<<<<<<< HEAD
       
       {/* Show message when COD is not available */}
+=======
+>>>>>>> master
       {cartItems.length > 0 && hasNonStaticProducts && staticProductIds.length > 0 && (
         <div style={{
           backgroundColor: '#fff3cd',
@@ -185,8 +264,12 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
         }}>
           ℹ️ Cash on Delivery is only available for selected products. Your cart contains items that require online payment.
         </div>
+<<<<<<< HEAD
       )} 
       
+=======
+      )}
+>>>>>>> master
       <div className="payment-methods-list">
         {/* Credit/Debit Card */}
         <div className="payment-method-item">
@@ -202,10 +285,15 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
               <div className="card-payment-header">
                 <span className="card-text">Card</span>
                 <div className="card-icons-group">
+<<<<<<< HEAD
                   {/* <img src='http://localhost:3000/static/media/19.596d7738d41ca6630085.webp' alt="Visa" className="card-icon" /> */}
                   <img src={MasterCardIcon} alt="Mastercard" className="card-icon" />
                   <img src={AmexIcon} alt="American Express" className="card-icon" />
                    {/* <img src='http://localhost:3000/static/media/20.c033ec0799cf09bb276d.webp' alt="American Express" className="card-icon" /> */}
+=======
+                  <img src={MasterCardIcon} alt="Mastercard" className="card-icon" />
+                  <img src={AmexIcon} alt="American Express" className="card-icon" />
+>>>>>>> master
                   <img src="https://aimg.kwcdn.com/upload_aimg/temu/ebeb26a5-1ac2-4101-862e-efdbc11544f3.png.slim.png" alt="Discover" className="card-icon" />
                   <img src={ApplePayIcon} alt="Diners Club" className="card-icon" />
                   <img src={GooglePayIcon} alt="JCB" className="card-icon" />
@@ -215,6 +303,7 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
           </label>
         </div>
 
+<<<<<<< HEAD
         {/* Tabby */}
         {tabbyStatus === 'created' && ( 
           <div className="payment-method-item tabby-checkout-method">
@@ -244,6 +333,40 @@ const PaymentMethods = ({ selectedMethod, onMethodSelect, subtotal, cartItems = 
             </div>
           </div>
         )}
+=======
+        {/* Tabby Payment Method (official checkout snippet) */}
+        <div className="payment-method-item tabby-checkout-method" style={{width:'100%'}}>
+          <input
+            type="radio"
+            id="tabby"
+            name="payment-method"
+            checked={selectedMethod === 'tabby'}
+            onChange={() => onMethodSelect('tabby', 'Tabby', TabbyIcon)}
+          />
+          <label htmlFor="tabby" className="payment-method-label" style={{width:'100%'}}>
+            <div className="payment-method-content" style={{width:'100%'}}>
+              <div style={{
+                display:'flex',
+                flexDirection:'column',
+                alignItems:'center',
+                width:'100%',
+                background:'#fff',
+                borderRadius:'16px',
+                border:'1px solid #e5e5e5',
+                padding:'2px 0',
+                boxShadow:'0 2px 8px 0 rgba(0,0,0,0.03)',
+                position:'relative',
+                marginLeft:0,
+                opacity: selectedMethod === 'tabby' ? 1 : 0.7,
+                filter: selectedMethod === 'tabby' ? 'none' : 'grayscale(0.3)'
+              }}>
+                {/* TabbyCard container - always show */}
+                <div id="tabbyCard" style={{marginTop:'0px', width:'100%'}}></div>
+              </div>
+            </div>
+          </label>
+        </div>    
+>>>>>>> master
 
         {/* Tamara */}
         <div className="payment-method-item">

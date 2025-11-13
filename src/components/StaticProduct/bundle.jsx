@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useCart } from "../../contexts/CartContext";
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 const Bundle = ({ product, bundles, selected, setSelected }) => {
   const [variants, setVariants] = useState({});
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -14,6 +17,42 @@ const Bundle = ({ product, bundles, selected, setSelected }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+<<<<<<< HEAD
+=======
+  // ✅ Load and render TabbyCard (Full Width)
+  useEffect(() => {
+    if (!bundles[selected]) return;
+    const priceNum = parseFloat(bundles[selected].price) || 0;
+
+    const loadTabby = () => {
+      if (window.TabbyCard) {
+        new window.TabbyCard({
+          selector: "#tabbyProductCard",
+          currency: "AED",
+          price: priceNum.toFixed(2),
+          lang: "en",
+          shouldInheritBg: false,
+          publicKey: "pk_test_019a4e3b-c868-29ff-1078-04aec08847bf",
+          merchantCode: "Store1920",
+          style: {
+            width: "100%", // ✅ ensures full width
+          },
+        });
+      }
+    };
+
+    if (!document.getElementById("tabby-product-card-js")) {
+      const script = document.createElement("script");
+      script.src = "https://checkout.tabby.ai/tabby-card.js";
+      script.id = "tabby-product-card-js";
+      script.onload = loadTabby;
+      document.body.appendChild(script);
+    } else {
+      loadTabby();
+    }
+  }, [selected, bundles]);
+
+>>>>>>> master
   // Handle variant selection
   const handleVariantChange = (bundleIndex, productIndex, color) => {
     setVariants((prev) => ({
@@ -26,6 +65,7 @@ const Bundle = ({ product, bundles, selected, setSelected }) => {
   const formatAED = (value) => `AED ${value.toFixed(2)}`;
 
   // Handle Buy Now click
+<<<<<<< HEAD
 const handleBuyNow = () => {
   const bundle = bundles[selected];
 
@@ -62,6 +102,36 @@ const handleBuyNow = () => {
       {/* Title */}
 
 
+=======
+  const handleBuyNow = () => {
+    const bundle = bundles[selected];
+    const bundleImage = bundle.image || bundle.images?.[0] || bundle.productImage || null;
+
+    const bundleToCart = {
+      id: bundle.wooId || bundle.id || 0,
+      name: bundle.type,
+      price: bundle.price,
+      originalPrice: bundle.originalPrice,
+      quantity: 1,
+      variation: variants,
+      image: bundleImage,
+    };
+
+    addToCart(bundleToCart, false);
+
+    const query = new URLSearchParams({
+      type: bundleToCart.name,
+      price: bundleToCart.price,
+      quantity: bundleToCart.quantity,
+      image: bundleImage,
+    });
+
+    window.location.href = `/checkout?${query.toString()}`;
+  };
+
+  return (
+    <div style={{ padding: "16px", fontFamily: "Arial, sans-serif" }}>
+>>>>>>> master
       {/* Bundles */}
       {bundles.map((bundle, index) => {
         const totalSavings = bundle.originalPrice - bundle.price;
@@ -136,7 +206,11 @@ const handleBuyNow = () => {
                 </span>
               </div>
 
+<<<<<<< HEAD
               {/* Price */}
+=======
+              {/* Price Section */}
+>>>>>>> master
               <div style={{ textAlign: "right" }}>
                 <p
                   style={{
@@ -168,6 +242,7 @@ const handleBuyNow = () => {
                 style={{ marginLeft: "12px", accentColor: "#d45a5a" }}
               />
             </div>
+<<<<<<< HEAD
 
             {/* Variant Selector */}
             {bundle.colors &&
@@ -211,10 +286,27 @@ const handleBuyNow = () => {
                   })}
                 </div>
               ))}
+=======
+>>>>>>> master
           </div>
         );
       })}
 
+<<<<<<< HEAD
+=======
+      {/* ✅ Full-Width TabbyCard Widget */}
+      <div style={{ width: "100%", margin: "18px 0" }}>
+        <div
+          id="tabbyProductCard"
+          style={{
+            width: "100%",
+            maxWidth: "100%",
+            display: "block",
+          }}
+        ></div>
+      </div>
+
+>>>>>>> master
       {/* Buy Now Button */}
       <div
         style={{

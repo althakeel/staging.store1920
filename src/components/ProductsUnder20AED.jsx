@@ -142,6 +142,10 @@ const ProductsUnder20AED = () => {
                     <ProductCardReviews />
 
                     <div className="pu20-price-cart">
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
                       <div className="pu20-prices">
                         <img src={IconAED} alt="AED" className="pu20-currency-icon" />
                         <span className="pu20-price">{parseFloat(p.price).toFixed(2)}</span>
