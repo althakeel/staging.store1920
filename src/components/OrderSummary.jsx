@@ -15,6 +15,24 @@ export default function OrderSummary({
   const [couponAmount, setCouponAmount] = useState(0);
   const [minAmount, setMinAmount] = useState(minCheckoutAmount);
   const [loadingMin, setLoadingMin] = useState(true);
+  const tabbyPromoRef = useRef(null);
+
+  const handleApplyCoupon = () => {
+    if (coupon.trim().toLowerCase() === "temu10") {
+      const newDiscount = subtotal * 0.1;
+      setCouponAmount(newDiscount);
+      setCouponApplied(true);
+      setCouponError("");
+    } else {
+      setCouponApplied(false);
+      setCouponAmount(0);
+      setCouponError("Invalid coupon code");
+    }
+  };
+
+  const totalAfterCoupon = total - couponAmount;
+  const isMinSet = minAmount && minAmount > 0;
+  const canCheckout = !isMinSet || totalAfterCoupon >= minAmount;
 
   useEffect(() => {
     if (minCheckoutAmount === null || minCheckoutAmount === undefined) {
@@ -37,22 +55,50 @@ export default function OrderSummary({
     }
   }, [minCheckoutAmount]);
 
-  const handleApplyCoupon = () => {
-    if (coupon.trim().toLowerCase() === "temu10") {
-      const newDiscount = subtotal * 0.1;
-      setCouponAmount(newDiscount);
-      setCouponApplied(true);
-      setCouponError("");
-    } else {
-      setCouponApplied(false);
-      setCouponAmount(0);
-      setCouponError("Invalid coupon code");
-    }
-  };
+  // Initialize Tabby Promo Widget
+  useEffect(() => {
+    const loadTabbyScript = () => {
+      // Check if script already exists
+      if (document.getElementById('tabby-promo-script')) {
+        initializeTabby();
+        return;
+      }
 
-  const totalAfterCoupon = total - couponAmount;
-  const isMinSet = minAmount && minAmount > 0;
-  const canCheckout = !isMinSet || totalAfterCoupon >= minAmount;
+      const script = document.createElement('script');
+      script.id = 'tabby-promo-script';
+      script.src = 'https://checkout.tabby.ai/tabby-promo.js';
+      script.async = true;
+      script.onload = () => {
+        // Wait a bit for the script to fully initialize
+        setTimeout(initializeTabby, 100);
+      };
+      document.body.appendChild(script);
+    };
+
+    const initializeTabby = () => {
+      if (typeof TabbyPromo !== 'undefined' && tabbyPromoRef.current) {
+        // Clear previous instance
+        tabbyPromoRef.current.innerHTML = '';
+        
+        try {
+          // eslint-disable-next-line no-undef
+          new TabbyPromo({
+            selector: '#TabbyPromo',
+            currency: 'AED',
+            price: totalAfterCoupon.toFixed(2),
+            lang: 'en',
+            source: 'cart',
+            publicKey: 'pk_test_019a4e3b-c868-29ff-1078-04aec08847bf',
+            merchantCode: 'ae'
+          });
+        } catch (error) {
+          console.error('Tabby initialization error:', error);
+        }
+      }
+    };
+
+    loadTabbyScript();
+  }, [totalAfterCoupon]);
 
   return (
     <section className="os-container" aria-label="Order Summary">
@@ -91,22 +137,8 @@ export default function OrderSummary({
 
       <p className="os-note">Please refer to your final actual payment amount.</p>
 
-      {/* Tabby Installment Box */}
-      <div className="tabby-installment-box">
-        <div className="tabby-installment-content">
-          <div className="tabby-installment-text-col">
-            <div className="tabby-installment-line1">
-              As low as <span className="tabby-currency">د.إ</span>
-              <span className="tabby-amount">{(totalAfterCoupon / 4).toFixed(2)}</span>
-              <span className="tabby-per">/month</span>
-            </div>
-            <div className="tabby-installment-line2">
-              or 4 interest-free payments. <span className="tabby-learn-more">Learn more</span>
-            </div>
-          </div>
-          <img src="https://levantine.ae/wp-content/uploads/2023/03/tabby-badge.png" alt="tabby" className="tabby-logo-img" />
-        </div>
-      </div>
+      {/* Tabby Official Widget */}
+      <div id="TabbyPromo" ref={tabbyPromoRef} style={{ margin: '16px 0' }}></div>
 
       <button
         type="button"
