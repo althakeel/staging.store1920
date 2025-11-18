@@ -16,6 +16,7 @@ export default function OrderSummary({
   const [minAmount, setMinAmount] = useState(minCheckoutAmount);
   const [loadingMin, setLoadingMin] = useState(true);
   const tabbyPromoRef = useRef(null);
+  const tamaraWidgetRef = useRef(null);
 
   const handleApplyCoupon = () => {
     if (coupon.trim().toLowerCase() === "temu10") {
@@ -100,6 +101,42 @@ export default function OrderSummary({
     loadTabbyScript();
   }, [totalAfterCoupon]);
 
+  // Initialize Tamara Widget
+  useEffect(() => {
+    const initializeTamara = () => {
+      if (typeof window.TamaraWidgetV2 !== 'undefined' && tamaraWidgetRef.current) {
+        try {
+          // Update the config with current language and country if needed
+          if (window.tamaraWidgetConfig) {
+            window.tamaraWidgetConfig.lang = 'en'; // Can be dynamic based on user preference
+            window.tamaraWidgetConfig.country = 'AE';
+            window.TamaraWidgetV2.refresh();
+          }
+        } catch (error) {
+          console.error('Tamara widget initialization error:', error);
+        }
+      }
+    };
+
+    // Wait for Tamara script to load
+    if (typeof window.TamaraWidgetV2 !== 'undefined') {
+      initializeTamara();
+    } else {
+      // Poll for script load
+      const checkInterval = setInterval(() => {
+        if (typeof window.TamaraWidgetV2 !== 'undefined') {
+          clearInterval(checkInterval);
+          initializeTamara();
+        }
+      }, 100);
+
+      // Cleanup after 5 seconds
+      setTimeout(() => clearInterval(checkInterval), 5000);
+
+      return () => clearInterval(checkInterval);
+    }
+  }, [totalAfterCoupon]);
+
   return (
     <section className="os-container" aria-label="Order Summary">
       <h3 className="os-title">Order Summary</h3>
@@ -139,6 +176,15 @@ export default function OrderSummary({
 
       {/* Tabby Official Widget */}
       <div id="TabbyPromo" ref={tabbyPromoRef} style={{ margin: '16px 0' }}></div>
+
+      {/* Tamara Widget */}
+      <div ref={tamaraWidgetRef} style={{ margin: '16px 0' }}>
+        <tamara-widget 
+          type="tamara-summary" 
+          inline-type="2" 
+          amount={totalAfterCoupon.toFixed(2)}
+        ></tamara-widget>
+      </div>
 
       <button
         type="button"
